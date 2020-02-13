@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DoctermsgActivity"
+    android:orientation="vertical">
+
+
+    <!--    환자 상태 체크 -->
+
+
+    <!--보호자 화면 메인페이지 입니다.-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="50sp"
+        android:layout_marginTop="30sp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="환자 리스트"
+            android:textColor="#000"
+            android:textFontWeight="800"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="등록된 환자의 리스트를 볼수있습니다."
+            android:textColor="#777"
+            android:textFontWeight="800"
+            android:textSize="15sp" />
+        <!--리사이클러뷰의 영역-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginHorizontal="50sp"
+        android:id="@+id/bt_docterview"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50sp"
+        android:backgroundTint="#888"
+        android:text="환자상태보기"
+        android:textColor="#fff"
+        app:cornerRadius="50dp" />
+
+</LinearLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="signup_spinner">
+        <item>환자</item>
+        <item>보호자</item>
+        <item>의료</item>
+    </string-array>
+</resources>
