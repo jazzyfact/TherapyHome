@@ -10,6 +10,6 @@ public class GuardianPhoneActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guardiannum);
+        setContentView(R.layout.activity_guardian_edit_phone);
     }
 }

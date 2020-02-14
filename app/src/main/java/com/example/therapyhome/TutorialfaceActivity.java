@@ -9,6 +9,6 @@ public class TutorialfaceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorialface);
+        setContentView(R.layout.activity_tutorial_face);
     }
 }

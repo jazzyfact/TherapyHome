@@ -35,7 +35,7 @@ public class GuardianMsgAdapter extends RecyclerView.Adapter<GuardianMsgAdapter.
     public GuardianMsgAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater
                 .from(parent.getContext())
-                .inflate(R.layout.item_guardianmsg, parent, false);
+                .inflate(R.layout.item_guardian_msg, parent, false);
         return new ViewHolder(v);
     }
 

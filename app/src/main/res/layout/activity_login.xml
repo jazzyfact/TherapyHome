@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".PatientMsgActivity"
     android:orientation="vertical">
 
 
@@ -13,6 +13,30 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="50sp">
+
+        <Button
+            android:id="@+id/login_button_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="환자"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/login_button_guardian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="보호자"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/login_button_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="의사"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,11 +56,11 @@
             android:layout_gravity="center">
 
             <LinearLayout
-                android:id="@+id/rb_login_patient_box"
+                android:id="@+id/cb_login_patient_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/rb_login_patient"
+                <CheckBox
+                    android:id="@+id/cb_login_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -46,12 +70,14 @@
 
             </LinearLayout>
 
+
+
             <LinearLayout
-                android:id="@+id/rb_login_guaridan_box"
+                android:id="@+id/cb_login_guaridan_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/rb_login_guaridan"
+                <CheckBox
+                    android:id="@+id/cb_login_guaridan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -61,11 +87,11 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/rb_login_docter_box"
+                android:id="@+id/cb_login_docter_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <RadioButton
-                    android:id="@+id/rb_login_docter"
+                <CheckBox
+                    android:id="@+id/cb_login_docter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -163,29 +189,7 @@
         android:text="로그인화면"
         android:textSize="30sp"/>
 
-    <Button
-        android:id="@+id/login_button_patient"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="환자"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/login_button_guardian"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="보호자"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <Button
-        android:id="@+id/login_button_doctor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="의사"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
 
 
 

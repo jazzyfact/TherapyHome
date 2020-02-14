@@ -7,6 +7,54 @@
     tools:context=".GuardianMainActivity"
     android:orientation="vertical">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_edit_keyword"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#403EE8"
+        android:text="키워드 편집"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_edit_phone"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:text="연락처 편집"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:backgroundTint="#7472F4"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_check_health"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#403EE8"
+        android:text="건강상태"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        app:cornerRadius="20dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_read_msg"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:text="문자 모아보기"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:backgroundTint="#7472F4"
+        app:cornerRadius="20dp" />
+
 
 <!--보호자 화면 메인페이지 입니다.-->
 
@@ -15,14 +63,14 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="50sp"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="5sp"
         android:layout_weight="1">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="5dp"
             android:text="메인페이지"
             android:textColor="#000"
             android:textFontWeight="800"
@@ -41,7 +89,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
+            android:layout_marginTop="5sp"
             android:text="내정보"
             android:textColor="#000"
             android:textSize="20sp" />
@@ -86,7 +134,7 @@
                     android:textSize="15sp" />
             </LinearLayout>
             <ImageView
-                android:id="@+id/bt_guardian_editmy"
+                android:id="@+id/iv_guardian_editmy"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:src="@drawable/edit240"
@@ -100,8 +148,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
-            android:text="등록된 나의 가족"
+            android:layout_marginTop="5sp"
+            android:text="환자"
             android:textColor="#000"
             android:textSize="20sp" />
 
@@ -146,7 +194,7 @@
                     android:textSize="15sp" />
             </LinearLayout>
             <ImageView
-                android:id="@+id/bt_guardian_editFamily"
+                android:id="@+id/iv_guardian_editFamily"
                 android:layout_width="30sp"
                 android:layout_height="30sp"
                 android:src="@drawable/edit240"
@@ -161,8 +209,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40sp"
-            android:text="등록된 의사선생님"
+            android:layout_marginTop="5sp"
+            android:text="담당 의사"
             android:textColor="#000"
             android:textSize="20sp" />
 
@@ -210,16 +258,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:id="@+id/bt_guardian_editdocter"
                     android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
+                    android:layout_height="27dp"
                     android:layout_marginLeft="210sp"
                     android:layout_marginTop="10sp"
-                    />
+                    android:src="@drawable/edit240" />
                 <ImageView
-                    android:id="@+id/bt_guardian_redocter"
+                    android:id="@+id/iv_guardian_redocter"
                     android:layout_width="30sp"
                     android:layout_height="30sp"
                     android:src="@drawable/trash240"
@@ -229,61 +277,6 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-    <!--하단 메뉴바-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:padding="25sp"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/bt_guardian_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메인"
-            android:textColor="#000"
-            android:textSize="22sp"
-            />
-
-        <TextView
-            android:id="@+id/bt_guardian_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="텍스트"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-        <TextView
-            android:id="@+id/bt_guardian_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="연락처"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-        <TextView
-            android:id="@+id/bt_guardian_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="상태"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-
-        <TextView
-            android:id="@+id/bt_guardian_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="문자"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
     </LinearLayout>
 
 </LinearLayout>

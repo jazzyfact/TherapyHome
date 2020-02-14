@@ -9,6 +9,6 @@ public class TutorialJoyStickActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorialjoy);
+        setContentView(R.layout.activity_tutorial_joy_stick);
     }
 }

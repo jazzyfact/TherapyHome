@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PatientMsgActivity">
 
 
 
@@ -219,18 +219,6 @@
             android:text="보내기"
             android:textColor="#fff"
             android:backgroundTint="#403EE8"
-
-            app:cornerRadius="50dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_controlIoT"
-            android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#888"
-            android:text="스마트홈"
-            android:textColor="#fff"
 
             app:cornerRadius="50dp" />
 

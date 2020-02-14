@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GuardianMonitorActivity extends AppCompatActivity {
+public class PatientSmartHomeActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guardian_monitor);
+        setContentView(R.layout.activity_patient_smart_home);
+
+
     }
 }

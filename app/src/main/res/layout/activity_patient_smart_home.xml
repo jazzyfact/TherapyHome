@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientControlIoTActivity">
+    tools:context=".PatientSmartHomeActivity">
 
 
 
@@ -98,20 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="bottom"
-            android:orientation="vertical">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_main"
-            android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="100dp"
-            android:backgroundTint="#888"
-            android:text="문자보내기"
-            android:textColor="#fff"
-            app:cornerRadius="50dp"
-            android:layout_marginBottom="80sp"/>
-        </LinearLayout>
+            android:orientation="vertical"/>
     </LinearLayout>
 
 

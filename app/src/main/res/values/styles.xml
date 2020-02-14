@@ -14,4 +14,11 @@
 
     </style>
 
+
+<!--커스텀 다이얼로그-->
+    <style name="Theme.MyDialog" parent="Theme.AppCompat.DayNight.Dialog.Alert">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
 </resources>

@@ -3,7 +3,7 @@ package com.example.therapyhome.item;
 public class DoctorMsg {
 
     String name;
-    int phone;
+    String phone;
 
     public String getName() {
         return name;
@@ -13,11 +13,11 @@ public class DoctorMsg {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 }
