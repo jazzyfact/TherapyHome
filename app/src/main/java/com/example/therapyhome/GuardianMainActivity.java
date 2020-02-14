@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class GuardianmainActivity extends AppCompatActivity {
+public class GuardianMainActivity extends AppCompatActivity {
 
     TextView btnGuardianMain;
     TextView btnGuardianTxt;
@@ -30,19 +30,19 @@ public class GuardianmainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.bt_guardian_txt:
-                        Intent txt_intent = new Intent(getApplicationContext(), GuardiantexteditActivity.class);
+                        Intent txt_intent = new Intent(getApplicationContext(), GuardianKeywordEditActivity.class);
                         startActivity(txt_intent);
                         break;
                     case R.id.bt_guardian_num:
-                        Intent num_intent = new Intent(getApplicationContext(), GuardiannumActivity.class);
+                        Intent num_intent = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
                         startActivity(num_intent);
                         break;
                     case R.id.bt_guardian_state:
-                        Intent state_intent = new Intent(getApplicationContext(), GuardianstateActivity.class);
+                        Intent state_intent = new Intent(getApplicationContext(), GuardianMonitorActivity.class);
                         startActivity(state_intent);
                         break;
                     case R.id.bt_guardian_msg:
-                        Intent msg_intent = new Intent(getApplicationContext(), GuardianmsgActivity.class);
+                        Intent msg_intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
                         startActivity(msg_intent);
                         break;
                 }

@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TutorialjoyokActivity extends AppCompatActivity {
+public class GuardianMonitorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorialjoy_ok);
+        setContentView(R.layout.activity_guardianstate);
     }
 }

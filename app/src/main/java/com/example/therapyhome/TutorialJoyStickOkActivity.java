@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class TutorialfaceokActivity extends AppCompatActivity {
+public class TutorialJoyStickOkActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tutorialface_ok);
+        setContentView(R.layout.activity_tutorialjoy_ok);
     }
 }
