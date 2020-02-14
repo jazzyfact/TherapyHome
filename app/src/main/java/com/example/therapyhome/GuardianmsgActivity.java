@@ -13,9 +13,9 @@ import java.util.List;
 public class GuardianmsgActivity extends AppCompatActivity {
 
     // 리사이클러뷰 변수선언
-    private RecyclerView rv_guardianview; // 리사이클러뷰
+    private RecyclerView rvGuardianview; // 리사이클러뷰
     private RecyclerView.Adapter adapter; // 어댑터
-    private List<Guardianmsg> guardianmsgList = new ArrayList<>(); // 리스트
+    private List<Guardianmsg> guardianMsgList = new ArrayList<>(); // 리스트
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +28,15 @@ public class GuardianmsgActivity extends AppCompatActivity {
         guardianmsg.setMessage("바부바부바부야");
         int dummy = 0;
         while (dummy <= 30) {
-            guardianmsgList.add(guardianmsg);
+            guardianMsgList.add(guardianmsg);
             dummy ++;
         }
 
         // 리아시클러뷰 객체화
-        rv_guardianview = findViewById(R.id.rv_guardianview);
-        rv_guardianview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-        rv_guardianview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
-        adapter = new GuardianmsgAdapter(guardianmsgList); // 어댑터에 리스트 붙이고
-        rv_guardianview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
+        rvGuardianview = findViewById(R.id.rv_guardianview);
+        rvGuardianview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+        rvGuardianview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
+        adapter = new GuardianmsgAdapter(guardianMsgList); // 어댑터에 리스트 붙이고
+        rvGuardianview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
     }
 }

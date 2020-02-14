@@ -12,17 +12,17 @@ import java.util.List;
 
 public class GuardianmsgAdapter extends RecyclerView.Adapter<GuardianmsgAdapter.ViewHolder> {
 
-    private List<Guardianmsg> guardianmsgList;
+    private List<Guardianmsg> guardianMsgList;
 
     // 어댑터 생성자
     public GuardianmsgAdapter(List<Guardianmsg> guardianmsgList) {
-        this.guardianmsgList = guardianmsgList;
+        this.guardianMsgList = guardianmsgList;
     }
 
     // 아이템 갯수 구하기
     @Override
     public int getItemCount() {
-        return guardianmsgList.size();
+        return guardianMsgList.size();
     }
 
 
@@ -38,18 +38,18 @@ public class GuardianmsgAdapter extends RecyclerView.Adapter<GuardianmsgAdapter.
 
     // 뷰홀더-레이아웃 연결하기
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView item_guardianmsg_textview;
+        private TextView itemGuardianMsgTv;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_guardianmsg_textview = itemView.findViewById(R.id.item_guardianmsg_textview);
+            itemGuardianMsgTv = itemView.findViewById(R.id.item_guardianmsg_textview);
         }
     }
 
     // 뷰홀더-내용물 연결하기
     @Override
     public void onBindViewHolder(@NonNull GuardianmsgAdapter.ViewHolder holder, int position) {
-        holder.item_guardianmsg_textview.setText(guardianmsgList.get(position).getMessage());
+        holder.itemGuardianMsgTv.setText(guardianMsgList.get(position).getMessage());
     }
 
 }

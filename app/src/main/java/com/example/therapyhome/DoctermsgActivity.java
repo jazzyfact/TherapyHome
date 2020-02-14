@@ -13,9 +13,9 @@ import java.util.List;
 public class DoctermsgActivity extends AppCompatActivity {
 
     // 리사이클러뷰 변수선언
-    private RecyclerView rv_docterview; // 리사이클러뷰
+    private RecyclerView rvDocterview; // 리사이클러뷰
     private RecyclerView.Adapter adapter; // 어댑터
-    private List<Doctermsg> doctermsgList = new ArrayList<>(); // 리스트
+    private List<Doctermsg> docterMsgList = new ArrayList<>(); // 리스트
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +28,16 @@ public class DoctermsgActivity extends AppCompatActivity {
         doctermsg.setPhone(01012341234);
         int dummy = 0;
         while (dummy <= 30) {
-            doctermsgList.add(doctermsg);
+            docterMsgList.add(doctermsg);
             dummy ++;
         }
 
         // 리아시클러뷰 객체화
-        rv_docterview = findViewById(R.id.rv_docterview);
-        rv_docterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-        rv_docterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
-        adapter = new DoctermsgAdapter(doctermsgList); // 어댑터에 리스트 붙이고
-        rv_docterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
+        rvDocterview = findViewById(R.id.rv_docterview);
+        rvDocterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+        rvDocterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
+        adapter = new DoctermsgAdapter(docterMsgList); // 어댑터에 리스트 붙이고
+        rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
 
     }
 }

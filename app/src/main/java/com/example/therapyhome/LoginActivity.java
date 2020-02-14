@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button login_button_patient;
-    Button login_button_guardian;
-    Button login_button_doctor;
+    Button btnLoginPatient;
+    Button btnLoginGuardian;
+    Button btnLoginDoctor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,8 +20,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
-        login_button_patient = findViewById(R.id.login_button_patient);
-        login_button_patient.setOnClickListener(new View.OnClickListener() {
+        btnLoginPatient = findViewById(R.id.login_button_patient);
+        btnLoginPatient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -29,8 +29,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login_button_guardian = findViewById(R.id.login_button_guardian);
-        login_button_guardian.setOnClickListener(new View.OnClickListener() {
+        btnLoginGuardian = findViewById(R.id.login_button_guardian);
+        btnLoginGuardian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), GuardianmainActivity.class);
@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        login_button_doctor = findViewById(R.id.login_button_doctor);
-        login_button_doctor.setOnClickListener(new View.OnClickListener() {
+        btnLoginDoctor = findViewById(R.id.login_button_doctor);
+        btnLoginDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DoctermsgActivity.class);

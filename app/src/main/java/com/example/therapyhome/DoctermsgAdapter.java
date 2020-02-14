@@ -12,17 +12,17 @@ import java.util.List;
 
 public class DoctermsgAdapter extends RecyclerView.Adapter<DoctermsgAdapter.ViewHolder>{
 
-    private List<Doctermsg> doctermsgList;
+    private List<Doctermsg> docterMsgList;
 
     // 어댑터 생성자
     public DoctermsgAdapter(List<Doctermsg> doctermsgList) {
-        this.doctermsgList = doctermsgList;
+        this.docterMsgList = doctermsgList;
     }
 
     // 아이템 갯수 구하기
     @Override
     public int getItemCount() {
-        return doctermsgList.size();
+        return docterMsgList.size();
     }
 
 
@@ -38,21 +38,21 @@ public class DoctermsgAdapter extends RecyclerView.Adapter<DoctermsgAdapter.View
 
     // 뷰홀더-레이아웃 연결하기
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_doctermsg_textview_name;
-        TextView item_doctermsg_textview_phone;
+        TextView itemDocterMsgTvName;
+        TextView itemDocterMsgtvPhone;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_doctermsg_textview_name = itemView.findViewById(R.id.item_doctermsg_textview_name);
-            item_doctermsg_textview_phone = itemView.findViewById(R.id.item_doctermsg_textview_phone);
+            itemDocterMsgTvName = itemView.findViewById(R.id.item_doctermsg_textview_name);
+            itemDocterMsgtvPhone = itemView.findViewById(R.id.item_doctermsg_textview_phone);
         }
     }
 
     // 뷰홀더-내용물 연결하기
     @Override
     public void onBindViewHolder(@NonNull DoctermsgAdapter.ViewHolder holder, int position) {
-        holder.item_doctermsg_textview_name.setText(doctermsgList.get(position).getName());
-        holder.item_doctermsg_textview_phone.setText(Integer.toString(doctermsgList.get(position).getPhone()));
+        holder.itemDocterMsgTvName.setText(docterMsgList.get(position).getName());
+        holder.itemDocterMsgtvPhone.setText(Integer.toString(docterMsgList.get(position).getPhone()));
     }
 
 }

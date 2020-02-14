@@ -9,15 +9,15 @@ import android.widget.Button;
 
 public class ControliotActivity extends AppCompatActivity {
 
-    Button bt_main;
+    Button btnMain; //메인액티비티
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controliot);
 
-        bt_main = findViewById(R.id.bt_main);
-        bt_main.setOnClickListener(new View.OnClickListener() {
+        btnMain = findViewById(R.id.bt_main);
+        btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

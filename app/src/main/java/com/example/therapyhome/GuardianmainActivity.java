@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 public class GuardianmainActivity extends AppCompatActivity {
 
-    TextView bt_guardian_main;
-    TextView bt_guardian_txt;
-    TextView bt_guardian_num;
-    TextView bt_guardian_state;
-    TextView bt_guardian_msg;
+    TextView btnGuardianMain;
+    TextView btnGuardianTxt;
+    TextView btnGuardianNum;
+    TextView btnGuardianState;
+    TextView btGuardianMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,15 +48,15 @@ public class GuardianmainActivity extends AppCompatActivity {
                 }
             }
         };
-        bt_guardian_main = findViewById(R.id.bt_guardian_main);
-        bt_guardian_main.setOnClickListener(onClickListener);
-        bt_guardian_txt = findViewById(R.id.bt_guardian_txt);
-        bt_guardian_txt.setOnClickListener(onClickListener);
-        bt_guardian_num = findViewById(R.id.bt_guardian_num);
-        bt_guardian_num.setOnClickListener(onClickListener);
-        bt_guardian_state = findViewById(R.id.bt_guardian_state);
-        bt_guardian_state.setOnClickListener(onClickListener);
-        bt_guardian_msg = findViewById(R.id.bt_guardian_msg);
-        bt_guardian_msg.setOnClickListener(onClickListener);
+        btnGuardianMain = findViewById(R.id.bt_guardian_main);
+        btnGuardianMain.setOnClickListener(onClickListener);
+        btnGuardianTxt = findViewById(R.id.bt_guardian_txt);
+        btnGuardianTxt.setOnClickListener(onClickListener);
+        btnGuardianNum = findViewById(R.id.bt_guardian_num);
+        btnGuardianNum.setOnClickListener(onClickListener);
+        btnGuardianState = findViewById(R.id.bt_guardian_state);
+        btnGuardianState.setOnClickListener(onClickListener);
+        btGuardianMsg = findViewById(R.id.bt_guardian_msg);
+        btGuardianMsg.setOnClickListener(onClickListener);
     }
 }
