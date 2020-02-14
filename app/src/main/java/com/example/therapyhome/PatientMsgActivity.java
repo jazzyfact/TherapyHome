@@ -1,18 +1,12 @@
 package com.example.therapyhome;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.IntentCompat;
-
 import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.telephony.SmsManager;
@@ -20,6 +14,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class PatientMsgActivity extends AppCompatActivity {
 
@@ -35,7 +32,6 @@ public class PatientMsgActivity extends AppCompatActivity {
     Button bt_sendtext;
 
     String result;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

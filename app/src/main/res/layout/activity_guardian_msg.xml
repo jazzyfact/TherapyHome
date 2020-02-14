@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".GuardianMsgActivity"
     android:orientation="vertical"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#fff">
 
 
     <!--    환자 상태 체크 -->
