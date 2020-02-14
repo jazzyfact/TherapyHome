@@ -32,11 +32,11 @@
             android:layout_gravity="center">
 
             <LinearLayout
-                android:id="@+id/cb_login_patient_box"
+                android:id="@+id/rb_login_patient_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/cb_login_patient"
+                <RadioButton
+                    android:id="@+id/rb_login_patient"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -47,11 +47,11 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/cb_login_guaridan_box"
+                android:id="@+id/rb_login_guaridan_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/cb_login_guaridan"
+                <RadioButton
+                    android:id="@+id/rb_login_guaridan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -61,11 +61,11 @@
 
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/cb_login_docter_box"
+                android:id="@+id/rb_login_docter_box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-                <CheckBox
-                    android:id="@+id/cb_login_docter"
+                <RadioButton
+                    android:id="@+id/rb_login_docter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
