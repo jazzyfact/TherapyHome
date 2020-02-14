@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TutorialControlChoiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="50sp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="환자 메인화면"
+            android:textColor="#000"
+            android:textFontWeight="800"
+            android:textSize="25sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="환자 메인화면 입니다!"
+            android:textColor="#777"
+            android:textFontWeight="800"
+            android:textSize="15sp" />
+
+        <!--    코드 인증-->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_send_message"
+            android:layout_width="match_parent"
+            android:layout_height="160sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp"
+            android:text="문자보내기"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:backgroundTint="#403EE8"
+            app:cornerRadius="20dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_smart_home"
+            android:layout_width="match_parent"
+            android:layout_height="160sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="스마트홈"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:backgroundTint="#7472F4"
+            app:cornerRadius="20dp" />
+
+    </LinearLayout>
+</LinearLayout>
