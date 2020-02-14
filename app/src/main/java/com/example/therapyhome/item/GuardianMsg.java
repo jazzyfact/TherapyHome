@@ -1,6 +1,6 @@
-package com.example.therapyhome;
+package com.example.therapyhome.item;
 
-public class Guardianmsg {
+public class GuardianMsg {
 
     String message;
 

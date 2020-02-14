@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class GuardiantexteditActivity extends AppCompatActivity {
+public class DoctorMonitor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guardiantextedit);
+        setContentView(R.layout.activity_docterstate);
     }
 }

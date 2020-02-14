@@ -7,15 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.therapyhome.Adapter.DoctorPatientListAdapter;
+import com.example.therapyhome.item.DoctorMsg;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class DoctermsgActivity extends AppCompatActivity {
+public class DoctorPatientListActivity extends AppCompatActivity {
 
     // 리사이클러뷰 변수선언
     private RecyclerView rvDocterview; // 리사이클러뷰
     private RecyclerView.Adapter adapter; // 어댑터
-    private List<Doctermsg> docterMsgList = new ArrayList<>(); // 리스트
+    private List<DoctorMsg> docterMsgList = new ArrayList<>(); // 리스트
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +26,13 @@ public class DoctermsgActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctermsg);
 
         // 더미데이터 넣기
-        Doctermsg doctermsg = new Doctermsg();
-        doctermsg.setName("김바부");
-        doctermsg.setPhone(01012341234);
+
+        DoctorMsg doctorMsg = new DoctorMsg();
+        doctorMsg.setName("김바부");
+        doctorMsg.setPhone(01012341234);
         int dummy = 0;
         while (dummy <= 30) {
-            docterMsgList.add(doctermsg);
+            docterMsgList.add(doctorMsg);
             dummy ++;
         }
 
@@ -36,7 +40,7 @@ public class DoctermsgActivity extends AppCompatActivity {
         rvDocterview = findViewById(R.id.rv_docterview);
         rvDocterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         rvDocterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
-        adapter = new DoctermsgAdapter(docterMsgList); // 어댑터에 리스트 붙이고
+        adapter = new DoctorPatientListAdapter(docterMsgList); // 어댑터에 리스트 붙이고
         rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
 
     }

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ControliotActivity extends AppCompatActivity {
+public class PatientControlIoTActivity extends AppCompatActivity {
 
     Button btnMain; //메인액티비티
 

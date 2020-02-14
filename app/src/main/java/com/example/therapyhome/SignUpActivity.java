@@ -13,9 +13,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
-    private static final String TAG = "SignupActivity";
+//    private static final String TAG = "SignupActivity";
 
     TextInputEditText etSignUpName; //이름
     TextInputEditText etSignUpId; // 아이디
@@ -61,7 +61,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Log.d(TAG, "onClick: 회원가입버튼 누름" );
+               // Log.d(TAG, "onClick: 회원가입버튼 누름" );
                 //회원가입 정보창에 입력한 내용들 가져오기
 
                 strSignUpName = etSignUpName.getText().toString();

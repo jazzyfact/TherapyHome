@@ -1,6 +1,6 @@
-package com.example.therapyhome;
+package com.example.therapyhome.item;
 
-public class Doctermsg {
+public class DoctorMsg {
 
     String name;
     int phone;

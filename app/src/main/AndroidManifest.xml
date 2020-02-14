@@ -17,21 +17,21 @@
             </intent-filter>
         </activity>
         <!-- <activity android:name=".LoginActivity"/> -->
-        <activity android:name=".docterstate" />
-        <activity android:name=".DoctermsgActivity" />
-        <activity android:name=".GuardianmsgActivity" />
+        <activity android:name=".DoctorMonitor" />
+        <activity android:name=".DoctorPatientListActivity" />
+        <activity android:name=".GuardianMsgActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".GuardianstateActivity" />
-        <activity android:name=".GuardiantexteditActivity" />
-        <activity android:name=".GuardianmainActivity" />
-        <activity android:name=".GuardiannumActivity" />
-        <activity android:name=".ControliotActivity" />
-        <activity android:name=".TutorialjoyokActivity" />
-        <activity android:name=".TutorialjoyActivity" />
-        <activity android:name=".TutorialfaceokActivity" />
+        <activity android:name=".GuardianMonitorActivity" />
+        <activity android:name=".GuardianKeywordEditActivity" />
+        <activity android:name=".GuardianMainActivity" />
+        <activity android:name=".GuardianPhoneActivity" />
+        <activity android:name=".PatientControlIoTActivity" />
+        <activity android:name=".TutorialJoyStickOkActivity" />
+        <activity android:name=".TutorialJoyStickActivity" />
+        <activity android:name=".TutorialFaceOkActivity" />
         <activity android:name=".TutorialfaceActivity" />
-        <activity android:name=".ControlselectActivity" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".TutorialControlChoiceActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->

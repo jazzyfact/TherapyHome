@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         btnControlIoT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ControliotActivity.class);
+                Intent intent = new Intent(getApplicationContext(), PatientControlIoTActivity.class);
                 startActivity(intent);
             }
         });
