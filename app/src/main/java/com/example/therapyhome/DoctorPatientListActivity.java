@@ -23,13 +23,13 @@ public class DoctorPatientListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctermsg);
+        setContentView(R.layout.activity_doctor_patient_list);
 
         // 더미데이터 넣기
 
         DoctorMsg doctorMsg = new DoctorMsg();
-        doctorMsg.setName("김바부");
-        doctorMsg.setPhone(01012341234);
+        doctorMsg.setName("곽철용");
+        doctorMsg.setPhone("01012347777");
         int dummy = 0;
         while (dummy <= 30) {
             docterMsgList.add(doctorMsg);
@@ -40,7 +40,7 @@ public class DoctorPatientListActivity extends AppCompatActivity {
         rvDocterview = findViewById(R.id.rv_docterview);
         rvDocterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         rvDocterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
-        adapter = new DoctorPatientListAdapter(docterMsgList); // 어댑터에 리스트 붙이고
+        adapter = new DoctorPatientListAdapter(docterMsgList, getApplicationContext()); // 어댑터에 리스트 붙이고
         rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
 
     }

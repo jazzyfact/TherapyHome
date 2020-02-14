@@ -23,12 +23,12 @@ public class GuardianMsgActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_guardianmsg);
+        setContentView(R.layout.activity_guardian_msg);
 
 
         // 더미데이터 넣기
         GuardianMsg guardianmsg = new GuardianMsg();
-        guardianmsg.setMessage("바부바부바부야");
+        guardianmsg.setMessage("가래가 꼈어요");
         int dummy = 0;
         while (dummy <= 30) {
             guardianMsgList.add(guardianmsg);

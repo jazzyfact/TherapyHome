@@ -337,58 +337,5 @@
     </LinearLayout>
 
     <!--하단 메뉴바-->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="bottom"
-        android:padding="25sp"
-        android:layout_gravity="center">
-
-        <TextView
-            android:id="@+id/bt_guardian_main"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="메인"
-            android:textColor="#000"
-            android:textSize="22sp"
-            />
-
-        <TextView
-            android:id="@+id/bt_guardian_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="텍스트"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-        <TextView
-            android:id="@+id/bt_guardian_num"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="연락처"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-        <TextView
-            android:id="@+id/bt_guardian_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="상태"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-
-
-        <TextView
-            android:id="@+id/bt_guardian_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="문자"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:layout_marginLeft="20sp"/>
-    </LinearLayout>
 
 </LinearLayout>

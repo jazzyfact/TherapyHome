@@ -3,7 +3,6 @@ package com.example.therapyhome;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -42,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_sign_up);
 
         etSignUpName = findViewById(R.id.et_signup_name);
         etSignUpId = findViewById(R.id.et_signup_id);
