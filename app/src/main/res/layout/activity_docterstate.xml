@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".docterstate"
+    android:orientation="vertical">
+
+    <!--    환자 상태 체크 -->
+
+
+    <!--보호자 화면 메인페이지 입니다.-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="50sp"
+        android:layout_marginTop="20sp"
+        android:layout_weight="1">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="환자 상태 보기"
+            android:textColor="#000"
+            android:textFontWeight="800"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="환자의 상태를 실시간으로 볼수있습니다."
+            android:textColor="#777"
+            android:textFontWeight="800"
+            android:textSize="15sp" />
+
+<!--        환자정보-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#403EE8"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:layout_marginTop="10sp"
+            android:text="곽철용 (남) / 55세"
+            android:padding="10sp"
+            android:textSize="15sp"/>
+
+        <!--        bpm-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:text="Bpm"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15sp">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/medical240"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tv_bpmdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="86"
+                android:textColor="#FC0303"
+                android:textSize="50sp"
+                android:layout_marginLeft="30sp"/>
+        </LinearLayout>
+
+        <!--        bpm-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Co2"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15sp">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/weather240"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tv_co2mdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="95 %"
+                android:textColor="#F0D000"
+                android:textSize="50sp"
+                android:layout_marginLeft="30sp"/>
+        </LinearLayout>
+
+        <!--        온도-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Body Temperture"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15sp">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/tem"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tv_temperturedata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="36.2"
+                android:textColor="#3CE7BF"
+                android:textSize="50sp"
+                android:layout_marginLeft="30sp"/>
+        </LinearLayout>
+        <!--        습도-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="습도"
+            android:textColor="#000"
+            android:textSize="20sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingVertical="15sp">
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/drop240"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tv_waterdata"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50%"
+                android:textColor="#14C0FF"
+                android:textSize="50sp"
+                android:layout_marginLeft="30sp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_marginHorizontal="50sp"
+        android:id="@+id/bt_docterlist"
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10sp"
+        android:backgroundTint="#888"
+        android:text="등록된 환자 보기"
+        android:textColor="#fff"
+        app:cornerRadius="50dp" />
+
+
+</LinearLayout>

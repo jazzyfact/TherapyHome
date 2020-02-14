@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ControliotActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="50sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="45sp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="IoT 제어"
+                android:textColor="#000"
+                android:textFontWeight="800"
+                android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_patient_call"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60sp"
+                    android:layout_gravity="right"
+                    android:text="긴급호출"
+                    android:textColor="#fff"
+                    android:backgroundTint="#FC0303"
+                    app:cornerRadius="50dp"
+                    />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+<!--        iot 제어하는곳-->
+        <LinearLayout
+            android:layout_marginTop="50sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="조명"
+                android:textColor="#000"
+                android:textFontWeight="800"
+                android:textSize="25sp"
+                android:layout_weight="1"/>
+
+            <Switch
+                android:id="@+id/st_light_onoff"
+                android:layout_width="50sp"
+                android:layout_height="50sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가습기"
+                android:textColor="#000"
+                android:textFontWeight="800"
+                android:textSize="25sp"
+                android:layout_weight="1"/>
+
+            <Switch
+                android:id="@+id/st_water_onoff"
+                android:layout_width="50sp"
+                android:layout_height="50sp"/>
+
+        </LinearLayout>
+
+        <!--    코드 인증-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_main"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#888"
+            android:text="문자보내기"
+            android:textColor="#fff"
+            app:cornerRadius="50dp"
+            android:layout_marginBottom="80sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>
