@@ -12,11 +12,20 @@
         android:orientation="vertical"
         android:paddingHorizontal="50sp"
         android:gravity="center">
-        <ImageView
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:src="@drawable/loading240"/>
+<!--        <ImageView-->
+<!--            android:layout_width="50sp"-->
+<!--            android:layout_height="50sp"-->
+<!--            android:src="@drawable/loading240"/>-->
 
+<!--        로딩 애니메이션-->
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.DoubleBounce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/tv_tuface"

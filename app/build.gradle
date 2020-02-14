@@ -34,4 +34,6 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
     // 카드뷰
     implementation 'com.android.support:cardview-v7:29.0.0'
+    // 로딩애니메이션 Android-SpinKit
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
 }
