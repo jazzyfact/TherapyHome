@@ -2,6 +2,11 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Theme.MaterialComponents.Light.DarkActionBar">
+
+        <!-- 앱바 없애기 -->
+        <item name = "windowActionBar">false</item>
+        <item name = "windowNoTitle">true</item>
+
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

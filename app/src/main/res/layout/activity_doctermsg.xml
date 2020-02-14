@@ -39,8 +39,11 @@
             android:textColor="#777"
             android:textFontWeight="800"
             android:textSize="15sp" />
+
+
         <!--리사이클러뷰의 영역-->
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_docterview"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
