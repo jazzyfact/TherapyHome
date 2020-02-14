@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "527140403678-0gt5pss2vortflcg12luc17v86k333ci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.therapyhome",
+            "certificate_hash": "f9f54a1142e6deeaa1e2d738dc65a863284aa93b"
+          }
+        },
+        {
           "client_id": "527140403678-dquc3b51bku4tvokro2g1hgdhn6jokvi.apps.googleusercontent.com",
           "client_type": 3
         }
