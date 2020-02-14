@@ -16,6 +16,7 @@ public class ControliotActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_controliot);
 
+        bt_main = findViewById(R.id.bt_main);
         bt_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
