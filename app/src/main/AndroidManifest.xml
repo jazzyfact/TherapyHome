@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.therapyhome">
 
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".GuardianPhoneActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".LoginActivity"/> -->
+        </activity> <!-- <activity android:name=".LoginActivity"/> -->
         <activity android:name=".DoctorPatientListActivity" />
         <activity android:name=".GuardianMsgActivity" />
         <activity android:name=".PatientMsgActivity" />
         <activity android:name=".GuardianMonitorActivity" />
         <activity android:name=".GuardianKeywordEditActivity" />
         <activity android:name=".GuardianMainActivity" />
-        <activity android:name=".GuardianPhoneActivity" />
         <activity android:name=".PatientSmartHomeActivity" />
         <activity android:name=".TutorialJoyStickOkActivity" />
         <activity android:name=".TutorialJoyStickActivity" />
@@ -31,16 +32,19 @@
         <activity android:name=".TutorialfaceActivity" />
         <activity android:name=".TutorialControlChoiceActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".PatientMainActivity"/>
-        <activity android:name=".DoctorMonitorActivity"/>
-        <activity android:name=".CustomDialogActivity"
-            android:theme="@style/Theme.MyDialog"/>
+        <activity android:name=".PatientMainActivity" />
+        <activity android:name=".DoctorMonitorActivity" />
+        <activity
+            android:name=".CustomDialogActivity"
+            android:theme="@style/Theme.MyDialog" />
         <activity android:name=".LoginActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 

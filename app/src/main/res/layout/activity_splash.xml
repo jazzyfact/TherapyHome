@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".SplashActivity"
     android:gravity="center"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_margin="10dp">
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/spin_kit"

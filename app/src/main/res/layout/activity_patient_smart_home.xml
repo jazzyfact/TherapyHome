@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PatientSmartHomeActivity">
-
-
-
+    tools:context=".PatientSmartHomeActivity"
+    android:layout_margin="10dp">
+    
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -93,7 +92,6 @@
         </LinearLayout>
 
         <!--    코드 인증-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

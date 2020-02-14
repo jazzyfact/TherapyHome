@@ -34,10 +34,6 @@ public class SignUpActivity extends AppCompatActivity {
     //파이어베이스에서 데이터 읽기,쓰기 할 때 필요함
     private DatabaseReference mDatabase;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

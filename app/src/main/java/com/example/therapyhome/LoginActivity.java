@@ -1,6 +1,7 @@
 package com.example.therapyhome;
 
 
+import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -12,6 +13,9 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import android.widget.CheckBox;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,16 +23,15 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLoginPatient;
     Button btnLoginGuardian;
     Button btnLoginDoctor;
+    Button btn_login;
+    Button btn_signup;
+    // 라디오버튼 관련
+    RadioGroup cb_login_group;
+    RadioButton cbloginPatientBox; //환자 체크
+    RadioButton cbloginGuaridanBox; // 보호자 체크
+    RadioButton cbLoginDocterBox;//의사체크
 
-    CheckBox cbloginPatientBox; //환자 체크
-    CheckBox cbloginGuaridanBox; // 보호자 체크
-    CheckBox cbLoginDocterBox;//의사체크
-
-
-
-
-
-
+    String selectCK ; // 클릭했는지 안했는지 체크하기
     //
     @SuppressLint("WrongViewCast")
     @Override
@@ -36,47 +39,75 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        // 라디오버튼
+        cbloginPatientBox = findViewById(R.id.cb_login_docter);
+        cbloginGuaridanBox = findViewById(R.id.cb_login_guaridan);
+        cbLoginDocterBox = findViewById(R.id.cb_login_patient);
+
+        //라디오 버튼 클릭 리스너
+        RadioButton.OnClickListener radioButtonClickListener = new RadioButton.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "의사클릭 : "+cbloginPatientBox.isChecked() + "보호자클 : " +cbloginGuaridanBox.isChecked() + "보호자클 : " +cbLoginDocterBox.isChecked() , Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        // 라디오 버튼 하나하나에도 클릭 리스너를 붙여줘야한다.
+        cbloginPatientBox.setOnClickListener(radioButtonClickListener);
+        cbloginGuaridanBox.setOnClickListener(radioButtonClickListener);
+        cbLoginDocterBox.setOnClickListener(radioButtonClickListener);
+
+        // 라디오 그룹에 클릭리스너를 붙여줘야함
+        RadioGroup.OnCheckedChangeListener adioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                if(checkedId == R.id.cb_login_docter){
+                    //환자 눌렀을때
+                    selectCK = "의사";
+                } else if(checkedId == R.id.cb_login_guaridan){
+                    // 보호자 눌렀을때
+                    selectCK = "보호자";
+                } else if (checkedId == R.id.cb_login_patient){
+                    //환자 눌렀을때
+                    selectCK = "환자";
+                }
+            }
+        };
+
+        // 라디오그룹 (라디오버튼으로 누를려면 있어야함)
+        cb_login_group= (RadioGroup) findViewById(R.id.cb_login_group);
+        cb_login_group.setOnCheckedChangeListener(adioGroupButtonChangeListener);
 
 
-//        cbloginPatientBox = findViewById(R.id.cb_login_patient_box);
-//        cbloginGuaridanBox = findViewById(R.id.cb_login_guaridan_box);
-//        cbLoginDocterBox = findViewById(R.id.cb_login_docter_box);
 
-
-
-        btnLoginPatient =findViewById(R.id.login_button_patient);
-        btnLoginGuardian =findViewById(R.id.login_button_guardian);
-        btnLoginDoctor =findViewById(R.id.login_button_doctor);
-
-
-
-
-        btnLoginPatient = findViewById(R.id.login_button_patient);
-        btnLoginPatient.setOnClickListener(new View.OnClickListener() {
+        // 로그인 하기 버튼
+        btn_login = findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
+                if(selectCK == "환자") {
+                    Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
+                    startActivity(intent);
+                } else if (selectCK == "보호자"){
+                    Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
+                    startActivity(intent);
+                } else if(selectCK == "의사"){
+                    Intent intent = new Intent(getApplicationContext(), DoctorPatientListActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
+        // 회원가입하기 버튼
+        btn_signup = findViewById(R.id.btn_signup);
+        btn_signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 startActivity(intent);
             }
         });
 
-        btnLoginGuardian = findViewById(R.id.login_button_guardian);
-        btnLoginGuardian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnLoginDoctor = findViewById(R.id.login_button_doctor);
-        btnLoginDoctor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DoctorPatientListActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
 

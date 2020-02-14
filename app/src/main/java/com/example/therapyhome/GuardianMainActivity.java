@@ -26,7 +26,8 @@ public class GuardianMainActivity extends AppCompatActivity {
         ivGuardianEditFamily = findViewById(R.id.iv_guardian_editFamily);//등록된 환자
         ivGuardianEditDoctor = findViewById(R.id.bt_guardian_editdocter); //담당 의사선생님
 
-
+//        하단 네비게이션바
+//        Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
         btnEditKeyword = findViewById(R.id.bt_edit_keyword); //키워드 편집 버튼
         btnEditPhone = findViewById(R.id.bt_edit_phone);//연락처 편집 버튼
         btnCheckHealth = findViewById(R.id.bt_check_health);//건강 상태 버튼
