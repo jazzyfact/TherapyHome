@@ -205,6 +205,7 @@ public class PatientMsgActivity extends AppCompatActivity {
 //        Intent i = getBaseContext().getPackageManager().
 //                getLaunchIntentForPackage(getBaseContext().getPackageName());
         Intent intent = new Intent(getApplicationContext(), PatientMsgActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
 
     }

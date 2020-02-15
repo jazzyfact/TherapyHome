@@ -31,18 +31,22 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.bt_read_msg: //문자모아보기
                         Intent intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         break;
                     case R.id.bt_edit_keyword: //키워드 편집
                         Intent editKeywordIntent = new Intent(getApplicationContext(), GuardianKeywordEditActivity.class);
+                        editKeywordIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editKeywordIntent);
                         break;
                     case R.id.bt_edit_phone://연락처 편집
                         Intent editPhomeIntent = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
+                        editPhomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editPhomeIntent);
                         break;
                     case R.id.bt_check_health://환자 건강 상태
                         Intent checkHealthIntent = new Intent(getApplicationContext(), GuardianMonitorActivity.class);
+                        checkHealthIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(checkHealthIntent);
                         break;
 

@@ -24,6 +24,7 @@ public class PatientMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
+                msgIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(msgIntent);
             }
         });
@@ -32,6 +33,7 @@ public class PatientMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
+                smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(smartHomeIntent);
             }
         });
