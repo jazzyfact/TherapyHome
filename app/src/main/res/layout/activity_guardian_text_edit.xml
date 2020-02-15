@@ -24,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="환자 텍스트 편집"
+            android:text="환자 문자 텍스트 편집"
             android:textColor="#000"
             android:textFontWeight="800"
             android:textSize="25sp" />
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
-            android:text="문자보낼때 볼수있는 화면을 편집할수 있습니다."
+            android:text="환자가 문자 보낼 때 볼 수 있는 화면을 편집 할 수 있습니다."
             android:textColor="#777"
             android:textFontWeight="800"
             android:textSize="15sp" />

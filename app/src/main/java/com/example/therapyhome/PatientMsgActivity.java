@@ -41,7 +41,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     CheckBox cb_sendagree_07;
     CheckBox cb_sendagree_08;
 
-    Button bt_sendtext;
+    Button bt_sendtext, btSmartHome;
 
     String result;
 
@@ -62,6 +62,15 @@ public class PatientMsgActivity extends AppCompatActivity {
         cb_sendagree_07 = findViewById(R.id.cb_sendagree_07);
         cb_sendagree_08 = findViewById(R.id.cb_sendagree_08);
 
+        btSmartHome = findViewById(R.id.bt_smarthome);
+        btSmartHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
+                smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(smartHomeIntent);
+            }
+        });
 
         //채널
         NotificationManager mNotificationManager =
@@ -191,14 +200,14 @@ public class PatientMsgActivity extends AppCompatActivity {
                 switch (getResultCode()) {
                     case Activity
                             .RESULT_OK:
-                        Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
+//                        Toast.makeText(getBaseContext(), result, Toast.LENGTH_LONG).show();
                         break;
                 }
             }
         }, new IntentFilter(SENT));
 
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage("01075582371", null, result, sentPI, deliveredPI);
+        sms.sendTextMessage("01086658747", null, result, sentPI, deliveredPI);
     }
 
     public void restart() {
