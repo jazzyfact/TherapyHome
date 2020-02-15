@@ -183,6 +183,18 @@
 
             app:cornerRadius="50dp" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_smarthome"
+            android:layout_width="match_parent"
+            android:layout_height="60sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="스마트홈"
+            android:textColor="#fff"
+            android:backgroundTint="#403EE8"
+
+            app:cornerRadius="50dp" />
+
     </LinearLayout>
 
 

@@ -2,7 +2,10 @@ package com.example.therapyhome;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
@@ -22,12 +25,25 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
 
 
     String ledurl;
+    Button btMsg;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_smart_home);
+
+        btMsg = findViewById(R.id.bt_msg);
+        btMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
+                //smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(smartHomeIntent);
+                finish();
+            }
+        });
+
 
         Switch st_light_onoff = findViewById(R.id.st_light_onoff);
 
@@ -42,14 +58,14 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
 
                 if(isChecked ==true){
-                    ledurl = "http://192.168.0.183/on";
+                    ledurl = "http://192.168.0.11/on";
                     sendRequest(ledurl);
-                    Toast.makeText(PatientSmartHomeActivity.this, "체크상태 = " + isChecked, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(PatientSmartHomeActivity.this, "체크상태 = " + isChecked, Toast.LENGTH_SHORT).show();
 
                 } else{
-                    ledurl = "http://192.168.0.183/off";
+                    ledurl = "http://192.168.0.11/off";
                     sendRequest(ledurl);
-                    Toast.makeText(PatientSmartHomeActivity.this, "체크상태 = " + isChecked, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(PatientSmartHomeActivity.this, "체크상태 = " + isChecked, Toast.LENGTH_SHORT).show();
 
                 }
 
