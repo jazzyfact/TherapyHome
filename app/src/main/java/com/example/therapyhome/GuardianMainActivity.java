@@ -41,31 +41,38 @@ public class GuardianMainActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.bt_read_msg: //문자모아보기
                         Intent intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         break;
                     case R.id.bt_edit_keyword: //키워드 편집
                         Intent editKeywordIntent = new Intent(getApplicationContext(), GuardianKeywordEditActivity.class);
+                        editKeywordIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editKeywordIntent);
                         break;
                     case R.id.bt_edit_phone://연락처 편집
                         Intent editPhomeIntent = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
+                        editPhomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editPhomeIntent);
                         break;
                     case R.id.bt_check_health://환자 건강 상태
                         Intent checkHealthIntent = new Intent(getApplicationContext(), GuardianMonitorActivity.class);
+                        checkHealthIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(checkHealthIntent);
                         break;
 
                     case R.id.iv_guardian_editFamily://등록된 환자
                         Intent editFamilyIntent = new Intent(getApplicationContext(), CustomDialogActivity.class);
+                        editFamilyIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editFamilyIntent);
                         break;
                     case R.id.iv_guardian_editmy://내정보
                         Intent editmyIntent = new Intent(getApplicationContext(), CustomDialogActivity.class);
+                        editmyIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editmyIntent);
                         break;
                     case R.id.bt_guardian_editdocter: //등록된 의사
                         Intent editDoctorIntent = new Intent(getApplicationContext(), CustomDialogActivity.class);
+                        editDoctorIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editDoctorIntent);
                         break;
                 }

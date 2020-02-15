@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         RadioButton.OnClickListener radioButtonClickListener = new RadioButton.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "의사클릭 : "+cbloginPatientBox.isChecked() + "보호자클 : " +cbloginGuaridanBox.isChecked() + "보호자클 : " +cbLoginDocterBox.isChecked() , Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "의사클릭 : "+cbloginPatientBox.isChecked() + "보호자클 : " +cbloginGuaridanBox.isChecked() + "보호자클 : " +cbLoginDocterBox.isChecked() , Toast.LENGTH_SHORT).show();
             }
         };
 
@@ -87,12 +87,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(selectCK == "환자") {
                     Intent intent = new Intent(getApplicationContext(), PatientMainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else if (selectCK == "보호자"){
                     Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else if(selectCK == "의사"){
                     Intent intent = new Intent(getApplicationContext(), DoctorPatientListActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
             }
@@ -104,6 +107,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
