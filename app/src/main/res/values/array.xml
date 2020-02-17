@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="signup_spinner">
+    <string name="select">유형선</string>
+    <string name="select_prompt">가입 유형 선택</string>
+    <string-array name="select_array">
+        <item>유형 선택</item>
         <item>환자</item>
         <item>보호자</item>
-        <item>의료</item>
+        <item>의료진</item>
     </string-array>
+
 </resources>

@@ -16,27 +16,27 @@ public class PatientMainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_main);
-
-        btnSendMsg = findViewById(R.id.bt_send_message);
-        btnSmartHome = findViewById(R.id.bt_smart_home);
-
-        btnSendMsg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
-                msgIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(msgIntent);
-            }
-        });
-
-        btnSmartHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
-                smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(smartHomeIntent);
-            }
-        });
+//
+//        btnSendMsg = findViewById(R.id.bt_send_message);
+//        btnSmartHome = findViewById(R.id.bt_smart_home);
+//
+//        btnSendMsg.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
+//                msgIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(msgIntent);
+//            }
+//        });
+//
+//        btnSmartHome.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
+//                smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                startActivity(smartHomeIntent);
+//            }
+//        });
 
     }
 }

@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientMsgActivity"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#fff">
 
 
 
@@ -13,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingHorizontal="50sp">
+        android:paddingHorizontal="30sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,118 +57,125 @@
             android:layout_marginBottom="10sp"
             />
 
-        <LinearLayout
-            android:id="@+id/cb_sendtext_01"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
 
-            <CheckBox
-                android:id="@+id/cb_sendagree_01"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요"/>
+        
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_02"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
+<!--    체크박스 시작-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_01"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
 
-            <CheckBox
-                android:id="@+id/cb_sendagree_02"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요2"/>
-
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_03"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
-
-            <CheckBox
-                android:id="@+id/cb_sendagree_03"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요3"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_01"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요"/>-->
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_04"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_02"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
 
-            <CheckBox
-                android:id="@+id/cb_sendagree_04"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요4"/>
-
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_05"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
-
-            <CheckBox
-                android:id="@+id/cb_sendagree_05"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요5"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_02"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요2"/>-->
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_06"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
 
-            <CheckBox
-                android:id="@+id/cb_sendagree_06"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요6"/>
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_03"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_07"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
-
-            <CheckBox
-                android:id="@+id/cb_sendagree_07"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요7"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_03"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요3"/>-->
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/cb_sendtext_08"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10sp">
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_04"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
 
-            <CheckBox
-                android:id="@+id/cb_sendagree_08"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="밥주세요8"/>
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_04"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요4"/>-->
 
 
-        </LinearLayout>
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_05"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_05"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요5"/>-->
+
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_06"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_06"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요6"/>-->
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_07"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_07"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요7"/>-->
+
+
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:id="@+id/cb_sendtext_08"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="10sp">-->
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb_sendagree_08"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="밥주세요8"/>-->
+
+
+<!--        </LinearLayout>-->
+<!--        체크박스끝-->
+
 
         <!--    코드 인증-->
 
@@ -183,17 +191,53 @@
 
             app:cornerRadius="50dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_smarthome"
-            android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:text="스마트홈"
-            android:textColor="#fff"
-            android:backgroundTint="#403EE8"
 
-            app:cornerRadius="50dp" />
+
+        <!--하단 메뉴바-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:layout_marginBottom="10sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_edit_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:textSize="23sp"
+                app:cornerRadius="20dp"
+                android:text="문자 보내기"
+                android:backgroundTint="#fff"
+                android:background="#00ff0000"
+                android:textColor="#000"
+                android:stateListAnimator="@null"
+                android:layout_weight="0.3"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_edit_iot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="IoT 제어"
+                android:textSize="23sp"
+                android:backgroundTint="#fff"
+                android:background="#00ff0000"
+                android:textColor="#000"
+                android:stateListAnimator="@null"
+                app:cornerRadius="20dp"
+                android:layout_weight="0.3"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
 
     </LinearLayout>
 

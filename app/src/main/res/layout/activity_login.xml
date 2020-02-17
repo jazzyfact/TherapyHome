@@ -12,31 +12,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="50sp">
-
-<!--        <Button-->
-<!--            android:id="@+id/login_button_patient"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="환자"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textStyle="bold"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/login_button_guardian"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="보호자"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textStyle="bold"/>-->
-
-<!--        <Button-->
-<!--            android:id="@+id/login_button_doctor"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="의사"-->
-<!--            android:textColor="#000000"-->
-<!--            android:textStyle="bold"/>-->
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,12 +22,13 @@
             android:textSize="25sp" />
 
         <!--        체크박스-->
-        <LinearLayout
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="100sp"
-            android:layout_gravity="center">
+            android:layout_marginTop="80sp"
+            android:layout_gravity="center"
+            android:visibility="invisible">
         <RadioGroup
             android:id="@+id/cb_login_group"
             android:layout_width="wrap_content"
@@ -73,51 +49,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="의료진"/>
-<!--            <LinearLayout-->
-<!--                android:id="@+id/cb_login_patient_box"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <RadioButton-->
-<!--                    android:id="@+id/cb_login_patient"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="환자"/>-->
-<!--&lt;!&ndash;                <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;                    android:text="환자"/>&ndash;&gt;진-->
 
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/cb_login_guaridan_box"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <RadioButton-->
-<!--                    android:id="@+id/cb_login_guaridan"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="보호"/>-->
-
-<!--            </LinearLayout>-->
-<!--            <LinearLayout-->
-<!--                android:id="@+id/cb_login_docter_box"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content">-->
-<!--                <RadioButton-->
-<!--                    android:id="@+id/cb_login_docter"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"/>-->
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="의사"/>-->
-
-<!--            </LinearLayout>-->
         </RadioGroup>
-        </LinearLayout>
+        </FrameLayout>
         <!--            회원가입 입력하는곳-->
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"

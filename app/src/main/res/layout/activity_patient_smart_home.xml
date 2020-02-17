@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientSmartHomeActivity"
-    android:layout_margin="10dp">
+    android:layout_margin="10dp"
+    android:background="#fff">
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -97,18 +98,53 @@
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:orientation="vertical" />
+        <!--하단 메뉴바-->
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_msg"
+        <!--하단 메뉴바-->
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="320dp"
-            android:text="문자보내기"
-            android:textColor="#fff"
-            android:backgroundTint="#403EE8"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:layout_marginBottom="10sp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom">
 
-            app:cornerRadius="50dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_edit_msg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textSize="23sp"
+                    app:cornerRadius="20dp"
+                    android:text="문자 보내기"
+                    android:backgroundTint="#fff"
+                    android:background="#00ff0000"
+                    android:textColor="#000"
+                    android:stateListAnimator="@null"
+                    android:layout_weight="0.3"
+                    />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_edit_iot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="IoT 제어"
+                    android:textSize="23sp"
+                    android:backgroundTint="#fff"
+                    android:background="#00ff0000"
+                    android:textColor="#000"
+                    android:stateListAnimator="@null"
+                    app:cornerRadius="20dp"
+                    android:layout_weight="0.3"/>
+
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 

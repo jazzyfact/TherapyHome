@@ -12,12 +12,14 @@ import android.widget.TextView;
 
 public class GuardianMonitorActivity extends AppCompatActivity {
 
+    /**
+     * 가은이가 수정한 페이지
+     */
     Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
 
     private int bpm = 80;
     private int co2 = 95;
-    private TextView tvBpmData;
-    private TextView tvCo2mData;
+    private TextView tvBpmData, tvCo2mData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

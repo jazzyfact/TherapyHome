@@ -66,19 +66,30 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                         <TextView
+                            android:id="@+id/tv_guardian_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="김미향"
                             android:textColor="#000"
                             android:textSize="20sp" />
+                    <FrameLayout
+                        android:id="@+id/FL_guardian_emergency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible">
                         <TextView
+                            android:id="@+id/tv_guardian_emergency"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="(58세)"
-                            android:textColor="#000"
-                            android:textSize="20sp" />
+                            android:text="긴급 연락처"
+                            android:textColor="#FC0303"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10sp"/>
+                    </FrameLayout>
+
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/tv_guardian_num"
                     android:layout_marginTop="5sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,19 +137,30 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/tv_patient_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="곽철용"
                         android:textColor="#000"
                         android:textSize="20sp" />
-                    <TextView
+                    <FrameLayout
+                        android:id="@+id/FL_patient_emergency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(55세)"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
+                        android:visibility="visible">
+                        <TextView
+                            android:id="@+id/tv_patient_emergency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="긴급 연락처"
+                            android:textColor="#FC0303"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10sp"/>
+                    </FrameLayout>
+
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/tv_patient_num"
                     android:layout_marginTop="5sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -186,20 +208,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/tv_docter_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="의사 선생"
                         android:textColor="#000"
                         android:textSize="20sp" />
-                    <TextView
+                    <FrameLayout
+                        android:id="@+id/FL_docter_emergency"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="긴급 연락처"
-                        android:textColor="#FC0303"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="10sp"/>
+                        android:visibility="visible">
+                        <TextView
+                            android:id="@+id/tv_docter_emergency"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="긴급 연락처"
+                            android:textColor="#FC0303"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10sp"/>
+                    </FrameLayout>
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/tv_docter_num"
                     android:layout_marginTop="5sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

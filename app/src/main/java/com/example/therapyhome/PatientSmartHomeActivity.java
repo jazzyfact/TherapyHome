@@ -26,6 +26,8 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
 
     String ledurl;
     Button btMsg;
+    Button bt_edit_msg, bt_edit_iot;
+    Button BtEditMsg, BtEditIot;
 
 
     @Override
@@ -33,12 +35,23 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_smart_home);
 
-        btMsg = findViewById(R.id.bt_msg);
-        btMsg.setOnClickListener(new View.OnClickListener() {
+        // 하단 네비게이션바
+        // 메세지보내기 누를때
+        BtEditMsg = findViewById(R.id.bt_edit_msg);
+        BtEditMsg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
-                //smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            public void onClick(View v) {
+                Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
+                startActivity(msgIntent);
+                finish();
+            }
+        });
+        // iot 버튼 누를때
+        BtEditIot = findViewById(R.id.bt_edit_iot);
+        BtEditIot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
                 startActivity(smartHomeIntent);
                 finish();
             }

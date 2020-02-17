@@ -28,7 +28,7 @@ dependencies {
     //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     //    //파베
-    implementation 'com.google.firebase:firebase-database:16.0.5'
+    implementation 'com.google.firebase:firebase-database:19.1.0'
     // fcm
     implementation 'com.google.firebase:firebase-messaging:20.0.0'
     // editext

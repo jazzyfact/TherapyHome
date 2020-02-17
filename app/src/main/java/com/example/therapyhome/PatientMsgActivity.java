@@ -42,6 +42,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     CheckBox cb_sendagree_08;
 
     Button bt_sendtext, btSmartHome;
+    Button BtEditIot, BtEditMsg;
 
     String result;
 
@@ -62,15 +63,31 @@ public class PatientMsgActivity extends AppCompatActivity {
         cb_sendagree_07 = findViewById(R.id.cb_sendagree_07);
         cb_sendagree_08 = findViewById(R.id.cb_sendagree_08);
 
-        btSmartHome = findViewById(R.id.bt_smarthome);
-        btSmartHome.setOnClickListener(new View.OnClickListener() {
+        // 하단 네비게이션바 시작 ------------------------------------------------------------------------
+
+        BtEditIot = findViewById(R.id.bt_edit_iot);
+        BtEditIot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
                 smartHomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(smartHomeIntent);
+                finish();
             }
         });
+
+        BtEditMsg = findViewById(R.id.bt_edit_msg);
+        BtEditMsg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
+                msgIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(msgIntent);
+                finish();
+            }
+        });
+
+        // 하단 네비게이션바 끝--------------------------------------------------------------------------
 
         //채널
         NotificationManager mNotificationManager =
