@@ -1,8 +1,10 @@
 package com.example.therapyhome.Adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,14 +20,14 @@ import java.util.List;
 public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhoneEditAdapter.ViewHolder> {
 
     /**
-     * 휴대폰 번호를 수정하는 보호자 화면
+     * 휴대폰 번호를 수정하는 보호자 화면 리사이클러뷰 어댑터
      */
 
-    private List<PhoneContactEdit> guardianPhoneEditList;
+    private List<PhoneContactEdit> guardianPhoneEditList ;
 
     // 어댑터 생성자
-    public GuardianPhoneEditAdapter(List<PhoneContactEdit> guardianMsgList) {
-        this.guardianPhoneEditList = guardianMsgList;
+    public GuardianPhoneEditAdapter(List<PhoneContactEdit> guardianPhoneEditList) {
+        this.guardianPhoneEditList = guardianPhoneEditList;
     }
 
     // 아이템 갯수 구하기
@@ -50,7 +52,7 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView itemContactEditNum;
         TextView itemContactEditName;
-        TextView itemContactEditEmergency;
+        FrameLayout itemContactEditEmergency;
         ImageView ivGuardianEdit;
         ImageView ivGuardianre;
 
@@ -68,8 +70,9 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
     @Override
     public void onBindViewHolder(@NonNull GuardianPhoneEditAdapter.ViewHolder holder, int position) {
         holder.itemContactEditName.setText(guardianPhoneEditList.get(position).getName());
+        Log.d("연락처 리사이클러뷰 ", "onBindViewHolder: "+guardianPhoneEditList.get(position).getName());
         holder.itemContactEditNum.setText(guardianPhoneEditList.get(position).getNum());
-        holder.itemContactEditEmergency.setText(guardianPhoneEditList.get(position).getEmergency());
+        holder.itemContactEditEmergency.setVisibility(View.VISIBLE);
     }
 
 }
