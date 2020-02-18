@@ -18,6 +18,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+    }
 }
 
 dependencies {
@@ -27,10 +31,13 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     //    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    //    //파베
+    // 파이어베이스
+    // 데이터베이스
     implementation 'com.google.firebase:firebase-database:19.1.0'
     // fcm
-    implementation 'com.google.firebase:firebase-messaging:20.0.0'
+    implementation 'com.google.firebase:firebase-messaging:20.1.0'
+    // 파이어베이스 ui
+    implementation 'com.firebaseui:firebase-ui-database:0.5.3'
     // editext
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'com.android.support:design:29.0.0'
@@ -40,5 +47,10 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     //볼리
     implementation 'com.android.volley:volley:1.1.0'
+    //Okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
 
 }

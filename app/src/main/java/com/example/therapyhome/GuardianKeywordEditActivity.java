@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 public class GuardianKeywordEditActivity extends AppCompatActivity {
-
+    /**
+     * 문자의 텍스트를 편집하는 액티비티
+     */
     Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -47,6 +47,7 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
+
 //sendNotification
 //        // Check if message contains a data payload.
 //        if (remoteMessage.getData().size() > 0) {
@@ -67,10 +68,15 @@ public class MyFirebaseMessagingService  extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
             sendNotification(remoteMessage.getNotification().getBody());
         }
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+        }
+    }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
-    }
+
     // [END receive_message]
 
 

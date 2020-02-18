@@ -16,6 +16,7 @@ public class SignUpclass {
     String num;
     String com;
     String comId;
+
     // 파이어베이스에서는 꼭 공용의 빈 생성자가 필요하다
     // 지우지 말것!!!
     public SignUpclass() {}

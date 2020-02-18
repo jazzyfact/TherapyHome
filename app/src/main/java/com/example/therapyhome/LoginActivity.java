@@ -21,11 +21,16 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.therapyhome.item.SignUpclass;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONObject;
 
@@ -70,45 +75,22 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate (@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        // 로그인 회원가입 입력값
         etEnterId = findViewById(R.id.et_enter_id);
         etEnterPwd = findViewById(R.id.et_enter_pwd);
 
-        // 라디오버튼
-        cbloginPatientBox = findViewById(R.id.cb_login_docter);
-        cbloginGuaridanBox = findViewById(R.id.cb_login_guaridan);
-        cbLoginDocterBox = findViewById(R.id.cb_login_patient);
-
-        //라디오 버튼 클릭 리스너
-        RadioButton.OnClickListener radioButtonClickListener = new RadioButton.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-//                Toast.makeText(getApplicationContext(), "의사클릭 : "+cbloginPatientBox.isChecked() + "보호자클 : " +cbloginGuaridanBox.isChecked() + "보호자클 : " +cbLoginDocterBox.isChecked() , Toast.LENGTH_SHORT).show();
-            }
-        };
-        // 라디오 버튼 하나하나에도 클릭 리스너를 붙여줘야한다.
-        cbloginPatientBox.setOnClickListener(radioButtonClickListener);
-        cbloginGuaridanBox.setOnClickListener(radioButtonClickListener);
-        cbLoginDocterBox.setOnClickListener(radioButtonClickListener);
-        // 라디오 그룹에 클릭리스너를 붙여줘야함
-        RadioGroup.OnCheckedChangeListener adioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
-                if(checkedId == R.id.cb_login_docter){
-                    //환자 눌렀을때
-                    selectCK = "의사";
-                } else if(checkedId == R.id.cb_login_guaridan){
-                    // 보호자 눌렀을때
-                    selectCK = "보호자";
-                } else if (checkedId == R.id.cb_login_patient){
-                    //환자 눌렀을때
-                    selectCK = "환자";
-                }
-            }
-        };
-        // 라디오그룹 (라디오버튼으로 누를려면 있어야함)
-        cb_login_group= (RadioGroup) findViewById(R.id.cb_login_group);
-        cb_login_group.setOnCheckedChangeListener(adioGroupButtonChangeListener);
+        // 파이어 베이스 fcm (주제로 메세지 보내는것)
+        FirebaseMessaging.getInstance().subscribeToTopic("emergency")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        String msg = getString(R.string.msg_subscribed);
+                        if (!task.isSuccessful()) {
+                            msg = getString(R.string.msg_subscribe_failed);
+                        }
+                        Log.d("fcm 테스트 ", msg);
+                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
 
 
         // 로그인 하기 버튼
@@ -146,13 +128,6 @@ public class LoginActivity extends AppCompatActivity {
                                             Log.i("파이어베이스 데이터 구조2", "onDataChange: "+ dataSnapshot.getValue());
                                             pwdck = dataSnapshot.getValue(SignUpclass.class);
                                             String pwdckeck = pwdck.getPwd();
-
-                                            /**
-                                             * 현재까지 제이슨으로 받아오는것은 성공
-                                             * 그다음에는 제이슨을 받아와서 파싱해야한다.
-                                             * 아니 시발 알고보니 제이슨이 아니였음
-                                             * 시발..
-                                             */
                                             if(findpwd.equals(pwdckeck)){
                                                 Toast.makeText(getApplicationContext(),"로그인!",Toast.LENGTH_LONG).show();
                                                 Log.i("파이어베이스 데이터 흐름", "5");
@@ -162,7 +137,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 Log.i("파이어베이스 데이터 흐름", "6");
                                                 if (com.equals("환자")){
                                                     Log.i("파이어베이스 데이터 흐름", "7");
-                                                    Intent intent = new Intent(getApplicationContext(), PatientMsgActivity.class);
+                                                    Intent intent = new Intent(getApplicationContext(), TutorialControlChoiceActivity.class);
                                                     startActivity(intent);
                                                     return;
                                                 } else if (com.equals("보호자")){
