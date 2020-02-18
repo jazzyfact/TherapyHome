@@ -112,22 +112,22 @@ public class GuardianMainActivity extends AppCompatActivity {
 
                     case R.id.iv_guardian_editFamily://등록된 환자 수정하기
                         Intent patientEdit = new Intent(getApplicationContext(),CustomDialogActivity.class);
-                        patientEdit.putExtra("name",pwdck.getName());
-                        patientEdit.putExtra("num",pwdck.getNum());
+                        patientEdit.putExtra("editFamily",pwdck.getName());
+                        patientEdit.putExtra("editFamily",pwdck.getNum());
                         startActivityForResult(patientEdit,1);
                         break;
                     case R.id.iv_guardian_editmy://내정보 수정하기
                         Intent editmyIntent = new Intent(getApplicationContext(), CustomDialogActivity.class);
-                        editmyIntent.putExtra("name",pwdck.getName());
-                        editmyIntent.putExtra("num",pwdck.getNum());
+                        editmyIntent.putExtra("editmy",pwdck.getName());
+                        editmyIntent.putExtra("editmy",pwdck.getNum());
                         startActivityForResult(editmyIntent,2);
 
                         Log.i("커스텀다이얼로그 결과확인", "onActivityResult: " + editmyIntent);
                         break;
                     case R.id.bt_guardian_editdocter: //등록된 의사 수정하기
                         Intent editDoctorIntent = new Intent(getApplicationContext(), CustomDialogActivity.class);
-                        editDoctorIntent.putExtra(pwdck.getName(),"my_name");
-                        editDoctorIntent.putExtra(pwdck.getNum(),"my_num");
+                        editDoctorIntent.putExtra("editdocter",pwdck.getName());
+                        editDoctorIntent.putExtra("editdocter",pwdck.getNum());
 //                        editDoctorIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(editDoctorIntent);
                         break;
@@ -158,6 +158,7 @@ public class GuardianMainActivity extends AppCompatActivity {
                 TvGuardianName.setText(NameResult);
                 TvGuardianNum.setText(NumResult);
                 // 파이어 베이스에 저장되도록 하기
+
 
 
             }

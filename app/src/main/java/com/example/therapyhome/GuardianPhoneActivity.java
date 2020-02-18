@@ -1,6 +1,7 @@
 package com.example.therapyhome;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.therapyhome.Adapter.GuardianPhoneEditAdapter;
 import com.example.therapyhome.item.PhoneContactEdit;
@@ -24,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import static com.example.therapyhome.LoginActivity.pwdck;
 
 public class GuardianPhoneActivity extends AppCompatActivity {
     /**
@@ -49,11 +53,21 @@ public class GuardianPhoneActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("contactNumber");
 
         // 데이터 추가하는곳 시작 -----------------------------------------------------------------------
-
+        /**
+         * <데이터 추가 로직>
+         *     1. 중복검사를 통해 (key 값은 ID 값) 이사람이 아이디가 저장되어있는지 아닌지 체크한다.
+         */
         btGuardianContactNumAdd = findViewById(R.id.bt_guardian_contactNum_add);
         btGuardianContactNumAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String intentCk = "연락처추가";
+                Intent patientEdit = new Intent(getApplicationContext(),CustomDialogActivity.class);
+                patientEdit.putExtra("intentCk",intentCk);
+//                patientEdit.putExtra("name",intentCk);
+//                patientEdit.putExtra("num",pwdck.getName());
+//                patientEdit.putExtra("emergency",pwdck.getNum());
+                startActivityForResult(patientEdit,1);
 
             }
         });
@@ -77,34 +91,40 @@ public class GuardianPhoneActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 파이어 베이스 검색하기
-                databaseReference.child("111").addListenerForSingleValueEvent(new ValueEventListener() {
+                databaseReference.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         // 111이 가지고 있는 데이터 리스트 가져오기
                         // for문을 쓸때는 하단의 표현식 처럼 써야됨
-                        for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                            conteactNum  = dataSnapshot1.getValue(PhoneContactEdit.class);
+                        // 여기서 if 문으로 데이터가 없는 경우/ 있는경우를 나눠서 써야한다.
+                        // 데이터가 있는 경우
+                        if(dataSnapshot.hasChildren()) {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                conteactNum = dataSnapshot1.getValue(PhoneContactEdit.class);
 
-                            /**
-                             * 1. 파이어 베이스에서 1개씩 데이터 가져오기 오브젝트로 가져와야함
-                             * 2. 1개씩 가져온 데이터를 어레이 리스트에 넣기
-                             * 3. 넣은 어레이 리스트를 리사이클러뷰에 넣기
-                             *
-                             *     String name;
-                             *     String num;
-                             *     String emergency;
-                             *
-                             */
+                                /**
+                                 * 1. 파이어 베이스에서 1개씩 데이터 가져오기 오브젝트로 가져와야함
+                                 * 2. 1개씩 가져온 데이터를 어레이 리스트에 넣기
+                                 * 3. 넣은 어레이 리스트를 리사이클러뷰에 넣기
+                                 *
+                                 *     String name;
+                                 *     String num;
+                                 *     String emergency;
+                                 *
+                                 */
 
-                            guardianPhoneList.add(conteactNum);
+                                guardianPhoneList.add(conteactNum);
+                            }
+                            // 리사이클러뷰 연결
+                            rvGuardianEditPhone = findViewById(R.id.rv_guardian_edit_phone);
+                            rvGuardianEditPhone.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+                            rvGuardianEditPhone.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                            editPhoneAdapter = new GuardianPhoneEditAdapter(guardianPhoneList);
+                            rvGuardianEditPhone.setAdapter(editPhoneAdapter);
+                        } else {
+                            Toast.makeText(GuardianPhoneActivity.this, "등록된 연락처가 없습니다.", Toast.LENGTH_SHORT).show();
                         }
-                        // 리사이클러뷰 연결
-                        rvGuardianEditPhone = findViewById(R.id.rv_guardian_edit_phone);
-                        rvGuardianEditPhone.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
-                        rvGuardianEditPhone.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                        editPhoneAdapter = new GuardianPhoneEditAdapter(guardianPhoneList);
-                        rvGuardianEditPhone.setAdapter(editPhoneAdapter);
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -160,8 +180,21 @@ public class GuardianPhoneActivity extends AppCompatActivity {
         btnEditKeyword.setOnClickListener(onClickListener);
         btnEditPhone.setOnClickListener(onClickListener);
 
+    }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 2){
+            if(resultCode == RESULT_OK){
+                Log.i("커스텀다이얼로그 결과확인", "들어왔니? ");
+                String NameResult = data.getStringExtra("editName");
+                String NumResult = data.getStringExtra("editNum");
+                // 파이어 베이스에 저장되도록 하기
+                // 저장할 클래스 만들기
 
+            }
+        }
     }
 }
