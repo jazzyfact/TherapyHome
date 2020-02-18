@@ -42,116 +42,134 @@
             android:textSize="15sp" />
 
         <!--        bpm-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20sp"
-            android:text="심박"
-            android:textColor="#000"
-            android:textSize="20sp" />
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="15sp">
-            <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:src="@drawable/medical240"
-                android:layout_gravity="center"/>
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <TextView
-                android:id="@+id/tv_bpmdata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="86"
-                android:textColor="#FC0303"
-                android:textSize="50sp"
-                android:layout_marginLeft="30sp"/>
-        </LinearLayout>
+                android:layout_marginTop="20sp"
+                android:text="심박"
+                android:textColor="#000"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="15sp">
+                <ImageView
+                    android:layout_width="70sp"
+                    android:layout_height="70sp"
+                    android:src="@drawable/medical240"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_bpmdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="86"
+                    android:textColor="#FC0303"
+                    android:textSize="50sp"
+                    android:layout_marginLeft="30sp"/>
+            </LinearLayout>
 
-        <!--        bpm-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="호흡"
-            android:textColor="#000"
-            android:textSize="20sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="15sp">
-            <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:src="@drawable/weather240"
-                android:layout_gravity="center"/>
+            <!--        bpm-->
             <TextView
-                android:id="@+id/tv_co2mdata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="95 %"
-                android:textColor="#F0D000"
-                android:textSize="50sp"
-                android:layout_marginLeft="30sp"/>
-        </LinearLayout>
+                android:text="호흡"
+                android:textColor="#000"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="15sp">
+                <ImageView
+                    android:layout_width="70sp"
+                    android:layout_height="70sp"
+                    android:src="@drawable/weather240"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_co2mdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="95 %"
+                    android:textColor="#F0D000"
+                    android:textSize="50sp"
+                    android:layout_marginLeft="30sp"/>
+            </LinearLayout>
 
-        <!--        온도-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="체온"
-            android:textColor="#000"
-            android:textSize="20sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="15sp">
-            <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:src="@drawable/tem"
-                android:layout_gravity="center"/>
+            <!--        온도-->
             <TextView
-                android:id="@+id/tv_temperturedata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="36.2"
-                android:textColor="#3CE7BF"
-                android:textSize="50sp"
-                android:layout_marginLeft="30sp"/>
-        </LinearLayout>
-        <!--        습도-->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="습도"
-            android:textColor="#000"
-            android:textSize="20sp" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingVertical="15sp">
-            <ImageView
-                android:layout_width="70sp"
-                android:layout_height="70sp"
-                android:src="@drawable/drop240"
-                android:layout_gravity="center"/>
+
+                android:text="체온"
+                android:textColor="#000"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="15sp">
+                <ImageView
+                    android:layout_width="70sp"
+                    android:layout_height="70sp"
+                    android:src="@drawable/tem"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_temperturedata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="36.2"
+                    android:textColor="#3CE7BF"
+                    android:textSize="50sp"
+                    android:layout_marginLeft="30sp"/>
+            </LinearLayout>
+            <!--        습도-->
             <TextView
-                android:id="@+id/tv_waterdata"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50%"
-                android:textColor="#14C0FF"
-                android:textSize="50sp"
-                android:layout_marginLeft="30sp"/>
-        </LinearLayout>
+                android:text="습도"
+                android:textColor="#000"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="15sp">
+                <ImageView
+                    android:layout_width="70sp"
+                    android:layout_height="70sp"
+                    android:src="@drawable/drop240"
+                    android:layout_gravity="center"/>
+                <TextView
+                    android:id="@+id/tv_waterdata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="50%"
+                    android:textColor="#14C0FF"
+                    android:textSize="50sp"
+                    android:layout_marginLeft="30sp"/>
+            </LinearLayout>
 
-
-
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_send_message"
+                    android:layout_width="match_parent"
+                    android:layout_height="80sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginVertical="30dp"
+                    android:text="HOME CAM 확인"
+                    android:textColor="#fff"
+                    android:textSize="25sp"
+                    android:backgroundTint="#403EE8"
+                    app:cornerRadius="20dp" />
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <!--하단 메뉴바-->

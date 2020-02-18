@@ -6,6 +6,8 @@ public class PhoneContactEdit {
     String num;
     String emergency;
 
+    public PhoneContactEdit(){}
+
     public String getName() {
         return name;
     }
