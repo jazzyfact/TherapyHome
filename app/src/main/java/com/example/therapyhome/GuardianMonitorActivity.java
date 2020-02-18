@@ -3,9 +3,11 @@ package com.example.therapyhome;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +17,7 @@ public class GuardianMonitorActivity extends AppCompatActivity {
     /**
      * 가은이가 수정한 페이지
      */
-    Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
+    Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg, btHomeCam;
 
     private int bpm = 80;
     private int co2 = 95;
@@ -31,6 +33,18 @@ public class GuardianMonitorActivity extends AppCompatActivity {
         btnEditPhone = findViewById(R.id.bt_edit_phone);//연락처 편집 버튼
         btnCheckHealth = findViewById(R.id.bt_check_health);//건강 상태 버튼
         btnReadMsg = findViewById(R.id.bt_read_msg);//문자 모아보기 버튼
+
+        btHomeCam = findViewById(R.id.bt_home_cam);//홈캠
+        btHomeCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Intent intent = new Intent (Intent.ACTION_VIEW, Uri.parse("http://192.168.0.2:8090/stream_simple.html"));
+                Intent intent = new Intent (getApplicationContext(), GuardianHomeCamActivity.class);
+
+                startActivity(intent);
+                Log.d("Monitor","11111" + intent);
+            }
+        });
 
         tvBpmData = findViewById(R.id.tv_bpmdata);
         tvCo2mData = findViewById(R.id.tv_co2mdata);

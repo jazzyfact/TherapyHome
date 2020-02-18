@@ -158,7 +158,7 @@
             </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_send_message"
+                    android:id="@+id/bt_home_cam"
                     android:layout_width="match_parent"
                     android:layout_height="80sp"
                     android:layout_gravity="center_horizontal"
