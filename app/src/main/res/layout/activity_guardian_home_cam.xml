@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GuardianMonitorActivity"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:background="#fff">
+
+    <!--    환자 상태 체크 -->
+
+
+    <!--보호자 화면 메인페이지 입니다.-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="30sp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:paddingHorizontal="30sp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="환자 상태 보기"
+            android:textColor="#000"
+            android:textFontWeight="800"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:text="환자의 상태를 실시간으로 볼수있습니다."
+            android:textColor="#777"
+            android:textFontWeight="800"
+            android:textSize="15sp" />
+
+        <!--        bpm-->
+        <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+
+    </LinearLayout>
+
+        <!--하단 메뉴바-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_edit_keyword"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:textSize="23sp"
+            app:cornerRadius="20dp"
+            android:text="편집"
+            android:backgroundTint="#fff"
+            android:background="#00ff0000"
+            android:textColor="#000"
+            android:stateListAnimator="@null"
+            android:layout_weight="0.3"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_edit_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:text="연락"
+            android:textSize="23sp"
+            android:backgroundTint="#fff"
+            android:background="#00ff0000"
+            android:textColor="#000"
+            android:stateListAnimator="@null"
+            app:cornerRadius="20dp"
+            android:layout_weight="0.3"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_check_health"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:text="건강"
+            android:backgroundTint="#fff"
+            android:background="#00ff0000"
+            android:textColor="#000"
+            android:stateListAnimator="@null"
+            android:textSize="23sp"
+            app:cornerRadius="20dp"
+            android:layout_weight="0.3"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_read_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:text="문자"
+            android:backgroundTint="#fff"
+            android:background="#00ff0000"
+            android:textColor="#000"
+            android:stateListAnimator="@null"
+            android:textSize="23sp"
+            app:cornerRadius="20dp"
+            android:layout_weight="0.3"/>
+    </LinearLayout>
+
+</LinearLayout>
