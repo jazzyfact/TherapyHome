@@ -1,287 +1,298 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuardianPhoneActivity"
+    android:background="#fff"
     android:orientation="vertical"
-    android:layout_margin="10dp"
-    android:background="#fff">
+    tools:context=".GuardianPhoneActivity"
+    android:layout_margin="10sp">
 
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="환자 연락처 편집"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="20sp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_guardian_edit_phone"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_margin="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="20dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <!--하단네비-->
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingHorizontal="30sp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:text="보호자 연락처 편집"
-            android:textColor="#000"
-            android:textFontWeight="800"
-            android:textSize="25sp"
-            />
-
-<!--        연락처 편집-->
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="30sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="딸"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="긴급 연락처"
-                        android:textColor="#FC0303"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="10sp"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="010 8888 5544"
-                    android:textColor="#666"
-                    android:textSize="15sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/bt_guardian_editdocter"
-                    android:layout_width="30sp"
-                    android:layout_height="27dp"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    android:src="@drawable/edit240" />
-                <ImageView
-                    android:id="@+id/iv_guardian_redocter"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="30sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="아들"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="긴급 연락처"
-                        android:textColor="#FC0303"
-                        android:textSize="20sp"
-                        android:layout_marginLeft="10sp"/>
-                </LinearLayout>
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="010 8888 5544"
-                    android:textColor="#666"
-                    android:textSize="15sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/bt_guardian_editdocter3"
-                    android:layout_width="30sp"
-                    android:layout_height="27dp"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    android:src="@drawable/edit240" />
-                <ImageView
-                    android:id="@+id/iv_guardian_redocter3"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="30sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="최철삼"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-                <TextView
-                    android:layout_marginTop="5sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="010 8888 5544"
-                    android:textColor="#666"
-                    android:textSize="15sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/bt_guardian_editdocter2"
-                    android:layout_width="30sp"
-                    android:layout_height="27dp"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    android:src="@drawable/edit240" />
-                <ImageView
-                    android:id="@+id/iv_guardian_redocter2"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-
-    <!--    하단 네비게이션바-->
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="bottom"
-        >
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_edit_keyword"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
+            android:layout_weight="0.3"
+            android:background="#00ff0000"
+            android:backgroundTint="#fff"
+            android:stateListAnimator="@null"
+            android:text="편집"
+            android:textColor="#000"
             android:textSize="23sp"
             app:cornerRadius="20dp"
-            android:text="편집"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            android:layout_weight="0.3"
-            />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_edit_phone"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="연락"
-            android:textSize="23sp"
-            android:backgroundTint="#fff"
+            android:layout_weight="0.3"
             android:background="#00ff0000"
-            android:textColor="#000"
+            android:backgroundTint="#fff"
             android:stateListAnimator="@null"
+            android:text="연락"
+            android:textColor="#000"
+            android:textSize="23sp"
             app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
+            app:layout_constraintEnd_toStartOf="@+id/bt_check_health"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_check_health"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="건강"
-            android:backgroundTint="#fff"
+            android:layout_weight="0.3"
             android:background="#00ff0000"
-            android:textColor="#000"
+            android:backgroundTint="#fff"
             android:stateListAnimator="@null"
+            android:text="건강"
+            android:textColor="#000"
             android:textSize="23sp"
             app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
+            app:layout_constraintEnd_toStartOf="@+id/bt_read_msg" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_read_msg"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="문자"
-            android:backgroundTint="#fff"
+            android:layout_weight="0.3"
             android:background="#00ff0000"
-            android:textColor="#000"
+            android:backgroundTint="#fff"
             android:stateListAnimator="@null"
+            android:text="문자"
+            android:textColor="#000"
             android:textSize="23sp"
             app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
-    </LinearLayout>
+            app:layout_constraintEnd_toStartOf="@+id/bt_edit_keyword" />
     </LinearLayout>
 
 
-</LinearLayout>
+    <!--리사이클러뷰의 영역-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!--        &lt;!&ndash;        연락처 편집&ndash;&gt;-->
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            app:contentPadding="15sp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="#f3f3f3"-->
+    <!--            app:cardCornerRadius="15sp"-->
+    <!--            app:cardElevation="0sp"-->
+    <!--            android:layout_marginTop="30sp"-->
+    <!--            >-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal">-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="딸"-->
+    <!--                        android:textColor="#000"-->
+    <!--                        android:textSize="20sp" />-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="긴급 연락처"-->
+    <!--                        android:textColor="#FC0303"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        android:layout_marginLeft="10sp"/>-->
+    <!--                </LinearLayout>-->
+    <!--                <TextView-->
+    <!--                    android:layout_marginTop="5sp"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="010 8888 5544"-->
+    <!--                    android:textColor="#666"-->
+    <!--                    android:textSize="15sp" />-->
+    <!--            </LinearLayout>-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="horizontal">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/bt_guardian_editdocter"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="27dp"-->
+    <!--                    android:layout_marginLeft="210sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    android:src="@drawable/edit240" />-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/iv_guardian_redocter"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="30sp"-->
+    <!--                    android:src="@drawable/trash240"-->
+    <!--                    android:layout_marginLeft="5sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    />-->
+    <!--            </LinearLayout>-->
+    <!--        </androidx.cardview.widget.CardView>-->
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            app:contentPadding="15sp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="#f3f3f3"-->
+    <!--            app:cardCornerRadius="15sp"-->
+    <!--            app:cardElevation="0sp"-->
+    <!--            android:layout_marginTop="30sp"-->
+    <!--            >-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal">-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="아들"-->
+    <!--                        android:textColor="#000"-->
+    <!--                        android:textSize="20sp" />-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="긴급 연락처"-->
+    <!--                        android:textColor="#FC0303"-->
+    <!--                        android:textSize="20sp"-->
+    <!--                        android:layout_marginLeft="10sp"/>-->
+    <!--                </LinearLayout>-->
+    <!--                <TextView-->
+    <!--                    android:layout_marginTop="5sp"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="010 8888 5544"-->
+    <!--                    android:textColor="#666"-->
+    <!--                    android:textSize="15sp" />-->
+    <!--            </LinearLayout>-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="horizontal">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/bt_guardian_editdocter3"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="27dp"-->
+    <!--                    android:layout_marginLeft="210sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    android:src="@drawable/edit240" />-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/iv_guardian_redocter3"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="30sp"-->
+    <!--                    android:src="@drawable/trash240"-->
+    <!--                    android:layout_marginLeft="5sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    />-->
+    <!--            </LinearLayout>-->
+    <!--        </androidx.cardview.widget.CardView>-->
+
+
+    <!--        <androidx.cardview.widget.CardView-->
+    <!--            app:contentPadding="15sp"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:backgroundTint="#f3f3f3"-->
+    <!--            app:cardCornerRadius="15sp"-->
+    <!--            app:cardElevation="0sp"-->
+    <!--            android:layout_marginTop="30sp"-->
+    <!--            >-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:orientation="horizontal">-->
+    <!--                    <TextView-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="최철삼"-->
+    <!--                        android:textColor="#000"-->
+    <!--                        android:textSize="20sp" />-->
+
+    <!--                </LinearLayout>-->
+    <!--                <TextView-->
+    <!--                    android:layout_marginTop="5sp"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:text="010 8888 5544"-->
+    <!--                    android:textColor="#666"-->
+    <!--                    android:textSize="15sp" />-->
+    <!--            </LinearLayout>-->
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:orientation="horizontal">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/bt_guardian_editdocter2"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="27dp"-->
+    <!--                    android:layout_marginLeft="210sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    android:src="@drawable/edit240" />-->
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/iv_guardian_redocter2"-->
+    <!--                    android:layout_width="30sp"-->
+    <!--                    android:layout_height="30sp"-->
+    <!--                    android:src="@drawable/trash240"-->
+    <!--                    android:layout_marginLeft="5sp"-->
+    <!--                    android:layout_marginTop="10sp"-->
+    <!--                    />-->
+    <!--            </LinearLayout>-->
+    <!--        </androidx.cardview.widget.CardView>-->
+
+    <!--    </LinearLayout>-->
+
+    <!--    하단 네비게이션바-->
+
+

@@ -143,7 +143,6 @@ public class SignUpActivity extends AppCompatActivity {
                  * strSignUpNum // 휴대폰 (num)
                  * strSignUpComId // 의료진 아이디 (comId)
                  */
-
                 SignUpclass makeId = new SignUpclass(strSignUpName,strSignUpId,strSignUpPwd,strSignUpNum,strSignUpCom,strSignUpComId);
                 DatabasePath.child(strSignUpId).setValue(makeId);
 
