@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
      *     로그아웃 할때는 pwdck를 업데이트 해줘야한다.
      *     정보를 업데이트 하거나 삭제할때 pwdck 를 업데이트 하는것 잊지말기
      *     연락처를 저장하는 데이터 구조를 다시생각하기
-     *
+     * 수정합니다:은진
      */
 
     public static SignUpclass pwdck;
