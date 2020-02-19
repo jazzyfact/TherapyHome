@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -44,6 +46,9 @@
             android:theme="@style/Theme.MyDialog" />
         <activity
             android:name=".CustomDialogActivity"
+            android:theme="@style/Theme.MyDialog" />
+        <activity
+            android:name=".CustomDialogSendMsgActivity"
             android:theme="@style/Theme.MyDialog" />
         <activity android:name=".LoginActivity">
 
