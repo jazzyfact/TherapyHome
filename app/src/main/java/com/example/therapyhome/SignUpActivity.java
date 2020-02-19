@@ -1,8 +1,11 @@
 package com.example.therapyhome;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -152,5 +155,51 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {   // 뒤로가기 버튼 클릭 시
+//        super.onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("테라피홈을 종료하시겠습니까?").setMessage("'OK를 누르면 종료됩니다.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                Toast.makeText(getApplicationContext(), "테라피홈이 종료돠었습니다.", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                Toast.makeText(getApplicationContext(), "회원가입 페이지 입니다.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNeutralButton("Neutral", new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int id)
+            {
+                Toast.makeText(getApplicationContext(), "로그인 페이지 입니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                SignUpActivity.this.finish(); // 회원가입페이지 Activity stack에서 제거
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
 }

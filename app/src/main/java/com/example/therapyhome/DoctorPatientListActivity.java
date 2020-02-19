@@ -44,4 +44,11 @@ public class DoctorPatientListActivity extends AppCompatActivity {
         rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
 
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
+    }
 }
