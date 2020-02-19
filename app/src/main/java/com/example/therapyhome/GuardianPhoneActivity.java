@@ -45,6 +45,9 @@ public class GuardianPhoneActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
     PhoneContactEdit conteactNum;
 
+    //생명주기 체크
+    private static final String TAG = "LifeCycleTester";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,6 +125,8 @@ public class GuardianPhoneActivity extends AppCompatActivity {
                             rvGuardianEditPhone.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                             editPhoneAdapter = new GuardianPhoneEditAdapter(guardianPhoneList);
                             rvGuardianEditPhone.setAdapter(editPhoneAdapter);
+                            editPhoneAdapter.notifyDataSetChanged();
+
                         } else {
                             Toast.makeText(GuardianPhoneActivity.this, "등록된 연락처가 없습니다.", Toast.LENGTH_SHORT).show();
                         }
@@ -130,7 +135,9 @@ public class GuardianPhoneActivity extends AppCompatActivity {
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }
                 });
+
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
@@ -181,6 +188,43 @@ public class GuardianPhoneActivity extends AppCompatActivity {
         btnEditPhone.setOnClickListener(onClickListener);
 
     }
+    // 생명주기 체크
+    @Override
+    public void onPause(){
+        super.onPause();
+        Log.i(TAG, "onPause()");
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        Log.i(TAG, "onStop()");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Log.i(TAG, "onResume()");
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.i(TAG, "onStart()");
+    }
+
+    @Override
+    public void onRestart(){
+        super.onRestart();
+        Log.i(TAG, "onRestart()");
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        Log.i(TAG, "onDestroy()");
+    }
+
 
 
     @Override
@@ -191,9 +235,9 @@ public class GuardianPhoneActivity extends AppCompatActivity {
                 Log.i("커스텀다이얼로그 결과확인", "들어왔니? ");
                 String NameResult = data.getStringExtra("editName");
                 String NumResult = data.getStringExtra("editNum");
+                editPhoneAdapter.notifyDataSetChanged();
                 // 파이어 베이스에 저장되도록 하기
                 // 저장할 클래스 만들기
-
             }
         }
     }

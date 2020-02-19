@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,10 +10,9 @@
     android:background="#fff">
 
     <!--보호자 화면 메인페이지 입니다.-->
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="50sp"
         android:layout_marginTop="30sp"
@@ -38,371 +37,92 @@
             android:textFontWeight="800"
             android:textSize="15sp" />
 
-<!--        텍스트 편집하는 부분-->
-<!--1번-->
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_guardian_Editkey"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="30sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6sp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="밥주세요"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/bt_guardian_edittext01"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    />
-                <ImageView
-                    android:id="@+id/bt_guardian_retext01"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-<!--2번-->
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="7sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6sp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="씻겨주세요"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/bt_guardian_edittext02"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    />
-                <ImageView
-                    android:id="@+id/bt_guardian_retext02"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-<!--3번-->
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="7sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6sp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="화장실이 급합니다."
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/bt_guardian_edittext03"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    />
-                <ImageView
-                    android:id="@+id/bt_guardian_retext03"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <!--4번-->
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="7sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6sp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="뒤집어 주세요"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/bt_guardian_edittext04"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    />
-                <ImageView
-                    android:id="@+id/bt_guardian_retext04"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <!--5번-->
-
-        <androidx.cardview.widget.CardView
-            app:contentPadding="15sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#f3f3f3"
-            app:cardCornerRadius="15sp"
-            app:cardElevation="0sp"
-            android:layout_marginTop="7sp"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="6sp"
-                    >
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="배고파요"
-                        android:textColor="#000"
-                        android:textSize="20sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/bt_guardian_edittext05"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/edit240"
-                    android:layout_marginLeft="210sp"
-                    android:layout_marginTop="10sp"
-                    />
-                <ImageView
-                    android:id="@+id/bt_guardian_retext05"
-                    android:layout_width="30sp"
-                    android:layout_height="30sp"
-                    android:src="@drawable/trash240"
-                    android:layout_marginLeft="5sp"
-                    android:layout_marginTop="10sp"
-                    />
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <ImageView
-            android:id="@+id/bt_guardian_add"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:src="@drawable/plus240"
-            android:layout_marginTop="20sp"
-            android:layout_gravity="center"
-            />
-
+            android:layout_marginTop="20sp"/>
     </LinearLayout>
 
+
     <!--하단 메뉴바-->
 
     <!--하단 메뉴바-->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_gravity="center">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_edit_keyword"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:textSize="23sp"
-            app:cornerRadius="20dp"
-            android:text="편집"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            android:layout_weight="0.3"
-            />
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_edit_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="연락"
-            android:textSize="23sp"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_edit_keyword"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.3"
+                android:background="#00ff0000"
+                android:backgroundTint="#fff"
+                android:stateListAnimator="@null"
+                android:text="편집"
+                android:textColor="#000"
+                android:textSize="23sp"
+                app:cornerRadius="20dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_check_health"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="건강"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            android:textSize="23sp"
-            app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_edit_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.3"
+                android:background="#00ff0000"
+                android:backgroundTint="#fff"
+                android:stateListAnimator="@null"
+                android:text="연락"
+                android:textColor="#000"
+                android:textSize="23sp"
+                app:cornerRadius="20dp" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_read_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="문자"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            android:textSize="23sp"
-            app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
-    </LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_check_health"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.3"
+                android:background="#00ff0000"
+                android:backgroundTint="#fff"
+                android:stateListAnimator="@null"
+                android:text="건강"
+                android:textColor="#000"
+                android:textSize="23sp"
+                app:cornerRadius="20dp" />
 
-</LinearLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_read_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.3"
+                android:background="#00ff0000"
+                android:backgroundTint="#fff"
+                android:stateListAnimator="@null"
+                android:text="문자"
+                android:textColor="#000"
+                android:textSize="23sp"
+                app:cornerRadius="20dp" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
