@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
      *     로그아웃 할때는 pwdck를 업데이트 해줘야한다.
      *     정보를 업데이트 하거나 삭제할때 pwdck 를 업데이트 하는것 잊지말기
      *     연락처를 저장하는 데이터 구조를 다시생각하기
-     * 수정합니다:은진
+     *
      */
 
     public static SignUpclass pwdck;
@@ -139,16 +139,19 @@ public class LoginActivity extends AppCompatActivity {
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), TutorialControlChoiceActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 } else if (com.equals("보호자")){
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 }else if (com.equals("의료진")) {
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), DoctorPatientListActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 }
                                                 Log.i("파이어베이스 데이터 흐름", "8");
@@ -187,9 +190,19 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
+
             }
         });
 
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
 }
 

@@ -69,5 +69,11 @@ public class CustomDialogSendMsgActivity extends Activity {
         });
 
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
+    }
 
 }
