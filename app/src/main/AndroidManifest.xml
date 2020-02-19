@@ -40,9 +40,13 @@
         <activity android:name=".PatientMainActivity" />
         <activity android:name=".DoctorMonitorActivity" />
         <activity
+            android:name=".CustomDialogDeleteActivity"
+            android:theme="@style/Theme.MyDialog" />
+        <activity
             android:name=".CustomDialogActivity"
             android:theme="@style/Theme.MyDialog" />
         <activity android:name=".LoginActivity">
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

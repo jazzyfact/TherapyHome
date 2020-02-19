@@ -29,9 +29,7 @@ public class DoctorMonitorActivity extends AppCompatActivity {
         tvTempertureData = findViewById(R.id.tv_temperturedata);
         tvWaterData = findViewById(R.id.tv_waterdata);
 
-
     }
-
 
     Handler handler = new Handler() {
         @Override

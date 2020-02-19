@@ -49,13 +49,21 @@
         </LinearLayout>
 
         <Spinner
-            android:id="@+id/sp_signup_select"
+            android:id="@+id/sp_msg_select"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30sp"
             android:layout_marginBottom="10sp"
+
             />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_patient_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
 
         

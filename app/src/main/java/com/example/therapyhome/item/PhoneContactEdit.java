@@ -1,5 +1,8 @@
 package com.example.therapyhome.item;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PhoneContactEdit {
 
     String name;
@@ -37,4 +40,16 @@ public class PhoneContactEdit {
         this.num = num;
         this.emergency = emergency;
     }
+
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("name", name);
+        result.put("num", num);
+        result.put("emergency", emergency);
+
+        return result;
+    }
+
+
 }

@@ -12,14 +12,23 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.therapyhome.item.PhoneContactEdit;
 import com.example.therapyhome.item.SignUpclass;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
 
@@ -37,6 +46,11 @@ public class CustomDialogActivity extends Activity {
     String addName;
     String addNum;
 
+    String editName;
+    String editNum;
+
+    Map<String, Object> userValue = null;
+
 
     DatabaseReference databaseReference;
     PhoneContactEdit phoneContactAddObject;
@@ -49,7 +63,6 @@ public class CustomDialogActivity extends Activity {
      * 커스텀 다이얼로그 받는 로직 (각자 다른 액티비티에서 커스텀다이얼로그를 띄우게 하려면 )
      *  1. 각 액티비티에서 클릭리스너에 인텐트를 담아서 커스텀 다이얼로그에 보낸다
      *  2. 커스텀 다이얼로그 자바 코드 (이곳) 에서 받은 인텐트에 for문을 이용해서 구분한다.
-     *  3. 체크박스와
      *
      * @param savedInstanceState
      */
@@ -122,34 +135,85 @@ public class CustomDialogActivity extends Activity {
 
 
         } else if (intentCk.equals("연락처편집")){
-//            String name = intent.getExtras().getString("name");
-//            String num = intent.getExtras().getString("num");/*String형*/
-//            String emergency = intent.getExtras().getString("emergency");/*String형*/
-//
-//            // 확인 버튼과 취소버튼
-//            TvSubtitleName = findViewById(R.id.tv_subtitle_name_an);
-//            TvSubtitleNum = findViewById(R.id.tv_subtitle_num_an);
-//
-//            TvSubtitleName.setText(name);
-//            TvSubtitleNum.setText(num);
-//
-//            okButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent1 = new Intent();
-//                    intent1.putExtra("editName",TvSubtitleName.getText().toString());
-//                    intent1.putExtra("editNum",TvSubtitleNum.getText().toString());
-//                    setResult(RESULT_OK,intent1);
-//                    finish();
-//                }
-//            });
-//
-//            cancelButton.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    finish();
-//                }
-//            });
+
+            /**
+             * <연락처 편집하는 로직>
+             *     1. 리사이클러뷰에서 데이터를 받아온다.
+             *     2. 받아온 데이터를 에디트 텍스트에 set 시킨다.
+             *     3. 파이어베이스 데이터 베이스에서 해당 하는 이름(name)의 key를 찾는다.
+             *     4. 찾은키를 가지고 데이터를 업데이트 한다.
+             *     5. 업데이트 할때는 저장한거랑 똑같이 class 를 이용해서 json 형태로 저장해줘야함
+             */
+
+            // 파이어 베이스 데이터 주소
+            databaseReference = FirebaseDatabase.getInstance().getReference("contactNumber");
+
+            // 연락처 편집하기  --------------------------------------------------
+            // 리사이클러뷰에서 받아온 정보
+            editName =  intent.getExtras().getString("name");
+            editNum =  intent.getExtras().getString("num");
+
+            // 받아온 정보 에디트 텍스트에 저장시키기
+            TvSubtitleName.setText(editName);
+            TvSubtitleNum.setText(editNum);
+
+            if(cbAgreeEmergecy.isChecked()){
+                emergencyCk = "Y";
+            }else {
+                emergencyCk = "N";
+            }
+
+            databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // user 의 모든 자식들의 key 값과 value 값들을 iterator에 참조한다.
+                    Iterator<DataSnapshot> child = dataSnapshot.getChildren().iterator();
+                    // 중복 유무 확인
+                    while (child.hasNext()){
+                        if(child.next().getKey().equals(editName)) {
+                            // object -> Map
+                            PhoneContactEdit editPhone = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
+                            userValue = editPhone.toMap();
+                            databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
+                            return;
+                        }
+                    }
+
+                }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+            // 수정하기 버튼 눌렀을때
+            okButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i("수정하기체크", "클릭함");
+                    // object -> Map
+                    PhoneContactEdit editPhone = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
+                    userValue = editPhone.toMap();
+                    Log.i("수정하기체크", "onDataChange: ");
+                    databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
+                    databaseReference.child(pwdck.getId()).child(editName).removeValue();
+                    Log.i("수정하기체크", "onDataChange: ");
+                    finish();
+                }
+            });
+            // ---------------------------------------------------------------------------------
+
+
+
+
+        } else if(intentCk.equals("연락처삭제")){
+
+            /**
+             * 리사이클러뷰에서 연락처 삭제인지 아닌지 인텐트로 값 받아오기
+             *
+             */
+
 
 
         }

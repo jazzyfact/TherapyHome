@@ -1,7 +1,11 @@
 package com.example.therapyhome;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.app.Activity;
@@ -18,8 +22,12 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,12 +36,22 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.therapyhome.Adapter.GuardianPhoneEditAdapter;
+import com.example.therapyhome.item.PhoneContactEdit;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static com.example.therapyhome.LoginActivity.pwdck;
 
 public class PatientMsgActivity extends AppCompatActivity {
 
@@ -54,6 +72,21 @@ public class PatientMsgActivity extends AppCompatActivity {
 
     Button btnPatientCall;
 
+    // 스피너
+    Spinner spMsgSelect;
+    ArrayList<String> spMsgSelectArray;
+    ArrayAdapter<String> spMsgSelectAdapter;
+
+    // 스피너에서 선택한 번호 담을 string
+    ArrayList<String> spMsgPhoneSelectArray;
+    String spSelectNum;
+
+    // 파이어 베이스
+    private DatabaseReference databaseReference;
+    PhoneContactEdit conteactNum;
+
+    // 리사이클러뷰
+    RecyclerView rvPatientMsg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +101,78 @@ public class PatientMsgActivity extends AppCompatActivity {
 //        cb_sendagree_06 = findViewById(R.id.cb_sendagree_06);
 //        cb_sendagree_07 = findViewById(R.id.cb_sendagree_07);
 //        cb_sendagree_08 = findViewById(R.id.cb_sendagree_08);
+
+
+        // 스피너에 파이어베이스 구현 시작 ----------------------------------------------------------------
+        spMsgSelect = findViewById(R.id.sp_msg_select);
+
+        //포문으로 파이어 베이스에서 가져온 데이터값 넣기
+        spMsgSelectArray = new ArrayList<>();
+        spMsgPhoneSelectArray = new ArrayList<>();
+
+        // 파이어 베이스 데이터 주소
+        databaseReference = FirebaseDatabase.getInstance().getReference("contactNumber");
+        // 파이어 베이스에서 데이터 저장된 데이터값 가져오기
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // 파이어 베이스 검색하기
+                databaseReference.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChildren()) {
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                                conteactNum = dataSnapshot1.getValue(PhoneContactEdit.class);
+                                // 스피너 어댑터 구현
+                                spMsgSelectArray.add(conteactNum.getName());
+                                spMsgPhoneSelectArray.add(conteactNum.getNum());
+                                Log.i("데이터확인", "onDataChange: " + conteactNum.getNum());
+                            }
+                            spMsgSelectAdapter = new ArrayAdapter<>(getApplication(),android.R.layout.simple_spinner_item,spMsgSelectArray);
+                            spMsgSelect.setAdapter(spMsgSelectAdapter);
+                            spMsgSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                @Override
+                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                    Toast.makeText(getApplicationContext(),spMsgSelectArray.get(position)+"가 선택되었습니다.",
+                                            Toast.LENGTH_SHORT).show();
+                                    spSelectNum = spMsgPhoneSelectArray.get(position);
+                                }
+
+                                @Override
+                                public void onNothingSelected(AdapterView<?> parent) {
+
+                                }
+                            });
+
+                        } else {
+                            Toast.makeText(PatientMsgActivity.this, "등록된 연락처가 없습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        // 스피너에 파이어베이스 구현 끝 ----------------------------------------------------------------
+
+
+        // 리사이클러뷰 시작 ---------------------------------------------------------------------------
+
+        rvPatientMsg = findViewById(R.id.rv_patient_msg);
+
+
+        // 라사이클러뷰 끝 ----------------------------------------------------------------------------
+
+
+
+
+
 
         // 하단 네비게이션바 시작 ------------------------------------------------------------------------
 
@@ -94,6 +199,9 @@ public class PatientMsgActivity extends AppCompatActivity {
         });
 
         // 하단 네비게이션바 끝--------------------------------------------------------------------------
+
+
+
 
 
         // ????????? 시작-----------------------------------------------------------------------------
@@ -174,6 +282,8 @@ public class PatientMsgActivity extends AppCompatActivity {
     public void smsMessageSent() {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
+
+
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 
@@ -189,7 +299,8 @@ public class PatientMsgActivity extends AppCompatActivity {
         }, new IntentFilter(SENT));
 
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage("01086658747", null, result, sentPI, deliveredPI);
+        sms.sendTextMessage(spSelectNum, null, result, sentPI, deliveredPI);
+
     }
 
     // 문자 발송한뒤 액티비티 재시작
