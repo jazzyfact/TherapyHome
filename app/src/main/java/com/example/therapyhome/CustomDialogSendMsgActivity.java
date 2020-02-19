@@ -24,7 +24,7 @@ public class CustomDialogSendMsgActivity extends Activity {
     /**
      *
      * 삭제하는 커스텀 다이얼로그
-     *
+     *은진test
      * @param savedInstanceState
      */
 
