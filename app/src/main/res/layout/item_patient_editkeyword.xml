@@ -16,7 +16,7 @@
         android:layout_marginVertical="20sp"
         >
         <TextView
-            android:id="@+id/item_editKeyword_textview"
+            android:id="@+id/item_editKeyword_textview_patient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="딸"

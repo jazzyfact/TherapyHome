@@ -51,6 +51,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     //Gson
     implementation 'com.google.code.gson:gson:2.8.6'
+    //리사이클러뷰 다중선택
+    implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
 
 
 }

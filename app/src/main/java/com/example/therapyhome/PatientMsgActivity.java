@@ -36,7 +36,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.therapyhome.Adapter.GuardianEditKeyWordAdapter;
 import com.example.therapyhome.Adapter.GuardianPhoneEditAdapter;
+import com.example.therapyhome.Adapter.PatientMsgAdapter;
+import com.example.therapyhome.item.PatientEditKeyWord;
 import com.example.therapyhome.item.PhoneContactEdit;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,6 +52,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
@@ -71,6 +75,9 @@ public class PatientMsgActivity extends AppCompatActivity {
     String result;
 
     Button btnPatientCall;
+    //메세지 테스트
+    String msgCk;
+
 
     // 스피너
     Spinner spMsgSelect;
@@ -87,20 +94,20 @@ public class PatientMsgActivity extends AppCompatActivity {
 
     // 리사이클러뷰
     RecyclerView rvPatientMsg;
+    RecyclerView.Adapter rvPatientMsgAdapter;
+    // 환자텍스트를 가져올 어레이 리스트
+    private List<PatientEditKeyWord> rvPatientMsgList = new ArrayList<>();
+    //파이어베이스 관련
+    PatientEditKeyWord rvPatientClass;
+    private DatabaseReference databaseReferenceMSG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
-//        cb_sendagree_01 = findViewById(R.id.cb_sendagree_01);
-//        cb_sendagree_02 = findViewById(R.id.cb_sendagree_02);
-//        cb_sendagree_03 = findViewById(R.id.cb_sendagree_03);
-//        cb_sendagree_04 = findViewById(R.id.cb_sendagree_04);
-//        cb_sendagree_05 = findViewById(R.id.cb_sendagree_05);
-//        cb_sendagree_06 = findViewById(R.id.cb_sendagree_06);
-//        cb_sendagree_07 = findViewById(R.id.cb_sendagree_07);
-//        cb_sendagree_08 = findViewById(R.id.cb_sendagree_08);
+        // 리사이클러뷰에서 넘어온 메세지 확인
+
 
 
         // 스피너에 파이어베이스 구현 시작 ----------------------------------------------------------------
@@ -136,6 +143,9 @@ public class PatientMsgActivity extends AppCompatActivity {
                                     Toast.makeText(getApplicationContext(),spMsgSelectArray.get(position)+"가 선택되었습니다.",
                                             Toast.LENGTH_SHORT).show();
                                     spSelectNum = spMsgPhoneSelectArray.get(position);
+                                    Bundle bundle = new Bundle();
+                                    bundle.putString("phoneNum",spSelectNum);
+
                                 }
 
                                 @Override
@@ -163,14 +173,49 @@ public class PatientMsgActivity extends AppCompatActivity {
 
 
         // 리사이클러뷰 시작 ---------------------------------------------------------------------------
+        Log.i("환자 메세지 보내기 ", "onDataChange: " + "1");
+        // 파이어베이스 시작
+        Log.i("환자 메세지 보내기 ", "onDataChange: " + "2");
+        databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("patientMsg");
+        // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
+        databaseReferenceMSG.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("환자 메세지 보내기 ", "onDataChange: " + "3");
+                // 핑;압[ㅇ;ㅅ, 감섹힉;
+                databaseReferenceMSG.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(dataSnapshot.hasChildren()){
+                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                                rvPatientClass = dataSnapshot1.getValue(PatientEditKeyWord.class);
+                                rvPatientMsgList.add(rvPatientClass);
+                                Log.i("환자키워드편집 리스트1", "onDataChange: " + "1");
+                                Log.i("환자키워드편집 리스트2", "onDataChange: " + rvPatientClass.toString());
+                                // 리사이클러뷰
+                                rvPatientMsg = findViewById(R.id.rv_patient_msg);
+                                rvPatientMsg.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+                                rvPatientMsg.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                rvPatientMsgAdapter = new PatientMsgAdapter(rvPatientMsgList);
+                                rvPatientMsg.setAdapter(rvPatientMsgAdapter);
+                            }
+                        }
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-        rvPatientMsg = findViewById(R.id.rv_patient_msg);
+                    }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+
+        });
+
 
 
         // 라사이클러뷰 끝 ----------------------------------------------------------------------------
-
-
-
 
 
 
@@ -200,9 +245,19 @@ public class PatientMsgActivity extends AppCompatActivity {
 
         // 하단 네비게이션바 끝--------------------------------------------------------------------------
 
+        try {
+            Intent intent = getIntent();
+            msgCk = intent.getExtras().getString("sendText");
+            result = intent.getExtras().getString("문자보내기");
+            if(!msgCk.isEmpty()){
+                Log.i("문자보내기확인", msgCk);
+                smsMessageSent();
+            } else if(msgCk.isEmpty()) {
+                Log.i("문자보내기확인", "빈값임");
+            }
+        }catch (Exception e){
 
-
-
+        }
 
         // ????????? 시작-----------------------------------------------------------------------------
         //채널
@@ -249,22 +304,22 @@ public class PatientMsgActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 result = "";
-                if (cb_sendagree_01.isChecked() == true)
-                    result += cb_sendagree_01.getText().toString();
-                if (cb_sendagree_02.isChecked() == true)
-                    result += cb_sendagree_02.getText().toString();
-                if (cb_sendagree_03.isChecked() == true)
-                    result += cb_sendagree_03.getText().toString();
-                if (cb_sendagree_04.isChecked() == true)
-                    result += cb_sendagree_04.getText().toString();
-                if (cb_sendagree_05.isChecked() == true)
-                    result += cb_sendagree_05.getText().toString();
-                if (cb_sendagree_06.isChecked() == true)
-                    result += cb_sendagree_06.getText().toString();
-                if (cb_sendagree_07.isChecked() == true)
-                    result += cb_sendagree_07.getText().toString();
-                if (cb_sendagree_08.isChecked() == true)
-                    result += cb_sendagree_08.getText().toString();
+//                if (cb_sendagree_01.isChecked() == true)
+//                    result += cb_sendagree_01.getText().toString();
+//                if (cb_sendagree_02.isChecked() == true)
+//                    result += cb_sendagree_02.getText().toString();
+//                if (cb_sendagree_03.isChecked() == true)
+//                    result += cb_sendagree_03.getText().toString();
+//                if (cb_sendagree_04.isChecked() == true)
+//                    result += cb_sendagree_04.getText().toString();
+//                if (cb_sendagree_05.isChecked() == true)
+//                    result += cb_sendagree_05.getText().toString();
+//                if (cb_sendagree_06.isChecked() == true)
+//                    result += cb_sendagree_06.getText().toString();
+//                if (cb_sendagree_07.isChecked() == true)
+//                    result += cb_sendagree_07.getText().toString();
+//                if (cb_sendagree_08.isChecked() == true)
+//                    result += cb_sendagree_08.getText().toString();
 //                // SMS 발송
 //                Uri uri = Uri.parse("smsto:01075582371");
 //                Intent it = new Intent(Intent.ACTION_SENDTO, uri);
