@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.therapyhome.Adapter.PatientMsgAdapter;
 import com.example.therapyhome.item.DoctorMsg;
@@ -45,6 +46,8 @@ public class GuardianMainActivity extends AppCompatActivity {
     TextView TvDocterName;
     TextView TvDocterNum;
     TextView TvDocterEmergency;
+
+    patientGaurdian patientGaurdianInfo;
 
     /**
      * 2020 02 17 진행해야할사항
@@ -93,8 +96,6 @@ public class GuardianMainActivity extends AppCompatActivity {
         TvGuardianName.setText(pwdck.getName());
         TvGuardianNum.setText(pwdck.getNum());
 
-
-
         // 환자 정보 표시하기
         // 파이어베이스에서 환자 정보를 받아와야한다.
 
@@ -104,29 +105,23 @@ public class GuardianMainActivity extends AppCompatActivity {
         Log.i("환자 정보 찾기 ", "onDataChange: " + "2");
         databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("patientGuardian");
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
-        databaseReferenceGuardian.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        databaseReferenceGuardian.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.i("환자 정보 찾기 ", "onDataChange: " + "3");
-                databaseReferenceGuardian.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        patientGuardian = dataSnapshot.getValue(patientGaurdian.class);
-                        TvPatientName.setText(patientGuardian.getName());
-                        TvPatientNum.setText(patientGuardian.getName());
-
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                // patientGuardian 에서 등록된 환자를 찾는다.
+                // 해당하는 환자가 있으면 정보를 받아온다.
+                patientGaurdianInfo = dataSnapshot.getValue(patientGaurdian.class);
+                TvPatientName.setText(patientGaurdianInfo.getName());
+                TvPatientNum.setText(patientGaurdianInfo.getNum());
+                Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
 
+            }
         });
+
         // 환자 정보 표시 끝 ----------------------------------------------------------------------------
 
 
@@ -205,9 +200,6 @@ public class GuardianMainActivity extends AppCompatActivity {
                 TvGuardianName.setText(NameResult);
                 TvGuardianNum.setText(NumResult);
                 // 파이어 베이스에 저장되도록 하기
-
-
-
             }
         }
     }

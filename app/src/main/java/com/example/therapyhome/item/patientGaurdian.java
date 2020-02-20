@@ -4,6 +4,8 @@ public class patientGaurdian {
     String name;
     String num;
 
+    public patientGaurdian() {}
+
     public patientGaurdian(String name, String num) {
         this.name = name;
         this.num = num;
