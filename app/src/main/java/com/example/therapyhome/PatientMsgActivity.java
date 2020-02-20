@@ -434,6 +434,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     //긴급알림 푸시 끝 -----------------------------------------------------------------------------------------
 
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -466,4 +467,12 @@ public class PatientMsgActivity extends AppCompatActivity {
     }
 
     }
+
+   @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
+    }
+}
 

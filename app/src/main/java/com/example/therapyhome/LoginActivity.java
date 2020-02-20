@@ -139,16 +139,19 @@ public class LoginActivity extends AppCompatActivity {
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), TutorialControlChoiceActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 } else if (com.equals("보호자")){
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 }else if (com.equals("의료진")) {
                                                     Log.i("파이어베이스 데이터 흐름", "7");
                                                     Intent intent = new Intent(getApplicationContext(), DoctorPatientListActivity.class);
                                                     startActivity(intent);
+                                                    LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
                                                 }
                                                 Log.i("파이어베이스 데이터 흐름", "8");
@@ -187,9 +190,19 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
+                LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
+
             }
         });
 
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
 }
 
