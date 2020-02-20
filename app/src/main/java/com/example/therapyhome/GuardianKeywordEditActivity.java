@@ -60,7 +60,7 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 핑;압[ㅇ;ㅅ, 감섹힉;
-                dtabaseReference.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
+                dtabaseReference.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if(dataSnapshot.hasChildren()){
