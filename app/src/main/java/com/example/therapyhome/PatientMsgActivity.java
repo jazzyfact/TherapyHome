@@ -265,8 +265,7 @@ public class PatientMsgActivity extends AppCompatActivity {
             result = intent.getExtras().getString("문자보내기");
             if(!msgCk.isEmpty()){
                 Log.i("문자보내기확인", msgCk);
-                smsMessageSent();
-                restart();
+
             } else if(msgCk.isEmpty()) {
                 Log.i("문자보내기확인", "빈값임");
             }
@@ -318,7 +317,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         bt_sendtext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                result = "";
+                result = "테스트";
 //                if (cb_sendagree_01.isChecked() == true)
 //                    result += cb_sendagree_01.getText().toString();
 //                if (cb_sendagree_02.isChecked() == true)
@@ -352,8 +351,8 @@ public class PatientMsgActivity extends AppCompatActivity {
     public void smsMessageSent() {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
-        Log.i("sms 메세지보내기",PatientMainSpSelectNum);
-        Log.i("문자보내기확인 번호", result);
+        Log.i("sms 메세지보내기", "1"+PatientMainSpSelectNum);
+        Log.i("문자보내기확인 번호", "2" + result);
 
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
@@ -370,7 +369,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         }, new IntentFilter(SENT));
 
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(PatientMainSpSelectNum, null, result, sentPI, deliveredPI);
+        sms.sendTextMessage(PatientMainSpSelectNum, null, msgCk, sentPI, deliveredPI);
 
     }
 
@@ -457,7 +456,6 @@ public class PatientMsgActivity extends AppCompatActivity {
                         Log.i("문자보내기확인", "빈값임");
                     }
                 }catch (Exception e){
-
                 }
             }
             else if(resultCode == RESULT_CANCELED)
@@ -466,7 +464,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         }
     }
 
-    }
+
 
    @Override
     protected void onPause() {
