@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -13,10 +14,15 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
+import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +34,8 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
     Button btMsg;
     Button bt_edit_msg, bt_edit_iot;
     Button BtEditMsg, BtEditIot;
+    Button btEmergencyCall; // 긴급호출 bt_patient_call
+
 
 
     @Override
@@ -54,6 +62,15 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                 Intent smartHomeIntent =new Intent(getApplicationContext(), PatientSmartHomeActivity.class);
                 startActivity(smartHomeIntent);
                 finish();
+            }
+        });
+
+        // 긴급호출 버튼
+        btEmergencyCall = findViewById(R.id.bt_patient_call);
+        btEmergencyCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FcmPushTest();
             }
         });
 
@@ -142,5 +159,57 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
 
         overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
+
+
+    //긴급알림 푸시 시작 -----------------------------------------------------------------------------------------
+    public void FcmPushTest(){
+
+        RequestQueue mRequestQue = Volley.newRequestQueue(this);
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("to", "/topics/" + "emergency");
+            JSONObject notificationObj = new JSONObject();
+            notificationObj.put("title", "emergency");
+            notificationObj.put("body", "긴급상황입니다!");
+            //replace notification with data when went send data
+            json.put("notification", notificationObj);
+            String URL = "https://fcm.googleapis.com/fcm/send";
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                    URL, json,
+                    new Response.Listener() {
+                        @Override
+                        public void onResponse(Object response) {
+                            Log.d("FCM", "onResponse: 전송 성공");
+                        }
+
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Failure Callback
+                            Log.d("MUR", "onError: " + error.networkResponse);
+                        }
+                    }) {
+                /**
+                 * URL 헤더에 제이슨 정보를 담아서 구글의 서버에 보내준다.s*
+                 */
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("content-type", "application/json");
+                    // 우리 앱 서비스키
+                    header.put("authorization", "key=AAAAerwEOd4:APA91bEjWgznvATDZozpLYijoHPyqGannB3XANIXDgtad5XgEX-rD6Iiw5-5rbwEuuhW62LaO3Z2UB8uMBRDHlsFV5VCEZ2NK7cPU42wLwS0551L-OvPHtK9fNbDXR1Mf0Wj0Jb0S1cZ"
+                    );
+                    return header;
+                }
+            };
+            mRequestQue.add(jsonObjReq);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    //긴급알림 푸시 끝 -----------------------------------------------------------------------------------------
+
 
 }

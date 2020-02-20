@@ -18,6 +18,7 @@ import com.example.therapyhome.CustomDialogSendMsgActivity;
 import com.example.therapyhome.PatientMsgActivity;
 import com.example.therapyhome.R;
 import com.example.therapyhome.item.PatientEditKeyWord;
+import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectMsg;
 
 import java.util.List;
 
@@ -77,12 +78,13 @@ public class PatientMsgAdapter extends RecyclerView.Adapter<PatientMsgAdapter.Vi
             @Override
             public void onClick(View v) {
                 // 커스텀 다이얼로그로 인텐트 보내기
-                String intentCk = "문자보내기";
-                Intent patientEdit = new Intent(v.getContext(), PatientMsgActivity.class);
-                patientEdit.putExtra("intentCk",intentCk);
-                patientEdit.putExtra("sendText",patientEditKeyWordList.get(position).getText());
-//                patientEdit.putExtra("sendNum",patientEditKeyWordList.get(position).getNum());
-                ((PatientMsgActivity)v.getContext()).startActivityForResult(new Intent(patientEdit), 0);
+                PatientMainSpSelectMsg = patientEditKeyWordList.get(position).getText();
+//                String intentCk = "문자보내기";
+//                Intent patientEdit = new Intent(v.getContext(), PatientMsgActivity.class);
+//                patientEdit.putExtra("intentCk",intentCk);
+//                patientEdit.putExtra("sendText",patientEditKeyWordList.get(position).getText());
+////                patientEdit.putExtra("sendNum",patientEditKeyWordList.get(position).getNum());
+//                ((PatientMsgActivity)v.getContext()).startActivityForResult(new Intent(patientEdit), 0);
 
             }
         });
