@@ -30,5 +30,10 @@ public class SplashActivity extends AppCompatActivity {
         //초반 플래시 화면에서 넘어갈때 뒤로가기 버튼 못누르게 함
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
+    }
 }
