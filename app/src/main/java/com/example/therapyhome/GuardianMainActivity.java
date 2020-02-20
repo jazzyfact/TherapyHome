@@ -3,6 +3,8 @@ package com.example.therapyhome;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -15,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.therapyhome.Adapter.PatientMsgAdapter;
+import com.example.therapyhome.item.DoctorMsg;
+import com.example.therapyhome.item.PatientEditKeyWord;
+import com.example.therapyhome.item.patientGaurdian;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +56,9 @@ public class GuardianMainActivity extends AppCompatActivity {
      */
 
     // 파이어베이스
-    private DatabaseReference databaseReference;
+    //파이어베이스 관련
+    patientGaurdian patientGuardian;
+    private DatabaseReference databaseReferenceGuardian;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,45 @@ public class GuardianMainActivity extends AppCompatActivity {
         // 내정보 표시하기
         TvGuardianName.setText(pwdck.getName());
         TvGuardianNum.setText(pwdck.getNum());
+
+
+
+        // 환자 정보 표시하기
+        // 파이어베이스에서 환자 정보를 받아와야한다.
+
+        // 환자 정보 시작 ---------------------------------------------------------------------------
+        Log.i("환자 정보 찾기 ", "onDataChange: " + "1");
+        // 파이어베이스 시작
+        Log.i("환자 정보 찾기 ", "onDataChange: " + "2");
+        databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("patientGuardian");
+        // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
+        databaseReferenceGuardian.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.i("환자 정보 찾기 ", "onDataChange: " + "3");
+                databaseReferenceGuardian.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        patientGuardian = dataSnapshot.getValue(patientGaurdian.class);
+                        TvPatientName.setText(patientGuardian.getName());
+                        TvPatientNum.setText(patientGuardian.getName());
+
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+
+        });
+        // 환자 정보 표시 끝 ----------------------------------------------------------------------------
+
+
+        // 의사정보 표시하기
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override

@@ -11,11 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 public class PatientMainActivity extends AppCompatActivity {
 
     Button btnSendMsg, btnSmartHome;
+    public static String PatientMainSpSelectNum;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_main);
+
+
 //
 //        btnSendMsg = findViewById(R.id.bt_send_message);
 //        btnSmartHome = findViewById(R.id.bt_smart_home);

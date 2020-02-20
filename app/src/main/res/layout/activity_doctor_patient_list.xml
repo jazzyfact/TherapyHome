@@ -46,10 +46,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_docterview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20sp">
 
         </androidx.recyclerview.widget.RecyclerView>
-
 
 
     </LinearLayout>

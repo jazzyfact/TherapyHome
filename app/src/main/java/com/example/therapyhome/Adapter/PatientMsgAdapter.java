@@ -78,10 +78,12 @@ public class PatientMsgAdapter extends RecyclerView.Adapter<PatientMsgAdapter.Vi
             public void onClick(View v) {
                 // 커스텀 다이얼로그로 인텐트 보내기
                 String intentCk = "문자보내기";
-                Intent patientEdit = new Intent(v.getContext(), CustomDialogSendMsgActivity.class);
+                Intent patientEdit = new Intent(v.getContext(), PatientMsgActivity.class);
                 patientEdit.putExtra("intentCk",intentCk);
                 patientEdit.putExtra("sendText",patientEditKeyWordList.get(position).getText());
-                ((Activity) v.getContext()).startActivity(patientEdit);
+//                patientEdit.putExtra("sendNum",patientEditKeyWordList.get(position).getNum());
+                ((PatientMsgActivity)v.getContext()).startActivityForResult(new Intent(patientEdit), 0);
+
             }
         });
     }

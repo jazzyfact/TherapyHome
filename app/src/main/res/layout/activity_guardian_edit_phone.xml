@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="0sp"
         android:layout_margin="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/bt_guardian_add"
+        app:layout_constraintBottom_toTopOf="@+id/bt_guardian_contactNum_add"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:layout_editor_absoluteX="20dp">
 
