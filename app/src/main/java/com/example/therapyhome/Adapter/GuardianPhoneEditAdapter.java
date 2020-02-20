@@ -89,7 +89,6 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
                 patientEdit.putExtra("intentCk",intentCk);
                 patientEdit.putExtra("name",guardianPhoneEditList.get(position).getName());
                 patientEdit.putExtra("num",guardianPhoneEditList.get(position).getNum());
-
                 ((Activity) v.getContext()).startActivity(patientEdit);
 
             }
@@ -103,7 +102,6 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
                 patientEdit.putExtra("intentCk",intentCk);
                 patientEdit.putExtra("name",guardianPhoneEditList.get(position).getName());
                 patientEdit.putExtra("num",guardianPhoneEditList.get(position).getNum());
-
                 ((Activity) v.getContext()).startActivity(patientEdit);
 
             }

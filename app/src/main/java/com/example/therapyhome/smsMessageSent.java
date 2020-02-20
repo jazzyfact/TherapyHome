@@ -14,5 +14,4 @@ public class smsMessageSent {
      * 건들지 말것
      */
 
-
 }

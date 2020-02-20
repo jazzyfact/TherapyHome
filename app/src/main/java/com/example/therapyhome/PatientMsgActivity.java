@@ -1,6 +1,7 @@
 package com.example.therapyhome;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -56,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
+import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectNum;
 
 public class PatientMsgActivity extends AppCompatActivity {
 
@@ -77,6 +79,10 @@ public class PatientMsgActivity extends AppCompatActivity {
     Button btnPatientCall;
     //메세지 테스트
     String msgCk;
+    String msgNum;
+
+    // 리사이클러뷰 리퀘스트 코드
+    int REQUEST_CODE = 0;
 
 
     // 스피너
@@ -87,6 +93,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     // 스피너에서 선택한 번호 담을 string
     ArrayList<String> spMsgPhoneSelectArray;
     String spSelectNum;
+    String spPhone;
 
     // 파이어 베이스
     private DatabaseReference databaseReference;
@@ -96,6 +103,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     RecyclerView rvPatientMsg;
     RecyclerView.Adapter rvPatientMsgAdapter;
     // 환자텍스트를 가져올 어레이 리스트
+    PatientEditKeyWord patientEditMsg;
     private List<PatientEditKeyWord> rvPatientMsgList = new ArrayList<>();
     //파이어베이스 관련
     PatientEditKeyWord rvPatientClass;
@@ -140,11 +148,13 @@ public class PatientMsgActivity extends AppCompatActivity {
                             spMsgSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    Toast.makeText(getApplicationContext(),spMsgSelectArray.get(position)+"가 선택되었습니다.",
+                                    Toast.makeText(getApplicationContext(),spMsgPhoneSelectArray.get(position)+"가 선택되었습니다.",
                                             Toast.LENGTH_SHORT).show();
-                                    spSelectNum = spMsgPhoneSelectArray.get(position);
-                                    Bundle bundle = new Bundle();
-                                    bundle.putString("phoneNum",spSelectNum);
+                                    PatientMainSpSelectNum = spMsgPhoneSelectArray.get(position);
+                                    Log.i("스피너 셀렉", "onDataChange: " + spPhone);
+                                    /**
+                                     * 여기 보기
+                                     */
 
                                 }
 
@@ -189,6 +199,9 @@ public class PatientMsgActivity extends AppCompatActivity {
                         if(dataSnapshot.hasChildren()){
                             for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                                 rvPatientClass = dataSnapshot1.getValue(PatientEditKeyWord.class);
+//                                patientEditMsg.set(rvPatientClass);
+//                                patientEditMsg.setNum(spPhone);
+//                                patientEditMsg.setText(rvPatientClass.getText());
                                 rvPatientMsgList.add(rvPatientClass);
                                 Log.i("환자키워드편집 리스트1", "onDataChange: " + "1");
                                 Log.i("환자키워드편집 리스트2", "onDataChange: " + rvPatientClass.toString());
@@ -198,6 +211,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                                 rvPatientMsg.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                                 rvPatientMsgAdapter = new PatientMsgAdapter(rvPatientMsgList);
                                 rvPatientMsg.setAdapter(rvPatientMsgAdapter);
+
                             }
                         }
                     }
@@ -252,6 +266,7 @@ public class PatientMsgActivity extends AppCompatActivity {
             if(!msgCk.isEmpty()){
                 Log.i("문자보내기확인", msgCk);
                 smsMessageSent();
+                restart();
             } else if(msgCk.isEmpty()) {
                 Log.i("문자보내기확인", "빈값임");
             }
@@ -303,7 +318,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         bt_sendtext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                result = "";
+//                result = "";
 //                if (cb_sendagree_01.isChecked() == true)
 //                    result += cb_sendagree_01.getText().toString();
 //                if (cb_sendagree_02.isChecked() == true)
@@ -326,7 +341,7 @@ public class PatientMsgActivity extends AppCompatActivity {
 //                it.putExtra("sms_body", result);
 //                startActivity(it);
                 smsMessageSent();
-                restart();
+//                restart();
 
 
             }
@@ -337,7 +352,8 @@ public class PatientMsgActivity extends AppCompatActivity {
     public void smsMessageSent() {
         String SENT = "SMS_SENT";
         String DELIVERED = "SMS_DELIVERED";
-
+        Log.i("sms 메세지보내기",PatientMainSpSelectNum);
+        Log.i("문자보내기확인 번호", result);
 
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
@@ -354,7 +370,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         }, new IntentFilter(SENT));
 
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(spSelectNum, null, result, sentPI, deliveredPI);
+        sms.sendTextMessage(PatientMainSpSelectNum, null, result, sentPI, deliveredPI);
 
     }
 
@@ -416,10 +432,47 @@ public class PatientMsgActivity extends AppCompatActivity {
         }
     }
     //긴급알림 푸시 끝 -----------------------------------------------------------------------------------------
+
+
+
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == REQUEST_CODE)
+        {
+            if(resultCode == RESULT_OK)
+            {
+                try {
+                    Intent intent = getIntent();
+                    msgCk = intent.getExtras().getString("sendText");
+                    msgNum = intent.getExtras().getString("sendNum");
+                    Log.i("문자보내기확인", msgCk);
+                    Log.i("문자보내기확인 번호", msgNum);
+//                    result = intent.getExtras().getString("문자보내기");
+                    if(!msgCk.isEmpty()){
+                        Log.i("문자보내기확인", msgCk);
+                        Log.i("문자보내기확인 번호", msgNum);
+                        smsMessageSent();
+                    } else if(msgCk.isEmpty()) {
+                        Log.i("문자보내기확인", "빈값임");
+                    }
+                }catch (Exception e){
+
+                }
+            }
+            else if(resultCode == RESULT_CANCELED)
+            {
+            }
+        }
+    }
+
+    }
+
+   @Override
     protected void onPause() {
         super.onPause();
 
         overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
 }
+
