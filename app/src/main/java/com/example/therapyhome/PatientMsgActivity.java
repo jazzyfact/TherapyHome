@@ -57,6 +57,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
+import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectMsg;
 import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectNum;
 
 public class PatientMsgActivity extends AppCompatActivity {
@@ -253,7 +254,6 @@ public class PatientMsgActivity extends AppCompatActivity {
                 Intent msgIntent =new Intent(getApplicationContext(), PatientMsgActivity.class);
                 msgIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(msgIntent);
-                finish();
             }
         });
 
@@ -369,7 +369,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         }, new IntentFilter(SENT));
 
         SmsManager sms = SmsManager.getDefault();
-        sms.sendTextMessage(PatientMainSpSelectNum, null, msgCk, sentPI, deliveredPI);
+        sms.sendTextMessage(PatientMainSpSelectNum, null, PatientMainSpSelectMsg, sentPI, deliveredPI);
 
     }
 

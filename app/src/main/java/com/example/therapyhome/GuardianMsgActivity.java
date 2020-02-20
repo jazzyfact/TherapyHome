@@ -18,6 +18,11 @@ import java.util.List;
 
 public class GuardianMsgActivity extends AppCompatActivity {
     Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
+
+    /**
+     * 사용안함
+     */
+
     // 리사이클러뷰 변수선언
     private RecyclerView rvGuardianview; // 리사이클러뷰
     private RecyclerView.Adapter adapter; // 어댑터

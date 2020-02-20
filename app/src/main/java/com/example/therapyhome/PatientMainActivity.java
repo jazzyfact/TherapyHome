@@ -12,6 +12,7 @@ public class PatientMainActivity extends AppCompatActivity {
 
     Button btnSendMsg, btnSmartHome;
     public static String PatientMainSpSelectNum;
+    public static String PatientMainSpSelectMsg;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
