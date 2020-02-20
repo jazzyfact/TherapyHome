@@ -47,8 +47,6 @@ public class GuardianMainActivity extends AppCompatActivity {
     TextView TvDocterNum;
     TextView TvDocterEmergency;
 
-    patientGaurdian patientGaurdianInfo;
-
     /**
      * 2020 02 17 진행해야할사항
      * 1. 연락처 편집을 하면 연락처 편집이 되게
@@ -62,6 +60,11 @@ public class GuardianMainActivity extends AppCompatActivity {
     //파이어베이스 관련
     patientGaurdian patientGuardian;
     private DatabaseReference databaseReferenceGuardian;
+    patientGaurdian patientGaurdianInfo;
+    patientGaurdian docterGaurdianInfo;
+    // 환자 정보를 받아오는 String
+    String patientId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +104,6 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         // 환자 정보 시작 ---------------------------------------------------------------------------
         Log.i("환자 정보 찾기 ", "onDataChange: " + "1");
-        // 파이어베이스 시작
-        Log.i("환자 정보 찾기 ", "onDataChange: " + "2");
         databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("patientGuardian");
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
 
@@ -112,8 +113,10 @@ public class GuardianMainActivity extends AppCompatActivity {
                 // patientGuardian 에서 등록된 환자를 찾는다.
                 // 해당하는 환자가 있으면 정보를 받아온다.
                 patientGaurdianInfo = dataSnapshot.getValue(patientGaurdian.class);
+                patientId = patientGaurdianInfo.getName();
                 TvPatientName.setText(patientGaurdianInfo.getName());
                 TvPatientNum.setText(patientGaurdianInfo.getNum());
+                Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
                 Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
             }
             @Override
@@ -125,7 +128,45 @@ public class GuardianMainActivity extends AppCompatActivity {
         // 환자 정보 표시 끝 ----------------------------------------------------------------------------
 
 
-        // 의사정보 표시하기
+        // 의사정보 표시하기 시작 -----------------------------------------------------------------------
+
+        /**
+         * 의사정보 받아오기 로직
+         * 1. 보호자에 저장된 환자의 이름을 가져온다.
+         * 2. user path 에 가서 comId를 가져온다
+         * 3. 가져온 comId를 검색한다.
+         * 4. 해당하는 의사의 번호를 가져온다.
+         *
+         * 1. 보호자에 저장된 환자의 이름을 가져온다.
+         * 2. user path 에 가서 comId를 가져온다.
+         */
+//
+//        // 파이어베이스 시작
+//        Log.i("의사 정보 찾기 ", "onDataChange: " + "2");
+//        databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("docterPatient");
+//        // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
+//
+//        databaseReferenceGuardian.child("22").addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                // patientGuardian 에서 등록된 환자를 찾는다.
+//                // 해당하는 환자가 있으면 정보를 받아온다.
+//                docterGaurdianInfo = dataSnapshot.getValue(patientGaurdian.class);
+//                TvDocterName.setText(docterGaurdianInfo.getName());
+//                TvDocterNum.setText(docterGaurdianInfo.getNum());
+//                Log.i("의사 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
+
+
+
+
+        // 의사정보 표시하기 끝 ------------------------------------------------------------------------
 
         Button.OnClickListener onClickListener = new Button.OnClickListener() {
             @Override
@@ -210,7 +251,6 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
-
 
     }
 

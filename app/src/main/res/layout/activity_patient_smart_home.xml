@@ -79,14 +79,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="가습기"
+                android:text="공기청정기"
                 android:textColor="#000"
                 android:textFontWeight="800"
                 android:textSize="25sp"
                 android:layout_weight="1"/>
 
             <Switch
-                android:id="@+id/st_water_onoff"
+                android:id="@+id/st_pan_onoff"
                 android:layout_width="50sp"
                 android:layout_height="50sp"/>
 
