@@ -25,7 +25,6 @@ import java.util.List;
 public class PatientMsgAdapter extends RecyclerView.Adapter<PatientMsgAdapter.ViewHolder> {
 
     /**
-     *
      * 환자 텍스트 수정해주는 어댑터
      * (환자화면임)
      */

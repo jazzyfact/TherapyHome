@@ -1,5 +1,7 @@
 package com.example.therapyhome.Adapter;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.therapyhome.CustomDialogActivity;
+import com.example.therapyhome.CustomDialogMsgActivity;
 import com.example.therapyhome.R;
 import com.example.therapyhome.item.GuardianMsg;
 import com.example.therapyhome.item.PatientEditKeyWord;
@@ -68,18 +72,25 @@ public class GuardianEditKeyWordAdapter extends RecyclerView.Adapter<GuardianEdi
 
     // 뷰홀더-내용물 연결하기
     @Override
-    public void onBindViewHolder(@NonNull GuardianEditKeyWordAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull GuardianEditKeyWordAdapter.ViewHolder holder, final int position) {
         holder.itemGuardianEditTv.setText(patientEditKeyWordList.get(position).getText());
         holder.ivGuardianEditKeyEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "수정버튼 눌렀음", Toast.LENGTH_SHORT).show();
+                // 커스텀 다이얼로그로 인텐트 보내기
+                String intentCk = "데이터수정";
+                Intent patientEdit = new Intent(v.getContext(), CustomDialogMsgActivity.class);
+                patientEdit.putExtra("intentCk",intentCk);
+                patientEdit.putExtra("name",patientEditKeyWordList.get(position).getText());
+                ((Activity) v.getContext()).startActivity(patientEdit);
             }
         });
         holder.ivGuardianEditKeyRe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(v.getContext(), "삭제버튼 눌렀음", Toast.LENGTH_SHORT).show();
+
             }
         });
 
