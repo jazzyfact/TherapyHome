@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.example.therapyhome.Adapter.PatientMsgAdapter;
 import com.example.therapyhome.item.DoctorMsg;
 import com.example.therapyhome.item.PatientEditKeyWord;
+import com.example.therapyhome.item.docterPatient;
 import com.example.therapyhome.item.patientGaurdian;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -60,8 +61,9 @@ public class GuardianMainActivity extends AppCompatActivity {
     //파이어베이스 관련
     patientGaurdian patientGuardian;
     private DatabaseReference databaseReferenceGuardian;
+    private DatabaseReference databaseReferenceGuardianDocter;
     patientGaurdian patientGaurdianInfo;
-    patientGaurdian docterGaurdianInfo;
+    docterPatient docterGaurdianInfo;
     // 환자 정보를 받아오는 String
     String patientId;
 
@@ -117,7 +119,27 @@ public class GuardianMainActivity extends AppCompatActivity {
                 TvPatientName.setText(patientGaurdianInfo.getName());
                 TvPatientNum.setText(patientGaurdianInfo.getNum());
                 Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
-                Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
+                Log.i("환자 정보 찾기 ", "onDataChange: " + patientId);
+                Log.i("의사 정보 찾기 ", "onDataChange: " + databaseReferenceGuardian.toString());
+                databaseReferenceGuardianDocter = FirebaseDatabase.getInstance().getReference("/docterPatient/"+patientId);
+                Log.i("의사 정보 찾기 ", "onDataChange: " + databaseReferenceGuardianDocter.toString());
+                databaseReferenceGuardianDocter.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+                        // patientGuardian 에서 등록된 환자를 찾는다.
+                        // 해당하는 환자가 있으면 정보를 받아온다.
+                        docterGaurdianInfo = dataSnapshot2.getValue(docterPatient.class);
+                        Log.i("의사 정보 찾기 ", "onDataChange: " + docterGaurdianInfo.getName());
+                        TvDocterName.setText(String.valueOf(docterGaurdianInfo.getName()));
+                        TvDocterNum.setText(docterGaurdianInfo.getNum());
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -140,7 +162,7 @@ public class GuardianMainActivity extends AppCompatActivity {
          * 1. 보호자에 저장된 환자의 이름을 가져온다.
          * 2. user path 에 가서 comId를 가져온다.
          */
-//
+
 //        // 파이어베이스 시작
 //        Log.i("의사 정보 찾기 ", "onDataChange: " + "2");
 //        databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("docterPatient");
@@ -161,8 +183,8 @@ public class GuardianMainActivity extends AppCompatActivity {
 //
 //            }
 //        });
-
-
+//
+//
 
 
 
