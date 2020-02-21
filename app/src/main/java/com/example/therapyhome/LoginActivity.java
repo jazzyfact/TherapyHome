@@ -10,12 +10,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -60,6 +62,11 @@ public class LoginActivity extends AppCompatActivity {
     RadioButton cbloginGuaridanBox; // 보호자 체크
     RadioButton cbLoginDocterBox;//의사체크
 
+//    키보드 레이아웃 :tl_enter_id
+    com.google.android.material.textfield.TextInputLayout tlEnterId;
+    LinearLayout llLogin;//ll_login
+    InputMethodManager imm;
+
     EditText etEnterId;
     EditText etEnterPwd;
 //
@@ -77,6 +84,16 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         etEnterId = findViewById(R.id.et_enter_id);
         etEnterPwd = findViewById(R.id.et_enter_pwd);
+
+//        키보드 감추기
+        llLogin = findViewById(R.id.ll_login);
+        llLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               imm=(InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+               imm.hideSoftInputFromWindow(etEnterId.getWindowToken(), 0);
+            }
+        });
 
         // 파이어 베이스 fcm (주제로 메세지 보내는것)
         FirebaseMessaging.getInstance().subscribeToTopic("emergency")

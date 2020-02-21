@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -63,6 +64,7 @@ public class CustomDialogActivity extends Activity {
      * 커스텀 다이얼로그 받는 로직 (각자 다른 액티비티에서 커스텀다이얼로그를 띄우게 하려면 )
      *  1. 각 액티비티에서 클릭리스너에 인텐트를 담아서 커스텀 다이얼로그에 보낸다
      *  2. 커스텀 다이얼로그 자바 코드 (이곳) 에서 받은 인텐트에 for문을 이용해서 구분한다.
+     *  3. 긴급
      *
      * @param savedInstanceState
      */
@@ -90,23 +92,30 @@ public class CustomDialogActivity extends Activity {
         if(intentCk.equals("연락처추가")){
 
             // 파이어 베이스 데이터 주소
-            databaseReference = FirebaseDatabase.getInstance().getReference("contactNumber");
+            databaseReference = FirebaseDatabase.getInstance().getReference("/contactNumber");
 
             // TODO: 2020-02-18 데이터 추가하기 -------------------------------------------------------- 
 
             addName = TvSubtitleName.getText().toString();
             addNum = TvSubtitleNum.getText().toString();
+            emergencyCk = "N";
 
             Log.i("연락처 추가 입력확인", "onCreate: " +addName);
             Log.i("연락처 추가 입력확인", "onCreate: " +addNum);
-
-
             // 체크박스가 체크 되었는지 안되었는지 확인하기
-            if(cbAgreeEmergecy.isChecked()){
-                emergencyCk = "Y";
-            }else {
-                emergencyCk = "N";
-            }
+            cbAgreeEmergecy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(cbAgreeEmergecy.isChecked()){
+                        emergencyCk = "Y";
+                        Log.i("체크박스 체크 ",  emergencyCk);
+                    }else {
+                        emergencyCk = "N";
+                        Log.i("체크박스 체크",  emergencyCk);
+                    }
+                }
+            });
+
             okButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -116,11 +125,13 @@ public class CustomDialogActivity extends Activity {
                     setResult(RESULT_OK,intent1);
                     Log.i("연락처 추가 입력확인",  TvSubtitleName.getText().toString());
                     Log.i("연락처 추가 입력확인",  TvSubtitleNum.getText().toString());
-                    Log.i("연락처 추가 입력확인",  emergencyCk);
+                    Log.i("연락처 추가 입력확인",  "뭐지"+emergencyCk);
                     // 파이어베이스 저장하기
                     // 파이어베이스에 저장할 클래스 만들기
                     PhoneContactEdit makeId = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
                     databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).setValue(makeId);
+                    Intent edit = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
+                    startActivity(edit);
                     finish();
                 }
             });
@@ -152,16 +163,27 @@ public class CustomDialogActivity extends Activity {
             // 리사이클러뷰에서 받아온 정보
             editName =  intent.getExtras().getString("name");
             editNum =  intent.getExtras().getString("num");
+            emergencyCk = intent.getExtras().getString("ckbox");
 
             // 받아온 정보 에디트 텍스트에 저장시키기
             TvSubtitleName.setText(editName);
             TvSubtitleNum.setText(editNum);
-
-            if(cbAgreeEmergecy.isChecked()){
-                emergencyCk = "Y";
+            // 긴급 연락처 체크되었는지 확인하기
+            if (emergencyCk.equals("Y")){
+                cbAgreeEmergecy.setChecked(true);
             }else {
-                emergencyCk = "N";
+                cbAgreeEmergecy.setChecked(false);
             }
+            cbAgreeEmergecy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if(cbAgreeEmergecy.isChecked()){
+                        emergencyCk = "Y";
+                    }else {
+                        emergencyCk = "N";
+                    }
+                }
+            });
 
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -196,12 +218,22 @@ public class CustomDialogActivity extends Activity {
                     PhoneContactEdit editPhone = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
                     userValue = editPhone.toMap();
                     Log.i("수정하기체크", "onDataChange: ");
-                    databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
                     databaseReference.child(pwdck.getId()).child(editName).removeValue();
+                    databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
                     Log.i("수정하기체크", "onDataChange: ");
+                    Intent edit = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
+                    startActivity(edit);
                     finish();
                 }
             });
+
+            cancelButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                }
+            });
+
             // ---------------------------------------------------------------------------------
 
 
@@ -213,12 +245,7 @@ public class CustomDialogActivity extends Activity {
              * 리사이클러뷰에서 연락처 삭제인지 아닌지 인텐트로 값 받아오기
              *
              */
-
-
-
         }
-
-
     }
 
     @Override

@@ -35,7 +35,7 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
 
     RecyclerView rvGuardianEditKey;
     RecyclerView.Adapter rvGuardianEditKeyAdapter;
-    // 환자의 연락처를 가져올 어레이 리스트
+    // 환자의 키워드를 가져올 어레이 리스트
     private List<PatientEditKeyWord> guardianEditKeyList = new ArrayList<>();
     PatientEditKeyWord patientEditKey;
     DatabaseReference dtabaseReference;

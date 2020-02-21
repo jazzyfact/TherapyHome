@@ -57,8 +57,12 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
+
+//수정
+
 import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectMsg;
 import static com.example.therapyhome.PatientMainActivity.PatientMainSpSelectNum;
+
 
 public class PatientMsgActivity extends AppCompatActivity {
 

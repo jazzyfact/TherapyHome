@@ -3,6 +3,7 @@ package com.example.therapyhome.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,6 +53,7 @@ public class GuardianEditKeyWordAdapter extends RecyclerView.Adapter<GuardianEdi
         TextView itemGuardianEditTv;
         ImageView ivGuardianEditKeyEdit;
         ImageView ivGuardianEditKeyRe;
+        FrameLayout itemContactEditEmergencySelect;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -59,6 +61,7 @@ public class GuardianEditKeyWordAdapter extends RecyclerView.Adapter<GuardianEdi
             itemGuardianEditTv = itemView.findViewById(R.id.item_editKeyword_textview);
             ivGuardianEditKeyEdit =  itemView.findViewById(R.id.iv_guardianEditKey_edit);
             ivGuardianEditKeyRe = itemView.findViewById(R.id.iv_guardianEditKey_re);
+
 
         }
     }
@@ -79,6 +82,10 @@ public class GuardianEditKeyWordAdapter extends RecyclerView.Adapter<GuardianEdi
                 Toast.makeText(v.getContext(), "삭제버튼 눌렀음", Toast.LENGTH_SHORT).show();
             }
         });
+
+
+
+
     }
 
 }
