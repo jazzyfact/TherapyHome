@@ -297,7 +297,8 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 BtEditMsg.performClick();
-
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
                             }
                         }, 1);
                         isTouch = false;
@@ -326,7 +327,8 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 btEmergencyCall.performClick();
-
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
                             }
                         }, 1);
                         isTouch = false;
@@ -355,6 +357,8 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 BtLightOnOff.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
                             }
                         }, 1);
                         isTouch = false;
@@ -383,18 +387,18 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 BtPanOnOff.performClick();
-
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
                             }
                         }, 1);
                         isTouch = false;
                     }
                 }
-
             } else {
                 if (isTouch) {
                     isTouch = false;
                     touchStart = 0;
-                    cursor.setText("0");
+                    cursor.setText("");
                 }
             }
 

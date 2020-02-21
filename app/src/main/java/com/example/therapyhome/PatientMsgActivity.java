@@ -17,12 +17,18 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -44,6 +50,12 @@ import com.example.therapyhome.item.PatientEditKeyWord;
 import com.example.therapyhome.item.PhoneContactEdit;
 import com.example.therapyhome.item.docterPatient;
 import com.example.therapyhome.item.patientGaurdian;
+import com.google.android.gms.vision.CameraSource;
+import com.google.android.gms.vision.Detector;
+import com.google.android.gms.vision.MultiProcessor;
+import com.google.android.gms.vision.Tracker;
+import com.google.android.gms.vision.face.Face;
+import com.google.android.gms.vision.face.FaceDetector;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +65,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -124,9 +137,27 @@ public class PatientMsgActivity extends AppCompatActivity {
     private DatabaseReference databaseReferenceMSG2;
     private DatabaseReference databaseReferenceMSG3;
 
+    // 페이스 트래킹 변수 시작 ------------------------------------------------------------------------
+    private static final String TAG = "MainActivity";
+    int touchView;
+    Button cursor;
+    CameraSource cameraSource;
+    Handler handler = new Handler();
+    float face_x, move_x;
+    float face_y, move_y;
+    float deviceWidth;
+    float deviceHeight;
+    boolean isTouch = false;
+    long touchStart = 0;
+    long touchNow = 0;
+    long touchTime = 0;
+    // 페이스 트래킹 변수 끝 ------------------------------------------------------------------------
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON,
+                WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
         // 리사이클러뷰에서 넘어온 메세지 확인
@@ -476,6 +507,32 @@ public class PatientMsgActivity extends AppCompatActivity {
             }
         });
 
+        // 페이스 트래킹 온크리에이트 시작 ------------------------------------------------------------------------
+
+        // 기기 화면 크기
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        deviceWidth = size.x;
+        deviceHeight = size.y;
+
+        // 커서 버튼 맨 앞으로
+        cursor = findViewById(R.id.cursor);
+        cursor.setVisibility(View.VISIBLE);
+        cursor.setX(deviceWidth/2);
+        cursor.setY(deviceHeight/2);
+        cursor.bringToFront();
+
+        // 카메라 권한 있으면, 카메라에서 리소스 받아오기
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            createCameraSource();
+        }
+        // 페이스 트래킹 온크리에이트 끝 ------------------------------------------------------------------------
+
     }
     // 문자 발송 시작 ----------------------------------------------------------------------------------
     public void smsMessageSent() {
@@ -599,13 +656,349 @@ public class PatientMsgActivity extends AppCompatActivity {
         }
     }
 
+    // 페이스 트래킹 메서드 시작 ------------------------------------------------------------------------
+    //This class will use google vision api to detect eyes
+    private class EyesTracker extends Tracker<Face> {
+
+        // 문턱. 눈 뜰 확률.
+        private final float THRESHOLD = 0.75f;
+
+        private EyesTracker() {
+
+        }
+
+        @Override
+        public void onUpdate(Detector.Detections<Face> detections, Face face) {
+
+            // 얼굴점 좌표 구하기
+            PointF leftEyePosition = face.getLandmarks().get(4).getPosition();
+            PointF rightEyePosition = face.getLandmarks().get(10).getPosition();
+            face_x = (leftEyePosition.x + rightEyePosition.x) / 2;
+            face_y = (leftEyePosition.y + rightEyePosition.y) / 2;
+
+            System.out.println("face_x : " + face_x);
+            System.out.println("face_y : " + face_y);
+
+            move_x = 6 * Math.abs(deviceWidth/2 - face_x);
+            move_y = 12 * Math.abs(deviceHeight/2 - face_y);
+
+            // 커서 이동
+            cursor.setX(deviceWidth - (deviceWidth - move_x));
+            cursor.setY(deviceHeight - move_y); // 경계넘어갈 경우도 생각해보자.
+
+            if (BtEditIot.getX() <= cursor.getX() && cursor.getX() <= BtEditIot.getX() + BtEditIot.getWidth()
+                    && BtEditIot.getY() <= cursor.getY() && cursor.getY() <= BtEditIot.getY() + BtEditIot.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                BtEditIot.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else if (btnPatientCall.getX() <= cursor.getX() && cursor.getX() <= btnPatientCall.getX() + btnPatientCall.getWidth()
+                    && btnPatientCall.getY() <= cursor.getY() && cursor.getY() <= btnPatientCall.getY() + btnPatientCall.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                btnPatientCall.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else if (mbMsg1.getX() <= cursor.getX() && cursor.getX() <= mbMsg1.getX() + mbMsg1.getWidth()
+                    && mbMsg1.getY() <= cursor.getY() && cursor.getY() <= mbMsg1.getY() + mbMsg1.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                mbMsg1.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else if (mbMsg2.getX() <= cursor.getX() && cursor.getX() <= mbMsg2.getX() + mbMsg2.getWidth()
+                    && mbMsg2.getY() <= cursor.getY() && cursor.getY() <= mbMsg2.getY() + mbMsg2.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                mbMsg2.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else if (mbMsg3.getX() <= cursor.getX() && cursor.getX() <= mbMsg3.getX() + mbMsg3.getWidth()
+                    && mbMsg3.getY() <= cursor.getY() && cursor.getY() <= mbMsg3.getY() + mbMsg3.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                mbMsg3.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else if (bt_sendtext.getX() <= cursor.getX() && cursor.getX() <= bt_sendtext.getX() + bt_sendtext.getWidth()
+                    && bt_sendtext.getY() <= cursor.getY() && cursor.getY() <= bt_sendtext.getY() + bt_sendtext.getHeight()) {
+                if (!isTouch) {
+                    touchStart = System.currentTimeMillis();
+                    isTouch = true;
+                } else {
+                    touchNow = System.currentTimeMillis();
+                    touchTime = touchNow - touchStart;
+                    System.out.println(touchTime);
+                    if (1000 < touchTime && touchTime < 2000) {
+                        cursor.setText("1");
+                    } else if (2000 < touchTime && touchTime < 3000) {
+                        cursor.setText("2");
+                    } else if (3000 < touchTime && touchTime < 4000) {
+                        cursor.setText("3");
+                    } else if (4000 < touchTime && touchTime < 5000) {
+                        cursor.setText("4");
+                    } else if (touchTime > 5000) {
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                cursor.setText("5");
+                                bt_sendtext.performClick();
+                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+                                cursor.setText("");
+                            }
+                        }, 1);
+                        isTouch = false;
+                    }
+                }
+            } else {
+                if (isTouch) {
+                    isTouch = false;
+                    touchStart = 0;
+                    cursor.setText("");
+                }
+            }
 
 
-   @Override
+
+            if (face.getIsLeftEyeOpenProbability() > THRESHOLD || face.getIsRightEyeOpenProbability() > THRESHOLD) {
+                Log.i(TAG, "onUpdate: Eyes Detected");
+                showStatus("Eyes Detected and open, so video continues");
+//                if (!videoView.isPlaying())
+//                    videoView.start();
+
+            }
+            else {
+//                if (videoView.isPlaying())
+//                    videoView.pause();
+
+                showStatus("Eyes Detected and closed, so video paused");
+            }
+        }
+
+        @Override
+        public void onMissing(Detector.Detections<Face> detections) {
+            super.onMissing(detections);
+            showStatus("Face Not Detected yet!");
+        }
+
+        @Override
+        public void onDone() {
+            super.onDone();
+        }
+    }
+
+    private class FaceTrackerFactory implements MultiProcessor.Factory<Face> {
+
+        private FaceTrackerFactory() {
+
+        }
+
+        @Override
+        public Tracker<Face> create(Face face) {
+            return new EyesTracker();
+        }
+    }
+
+    public void createCameraSource() {
+        FaceDetector detector = new FaceDetector.Builder(this)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .setTrackingEnabled(true) // 얼굴 일관된 아이디
+                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS) // 눈뜨감, 웃음 여부
+                .setProminentFaceOnly(true) // 주요얼굴만
+                .setMode(FaceDetector.FAST_MODE) // 정확도 속도 선택.
+                .build();
+        detector.setProcessor(new MultiProcessor.Builder(new FaceTrackerFactory()).build());
+
+        cameraSource = new CameraSource.Builder(this, detector)
+                .setRequestedPreviewSize(1024, 768)
+                .setFacing(CameraSource.CAMERA_FACING_FRONT)
+                .setRequestedFps(30.0f)
+                .build();
+
+        try {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                return;
+            }
+            cameraSource.start();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void showStatus(final String message) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+//                textView.setText(message);
+            }
+        });
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        if (cameraSource != null) {
+            try {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                cameraSource.start();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    @Override
     protected void onPause() {
         super.onPause();
+        overridePendingTransition(0, 0);//엑티비티 종료 시 애니메이션 없애기
 
-        overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
+        if (cameraSource!=null) {
+            cameraSource.stop();
+        }
+//        if (videoView.isPlaying()) {
+//            videoView.pause();
+//        }
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (cameraSource!=null) {
+            cameraSource.release();
+        }
+    }
+    // 페이스 트래킹 메서드 끝 ------------------------------------------------------------------------
 }
 
