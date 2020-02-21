@@ -77,7 +77,7 @@ public class PatientMsgActivity extends AppCompatActivity {
     CheckBox cb_sendagree_08;
 
     Button bt_sendtext, btSmartHome;
-    Button BtEditIot, BtEditMsg;
+    Button BtEditIot, BtEditMsg, mbMsg1, mbMsg2, mbMsg3;//mb_msg_1, mb_msg_2, mb_msg_3 환자창 메세지
 
     String result;
 
@@ -121,7 +121,10 @@ public class PatientMsgActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
         // 리사이클러뷰에서 넘어온 메세지 확인
 
-
+//        환자 메세지 버튼 가져오기 mb_msg_1, mb_msg_2, mb_msg_3
+        mbMsg1 = (Button) findViewById(R.id.mb_msg_1);
+        mbMsg2 = (Button) findViewById(R.id.mb_msg_2);
+        mbMsg3 = (Button) findViewById(R.id.mb_msg_3);
 
         // 스피너에 파이어베이스 구현 시작 ----------------------------------------------------------------
         spMsgSelect = findViewById(R.id.sp_msg_select);
@@ -153,8 +156,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                             spMsgSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                                    Toast.makeText(getApplicationContext(),spMsgPhoneSelectArray.get(position)+"가 선택되었습니다.",
-//                                            Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(),spMsgSelectArray.get(position)+"님이 선택되었습니다.",
+                                            Toast.LENGTH_SHORT).show();
                                     PatientMainSpSelectNum = spMsgPhoneSelectArray.get(position);
                                     Log.i("스피너 셀렉", "onDataChange: " + spPhone);
                                     /**
@@ -193,15 +196,27 @@ public class PatientMsgActivity extends AppCompatActivity {
         Log.i("환자 메세지 보내기 ", "onDataChange: " + "2");
         databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("patientMsg");
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
-        databaseReferenceMSG.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//        databaseReferenceMSG.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.i("환자 메세지 보내기 ", "onDataChange: " + "3");
-                // 핑;압[ㅇ;ㅅ, 감섹힉;
+                // 핑;압[ㅇ;ㅅ, 감섹힉;// PatientMainSpSelectMsg
                 databaseReferenceMSG.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.hasChildren()){
+
+                        //버튼으로 메세지 부르기
+                        //첫번째 메세지 버튼
+                        mbMsg1.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                            }
+                        });
+
+
+//                        리사이클러뷰
+/*                        if(dataSnapshot.hasChildren()){
                             for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                                 rvPatientClass = dataSnapshot1.getValue(PatientEditKeyWord.class);
 //                                patientEditMsg.set(rvPatientClass);
@@ -211,26 +226,26 @@ public class PatientMsgActivity extends AppCompatActivity {
                                 Log.i("환자키워드편집 리스트1", "onDataChange: " + "1");
                                 Log.i("환자키워드편집 리스트2", "onDataChange: " + rvPatientClass.toString());
                                 // 리사이클러뷰
-                                rvPatientMsg = findViewById(R.id.rv_patient_msg);
-                                rvPatientMsg.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-                                rvPatientMsg.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                                rvPatientMsgAdapter = new PatientMsgAdapter(rvPatientMsgList);
-                                rvPatientMsg.setAdapter(rvPatientMsgAdapter);
+//                                rvPatientMsg = findViewById(R.id.rv_patient_msg);
+//                                rvPatientMsg.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+//                                rvPatientMsg.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+//                                rvPatientMsgAdapter = new PatientMsgAdapter(rvPatientMsgList);
+//                                rvPatientMsg.setAdapter(rvPatientMsgAdapter);
 
                             }
-                        }
+                        }*/
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
 
                     }
                 });
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-
-        });
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//
+//        });
 
 
 

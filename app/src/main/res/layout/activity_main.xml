@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientMsgActivity"
-    android:layout_margin="30dp"
-    android:background="#fff">
+    android:layout_margin="30dp">
 
     <TextView
         android:id="@+id/textView2"
@@ -35,25 +34,67 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rv_patient_msg"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="68dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/bt_sendtext"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+
+<!--    </androidx.recyclerview.widget.RecyclerView>-->
+
     <Spinner
         android:id="@+id/sp_msg_select"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true"
-        app:layout_constraintBottom_toTopOf="@+id/rv_patient_msg"
+        app:layout_constraintBottom_toTopOf="@+id/mb_msg_1"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="-53dp" />
+        app:layout_constraintVertical_bias="0.542"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_patient_msg"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mb_msg_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/colorLightGray"
+        android:text="Message1"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/mb_msg_2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mb_msg_2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/colorLightGray"
+        android:text="Message2"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/mb_msg_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/mb_msg_3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/colorLightGray"
+        android:text="Message3"
+        android:textColor="#000000"
+        android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/bt_sendtext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_sendtext"
@@ -63,7 +104,6 @@
         android:backgroundTint="#403EE8"
         android:text="보내기"
         android:textColor="#fff"
-
         app:cornerRadius="50dp"
         app:layout_constraintBottom_toTopOf="@+id/bt_edit_msg"
         tools:layout_editor_absoluteX="0dp"
@@ -73,12 +113,10 @@
         android:id="@+id/bt_edit_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:background="#00ff0000"
+        android:layout_marginStart="4dp"
         android:backgroundTint="#fff"
         android:stateListAnimator="@null"
         android:text="문자 보내기"
-        android:layout_marginLeft="30dp"
         android:textColor="#000"
         android:textSize="23sp"
         app:cornerRadius="20dp"
@@ -89,8 +127,6 @@
         android:id="@+id/bt_edit_iot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.3"
-        android:background="#00ff0000"
         android:backgroundTint="#fff"
         android:stateListAnimator="@null"
         android:text="IoT 제어"
@@ -99,8 +135,8 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.619"
         app:layout_constraintStart_toEndOf="@+id/bt_edit_msg" />
-
 
     <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->

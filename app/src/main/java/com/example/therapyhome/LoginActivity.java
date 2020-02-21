@@ -154,7 +154,7 @@ public class LoginActivity extends AppCompatActivity {
                                                 Log.i("파이어베이스 데이터 흐름", "6");
                                                 if (com.equals("환자")){
                                                     Log.i("파이어베이스 데이터 흐름", "7");
-                                                    Intent intent = new Intent(getApplicationContext(), TutorialControlChoiceActivity.class);
+                                                    Intent intent = new Intent(getApplicationContext(), PatientMsgActivity.class);
                                                     startActivity(intent);
                                                     LoginActivity.this.finish(); // 로그인페이지 Activity stack에서 제거
                                                     return;
