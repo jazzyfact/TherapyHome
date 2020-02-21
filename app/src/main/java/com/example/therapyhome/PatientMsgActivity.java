@@ -56,7 +56,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.example.therapyhome.LoginActivity.pwdck;
-
+//수정
 public class PatientMsgActivity extends AppCompatActivity {
 
 
