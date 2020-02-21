@@ -275,7 +275,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:text="문자"
+            android:text="홈"
             android:backgroundTint="#fff"
             android:background="#00ff0000"
             android:textColor="#000"

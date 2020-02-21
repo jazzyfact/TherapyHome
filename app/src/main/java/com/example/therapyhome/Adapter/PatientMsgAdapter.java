@@ -74,18 +74,24 @@ public class PatientMsgAdapter extends RecyclerView.Adapter<PatientMsgAdapter.Vi
 //        patientEditKeyWordList.get(position).getText()
 
         holder.itemGuardianEditTv.setText(patientEditKeyWordList.get(position).getText());
-        holder.itemGuardianEditTv.setOnClickListener(new View.OnClickListener() {
+//        holder.itemGuardianEditTv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                String intentCk = "문자보내기";
+////                Intent patientEdit = new Intent(v.getContext(), PatientMsgActivity.class);
+////                patientEdit.putExtra("intentCk",intentCk);
+////                patientEdit.putExtra("sendText",patientEditKeyWordList.get(position).getText());
+//////                patientEdit.putExtra("sendNum",patientEditKeyWordList.get(position).getNum());
+////                ((PatientMsgActivity)v.getContext()).startActivityForResult(new Intent(patientEdit), 0);
+//
+//            }
+//        });
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 커스텀 다이얼로그로 인텐트 보내기
                 PatientMainSpSelectMsg = patientEditKeyWordList.get(position).getText();
-//                String intentCk = "문자보내기";
-//                Intent patientEdit = new Intent(v.getContext(), PatientMsgActivity.class);
-//                patientEdit.putExtra("intentCk",intentCk);
-//                patientEdit.putExtra("sendText",patientEditKeyWordList.get(position).getText());
-////                patientEdit.putExtra("sendNum",patientEditKeyWordList.get(position).getNum());
-//                ((PatientMsgActivity)v.getContext()).startActivityForResult(new Intent(patientEdit), 0);
-
+                Toast.makeText(v.getContext(), patientEditKeyWordList.get(position).getText()+"를 선택하셨습니다.", Toast.LENGTH_SHORT).show();
             }
         });
     }

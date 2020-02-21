@@ -43,39 +43,28 @@ public class DoctorPatientListActivity extends AppCompatActivity {
         Log.i("환자 리스트 보기 ", "onDataChange: " + "1");
         // 파이어베이스 시작
         Log.i("환자 리스트 보기 ", "onDataChange: " + "2");
-        databaseReferenceDocMSG = FirebaseDatabase.getInstance().getReference("docter");
+        databaseReferenceDocMSG = FirebaseDatabase.getInstance().getReference("/docter/"+pwdck.getId());
+        Log.i("환자키워드편집 리스트2", "onDataChange: " + databaseReferenceDocMSG.toString());
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
         databaseReferenceDocMSG.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.i("환자 리스트 보기", "onDataChange: " + "3");
-                databaseReferenceDocMSG.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if(dataSnapshot.hasChildren()){
-                            for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-                                doctorMsgClass = dataSnapshot1.getValue(DoctorMsg.class);
-                                // 여기서 어레이 리스트에 넣을 클래스를 생성한다.
-//                                patientEditMsg.set(rvPatientClass);
-//                                patientEditMsg.setNum(spPhone);
-//                                patientEditMsg.setText(rvPatientClass.getText());
-                                docterMsgList.add(doctorMsgClass);
-                                Log.i("환자키워드편집 리스트1", "onDataChange: " + "1");
-                                Log.i("환자키워드편집 리스트2", "onDataChange: " + doctorMsgClass.toString());
-                                // 리아시클러뷰 객체화
-                                rvDocterview = findViewById(R.id.rv_docterview);
-                                rvDocterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
-                                rvDocterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
-                                adapter = new DoctorPatientListAdapter(docterMsgList, getApplicationContext()); // 어댑터에 리스트 붙이고
-                                rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
-                            }
-                        }
+                if(dataSnapshot.hasChildren()){
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                        doctorMsgClass = dataSnapshot1.getValue(DoctorMsg.class);
+                        // 여기서 어레이 리스트에 넣을 클래스를 생성한다.
+                        Log.i("환자키워드편집 리스트2", "onDataChange: " + doctorMsgClass.getNum());
+                        docterMsgList.add(doctorMsgClass);
+//                      Log.i("환자키워드편집 리스트1", "onDataChange: " + "1");
                     }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                    // 리아시클러뷰 객체화
+                }
+                rvDocterview = findViewById(R.id.rv_docterview);
+                rvDocterview.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+                rvDocterview.setLayoutManager(new LinearLayoutManager(getApplicationContext())); // 레이아웃 메니저
+                adapter = new DoctorPatientListAdapter(docterMsgList, getApplicationContext()); // 어댑터에 리스트 붙이고
+                rvDocterview.setAdapter(adapter); // 리사이클러뷰에 어댑터 장착
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

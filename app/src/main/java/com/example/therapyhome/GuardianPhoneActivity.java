@@ -105,7 +105,6 @@ public class GuardianPhoneActivity extends AppCompatActivity {
                         if(dataSnapshot.hasChildren()) {
                             for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                                 conteactNum = dataSnapshot1.getValue(PhoneContactEdit.class);
-
                                 /**
                                  * 1. 파이어 베이스에서 1개씩 데이터 가져오기 오브젝트로 가져와야함
                                  * 2. 1개씩 가져온 데이터를 어레이 리스트에 넣기
@@ -114,9 +113,7 @@ public class GuardianPhoneActivity extends AppCompatActivity {
                                  *     String name;
                                  *     String num;
                                  *     String emergency;
-                                 *
                                  */
-
                                 guardianPhoneList.add(conteactNum);
                             }
                             // 리사이클러뷰 연결
@@ -157,7 +154,7 @@ public class GuardianPhoneActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.bt_read_msg: //문자모아보기
-                        Intent intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                        // intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         finish();
