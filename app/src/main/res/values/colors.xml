@@ -9,5 +9,6 @@
     <color name="colorLightGreen">#3CE7BF</color>
     <color name="colorSkyblue">#14C0FF</color>
     <color name="colorRed">#FC0303</color>
+    <color name="colorCursor">#B9F6CA</color>
 
 </resources>

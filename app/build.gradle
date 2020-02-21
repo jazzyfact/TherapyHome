@@ -11,6 +11,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true // 아이트래킹
     }
     buildTypes {
         release {
@@ -53,6 +55,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //리사이클러뷰 다중선택
     implementation 'androidx.recyclerview:recyclerview-selection:1.0.0'
-
-
+    // 구글비전
+    implementation 'com.google.android.gms:play-services-vision:19.0.0'
+    // 멀티 인덱스
+    implementation 'com.android.support:multidex:1.0.3'
 }
