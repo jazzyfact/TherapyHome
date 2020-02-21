@@ -12,9 +12,23 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 public class GuardianMonitorActivity extends AppCompatActivity {
@@ -31,8 +45,10 @@ public class GuardianMonitorActivity extends AppCompatActivity {
     static BluetoothAdapter mBluetoothAdapter; //블루투스를 연결해주는 Adapter
     private String mConnectedDeviceName = null; //연결된 블루투스 기기 이름
     static boolean isConnectionError = false; //블루투스 연결에러
+    private boolean PatientWarning = false; //환자위급상황알림 여부
     private static final String TAG = "BluetoothClient"; //로그를 위한 TAG 변수
     private String BluetoothData; //블루투스장치에서 받아온 데이터
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -232,12 +248,25 @@ public class GuardianMonitorActivity extends AppCompatActivity {
             if(BluetoothData .equals("0\r")) {
             }else{
                 String[] array = BluetoothData.split(",");
-                String humidity = array[0];
-                String temperature = array[1];
-                String heart = array[2];
-                tvWaterData.setText(humidity+" %");
-                tvTempertureData.setText(temperature+" ℃");
-                tvBpmData.setText(heart+" Bpm");
+                String strHumidity = array[0];
+                String strTemperature = array[1];
+                String strHeart = array[2];
+                //String bool = array[3];
+                //Log.e(TAG, strHumidity + strTemperature + strHeart + bool);
+                float floatHumidity = Float.valueOf(strHumidity);
+                float floatTemperature = Float.valueOf(strTemperature);
+                float floatHeart = Float.valueOf(strHeart);
+                int intHeart = (int)floatHeart;
+                tvWaterData.setText(floatHumidity+" %");
+                tvTempertureData.setText(floatTemperature+" ℃");
+                tvBpmData.setText(intHeart+" Bpm");
+                if(PatientWarning == false) {
+                    if((intHeart>=100||intHeart<=60) || (floatHumidity<40.0||floatHumidity>60.0) || (floatTemperature>15.0||floatTemperature<12.0))//만약 심박수가 ..이상 ..이하라면 , 온도가 ..이상 ..이하라면, 습도가 ..이상 ..이하라면
+                    {
+                        FcmPushsend();
+                        PatientWarning = true;
+                    }
+                }
             }
         }
         @Override
@@ -384,4 +413,55 @@ public class GuardianMonitorActivity extends AppCompatActivity {
         super.onRestart();
         Log.d("메인" ," 모니터 리스타트" );
     }
+    //긴급알림 푸시 시작 -----------------------------------------------------------------------------------------
+    public void FcmPushsend(){
+
+        RequestQueue mRequestQue = Volley.newRequestQueue(this);
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("to", "/topics/" + "emergency");
+            JSONObject notificationObj = new JSONObject();
+            notificationObj.put("title", "emergency");
+            notificationObj.put("body", "환자상태를 체크해주세요");
+            //replace notification with data when went send data
+            json.put("notification", notificationObj);
+            String URL = "https://fcm.googleapis.com/fcm/send";
+            JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.POST,
+                    URL, json,
+                    new Response.Listener() {
+                        @Override
+                        public void onResponse(Object response) {
+                            Log.d("FCM", "onResponse: 전송 성공");
+                        }
+
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Failure Callback
+                            Log.d("MUR", "onError: " + error.networkResponse);
+                        }
+                    }) {
+                /**
+                 * URL 헤더에 제이슨 정보를 담아서 구글의 서버에 보내준다.s*
+                 */
+                @Override
+                public Map<String,String> getHeaders() throws AuthFailureError {
+                    Map<String,String> header = new HashMap<>();
+                    header.put("content-type", "application/json");
+                    // 우리 앱 서비스키
+                    header.put("authorization", "key=AAAAerwEOd4:APA91bEjWgznvATDZozpLYijoHPyqGannB3XANIXDgtad5XgEX-rD6Iiw5-5rbwEuuhW62LaO3Z2UB8uMBRDHlsFV5VCEZ2NK7cPU42wLwS0551L-OvPHtK9fNbDXR1Mf0Wj0Jb0S1cZ"
+                    );
+                    return header;
+                }
+            };
+            mRequestQue.add(jsonObjReq);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    //긴급알림 푸시 끝 -----------------------------------------------------------------------------------------
+
+
 }
