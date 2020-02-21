@@ -1,151 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientSmartHomeActivity"
-    android:layout_margin="10dp"
-    android:background="#fff">
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingHorizontal="50sp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="45sp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="IoT 제어"
-                android:textColor="#000"
-                android:textFontWeight="800"
-                android:textSize="25sp" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right">
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_patient_call"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60sp"
-                    android:layout_gravity="right"
-                    android:text="긴급호출"
-                    android:textColor="#fff"
-                    android:backgroundTint="#FC0303"
-                    app:cornerRadius="50dp"
-                    />
-            </LinearLayout>
+    android:layout_margin="30dp"
+    android:background="#fff"
+    >
 
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_patient_call"
+        android:layout_width="wrap_content"
+        android:layout_height="60sp"
+        android:layout_gravity="right"
+        android:backgroundTint="#FC0303"
+        android:text="긴급호출"
+        android:textColor="#fff"
+        app:cornerRadius="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/st_light_onoff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-        </LinearLayout>
-<!--        iot 제어하는곳-->
-        <LinearLayout
-            android:layout_marginTop="50sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="조명"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/bt_patient_call"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="조명"
-                android:textColor="#000"
-                android:textFontWeight="800"
-                android:textSize="25sp"
-                android:layout_weight="1"/>
+    <Switch
+        android:id="@+id/st_light_onoff"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/st_pan_onoff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
 
-            <Switch
-                android:id="@+id/st_light_onoff"
-                android:layout_width="50sp"
-                android:layout_height="50sp"/>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="IoT 제어"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
+    <Switch
+        android:id="@+id/st_pan_onoff"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_marginBottom="400dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_edit_iot"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toEndOf="@+id/textView3" />
 
-        <LinearLayout
-            android:layout_marginTop="5sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="가습기"
-                android:textColor="#000"
-                android:textFontWeight="800"
-                android:textSize="25sp"
-                android:layout_weight="1"/>
-
-            <Switch
-                android:id="@+id/st_water_onoff"
-                android:layout_width="50sp"
-                android:layout_height="50sp"/>
-
-        </LinearLayout>
-
-        <!--    코드 인증-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:orientation="vertical" />
-        <!--하단 메뉴바-->
-
-        <!--하단 메뉴바-->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom"
-            android:layout_marginBottom="10sp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="bottom">
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_edit_msg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:textSize="23sp"
-                    app:cornerRadius="20dp"
-                    android:text="문자 보내기"
-                    android:backgroundTint="#fff"
-                    android:background="#00ff0000"
-                    android:textColor="#000"
-                    android:stateListAnimator="@null"
-                    android:layout_weight="0.3"
-                    />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/bt_edit_iot"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="IoT 제어"
-                    android:textSize="23sp"
-                    android:backgroundTint="#fff"
-                    android:background="#00ff0000"
-                    android:textColor="#000"
-                    android:stateListAnimator="@null"
-                    app:cornerRadius="20dp"
-                    android:layout_weight="0.3"/>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="400dp"
+        android:layout_weight="1"
+        android:text="공기청정기"
+        android:textColor="#000"
+        android:textFontWeight="800"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_edit_msg"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_edit_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:background="#00ff0000"
+        android:backgroundTint="#fff"
+        android:stateListAnimator="@null"
+        android:text="문자 보내기"
+        android:textColor="#000"
+        android:textSize="23sp"
+        app:cornerRadius="20dp"
+        android:layout_marginLeft="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_edit_iot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3"
+        android:background="#00ff0000"
+        android:backgroundTint="#fff"
+        android:stateListAnimator="@null"
+        android:text="IoT 제어"
+        android:textColor="#000"
+        android:textSize="23sp"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bt_edit_msg" />
+<!--    -->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical"-->
+<!--        android:paddingHorizontal="50sp"-->
+<!--        tools:layout_editor_absoluteX="0dp"-->
+<!--        tools:layout_editor_absoluteY="0dp">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="45sp"-->
+<!--            android:orientation="horizontal">-->
 
 
-</LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="right">-->
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+<!--        &lt;!&ndash;        iot 제어하는곳&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="50sp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--         -->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="5sp"-->
+<!--            android:orientation="horizontal">-->
+
+<!--     -->
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash;    코드 인증&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="bottom"-->
+<!--            android:orientation="vertical" />-->
+<!--        &lt;!&ndash;하단 메뉴바&ndash;&gt;-->
+
+<!--        &lt;!&ndash;하단 메뉴바&ndash;&gt;-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginBottom="10sp"-->
+<!--            android:gravity="bottom">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:orientation="horizontal">-->
+
+
+
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
