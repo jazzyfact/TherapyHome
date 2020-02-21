@@ -50,6 +50,8 @@ public class SignUpActivity extends AppCompatActivity {
     public String strSignUpCom;
 
     FrameLayout FLSignupComid;
+    //회원가입 저장
+    FirebaseDatabase databaseSignup;
 
     //파이어베이스에서 데이터 읽기,쓰기 할 때 필요함
     FirebaseDatabase database = FirebaseDatabase.getInstance();
