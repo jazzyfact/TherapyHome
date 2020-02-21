@@ -271,7 +271,7 @@ public class GuardianMonitorActivity extends AppCompatActivity {
             items[i] = pairedDevices[i].getName();
         }
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("연결할 블루투스를 선택해주세요."); // Dialog : 디바이스 선택시 띄울 제목
+        builder.setTitle("환자의 상태를 확인하시겠습니까?"); // Dialog : 디바이스 선택시 띄울 제목
         builder.setCancelable(false);
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override

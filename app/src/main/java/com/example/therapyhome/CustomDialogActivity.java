@@ -247,45 +247,7 @@ public class CustomDialogActivity extends Activity {
              */
 
         } else if (intentCk.equals("데이터추가")) {
-            // 파이어 베이스 데이터 주소
-            databaseReference = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
-
-            // TODO: 2020-02-22 키워드추가 추가하기 --------------------------------------------------------
-
-            addName = TvSubtitleName.getText().toString();
-            addNum = TvSubtitleNum.getText().toString();
-            emergencyCk = "N";
-
-            Log.i("연락처 추가 입력확인", "onCreate: " +addName);
-            Log.i("연락처 추가 입력확인", "onCreate: " +addNum);
-
-            okButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent1 = new Intent();
-                    intent1.putExtra("editName",addName);
-                    intent1.putExtra("editNum",addNum);
-                    setResult(RESULT_OK,intent1);
-                    Log.i("연락처 추가 입력확인",  TvSubtitleName.getText().toString());
-                    Log.i("연락처 추가 입력확인",  TvSubtitleNum.getText().toString());
-                    Log.i("연락처 추가 입력확인",  "뭐지"+emergencyCk);
-                    // 파이어베이스 저장하기
-                    // 파이어베이스에 저장할 클래스 만들기
-                    PhoneContactEdit makeId = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
-                    databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).setValue(makeId);
-                    Intent edit = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
-                    startActivity(edit);
-                    finish();
-                }
-            });
-
-            cancelButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
-                }
-            });
-            // TODO: 2020-02-18 키워 추가하기 끝 --------------------------------------------------------
+//
         }
     }
 
