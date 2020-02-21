@@ -104,10 +104,10 @@ public class GuardianMainActivity extends AppCompatActivity {
 
         // 환자 정보 시작 ---------------------------------------------------------------------------
         Log.i("환자 정보 찾기 ", "onDataChange: " + "1");
-        databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("patientGuardian");
+        databaseReferenceGuardian = FirebaseDatabase.getInstance().getReference("/patientGuardian/"+pwdck.getId());
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
 
-        databaseReferenceGuardian.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReferenceGuardian.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // patientGuardian 에서 등록된 환자를 찾는다.

@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         Log.i("파이어베이스 데이터 흐름", "1");
                         // 파이어 베이스 관련
-                        databaseReference = FirebaseDatabase.getInstance().getReference("user");
+                        databaseReference = FirebaseDatabase.getInstance().getReference("/user");
                         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
