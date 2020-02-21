@@ -131,7 +131,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
         // 리사이클러뷰에서 넘어온 메세지 확인
 
-//        환자 메세지 버튼 가져오기 mb_msg_1, mb_msg_2, mb_msg_3
+       //환자 메세지 버튼 가져오기 mb_msg_1, mb_msg_2, mb_msg_3
         mbMsg1 = (Button) findViewById(R.id.mb_msg_1);
         mbMsg2 = (Button) findViewById(R.id.mb_msg_2);
         mbMsg3 = (Button) findViewById(R.id.mb_msg_3);
