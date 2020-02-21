@@ -355,7 +355,6 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 BtLightOnOff.performClick();
-
                             }
                         }, 1);
                         isTouch = false;
