@@ -109,10 +109,12 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isLishgt == false) {
+                    BtLightOnOff.setText("켜짐");
                     sendRequest(LightWifiAddress + "/ledon");
                     Log.d("IoT", "ledon");
                     isLishgt = true;
                 } else {
+                    BtLightOnOff.setText("꺼짐");
                     sendRequest(LightWifiAddress + "/ledoff");
                     Log.d("IoT", "ledoff");
                     isLishgt = false;
@@ -125,10 +127,12 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (isPan == false) {
+                    BtPanOnOff.setText("켜짐");
                     sendRequest(PanWifiAddress + "/panon");
                     Log.d("IoT", "panon");
                     isPan = true;
                 } else {
+                    BtPanOnOff.setText("꺼짐");
                     sendRequest(PanWifiAddress + "/panoff");
                     Log.d("IoT", "panoff");
                     isPan = false;
@@ -270,7 +274,6 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
             cursor.setX(deviceWidth - (deviceWidth - move_x));
             cursor.setY(deviceHeight - move_y); // 경계넘어갈 경우도 생각해보자.
 
-
             if (BtEditMsg.getX() <= cursor.getX() && cursor.getX() <= BtEditMsg.getX() + BtEditMsg.getWidth()
                     && BtEditMsg.getY() <= cursor.getY() && cursor.getY() <= BtEditMsg.getY() + BtEditMsg.getHeight()) {
                 if (!isTouch) {
@@ -281,17 +284,18 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                     touchTime = touchNow - touchStart;
                     System.out.println(touchTime);
                     if (1000 < touchTime && touchTime < 2000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("1");
                     } else if (2000 < touchTime && touchTime < 3000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("2");
                     } else if (3000 < touchTime && touchTime < 4000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("3");
                     } else if (4000 < touchTime && touchTime < 5000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("4");
                     } else if (touchTime > 5000) {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                cursor.setText("5");
                                 BtEditMsg.performClick();
 
                             }
@@ -309,17 +313,18 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                     touchTime = touchNow - touchStart;
                     System.out.println(touchTime);
                     if (1000 < touchTime && touchTime < 2000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("1");
                     } else if (2000 < touchTime && touchTime < 3000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("2");
                     } else if (3000 < touchTime && touchTime < 4000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("3");
                     } else if (4000 < touchTime && touchTime < 5000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("4");
                     } else if (touchTime > 5000) {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                cursor.setText("5");
                                 btEmergencyCall.performClick();
 
                             }
@@ -337,17 +342,18 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                     touchTime = touchNow - touchStart;
                     System.out.println(touchTime);
                     if (1000 < touchTime && touchTime < 2000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("1");
                     } else if (2000 < touchTime && touchTime < 3000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("2");
                     } else if (3000 < touchTime && touchTime < 4000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("3");
                     } else if (4000 < touchTime && touchTime < 5000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("4");
                     } else if (touchTime > 5000) {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                cursor.setText("5");
                                 BtLightOnOff.performClick();
 
                             }
@@ -365,17 +371,18 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                     touchTime = touchNow - touchStart;
                     System.out.println(touchTime);
                     if (1000 < touchTime && touchTime < 2000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("1");
                     } else if (2000 < touchTime && touchTime < 3000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("2");
                     } else if (3000 < touchTime && touchTime < 4000) {
-                        cursor.setBackgroundColor(Color.RED);
+                        cursor.setText("3");
                     } else if (4000 < touchTime && touchTime < 5000) {
-                        cursor.setBackgroundColor(Color.BLUE);
+                        cursor.setText("4");
                     } else if (touchTime > 5000) {
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                cursor.setText("5");
                                 BtPanOnOff.performClick();
 
                             }
@@ -383,10 +390,12 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
                         isTouch = false;
                     }
                 }
+
             } else {
                 if (isTouch) {
                     isTouch = false;
                     touchStart = 0;
+                    cursor.setText("0");
                 }
             }
 
