@@ -58,6 +58,20 @@
         android:layout_gravity="center">
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_read_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:text="홈"
+            android:backgroundTint="#fff"
+            android:background="#00ff0000"
+            android:textColor="#000"
+            android:stateListAnimator="@null"
+            android:textSize="23sp"
+            app:cornerRadius="20dp"
+            android:layout_weight="0.3"/>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_edit_keyword"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -100,19 +114,7 @@
             app:cornerRadius="20dp"
             android:layout_weight="0.3"/>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_read_msg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="5dp"
-            android:text="문자"
-            android:backgroundTint="#fff"
-            android:background="#00ff0000"
-            android:textColor="#000"
-            android:stateListAnimator="@null"
-            android:textSize="23sp"
-            app:cornerRadius="20dp"
-            android:layout_weight="0.3"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -42,13 +42,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20sp"/>
+
+
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/bt_guardian_editKey_add"
+        android:layout_width="50sp"
+        android:layout_height="50sp"
+        android:layout_gravity="center"
+        android:src="@drawable/plus240"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20sp"/>
 
     <!--하단 메뉴바-->
 
     <!--하단 메뉴바-->
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -56,6 +69,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -65,6 +79,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_read_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0.3"
+                android:background="#00ff0000"
+                android:backgroundTint="#fff"
+                android:stateListAnimator="@null"
+                android:text="홈"
+                android:textColor="#000"
+                android:textSize="23sp"
+                app:cornerRadius="20dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/bt_edit_keyword"
@@ -108,19 +136,7 @@
                 android:textSize="23sp"
                 app:cornerRadius="20dp" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_read_msg"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:layout_weight="0.3"
-                android:background="#00ff0000"
-                android:backgroundTint="#fff"
-                android:stateListAnimator="@null"
-                android:text="문자"
-                android:textColor="#000"
-                android:textSize="23sp"
-                app:cornerRadius="20dp" />
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

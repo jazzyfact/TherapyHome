@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,19 +49,29 @@ public class DoctorPatientListAdapter extends RecyclerView.Adapter<DoctorPatient
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView itemDocterMsgTvName;
         TextView itemDocterMsgtvPhone;
+        Button itemGuardianmsgButtonDelete;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemDocterMsgTvName = itemView.findViewById(R.id.item_doctermsg_textview_name);
             itemDocterMsgtvPhone = itemView.findViewById(R.id.item_doctermsg_textview_phone);
+            itemGuardianmsgButtonDelete = itemView.findViewById(R.id.item_guardianmsg_button_delete);
         }
     }
 
     // 뷰홀더-내용물 연결하기
     @Override
     public void onBindViewHolder(@NonNull DoctorPatientListAdapter.ViewHolder holder, int position) {
-        holder.itemDocterMsgTvName.setText(docterMsgList.get(position).getName());
-        holder.itemDocterMsgtvPhone.setText(docterMsgList.get(position).getPhone());
+        holder.itemDocterMsgTvName.setText(String.valueOf(docterMsgList.get(position).getName()));
+        holder.itemDocterMsgtvPhone.setText(String.valueOf(docterMsgList.get(position).getNum()));
+        holder.itemGuardianmsgButtonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context.getApplicationContext(), DoctorMonitorActivity.class);
+                context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            }
+        });
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +80,8 @@ public class DoctorPatientListAdapter extends RecyclerView.Adapter<DoctorPatient
                 context.startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             }
         });
+
+
 
     }
 

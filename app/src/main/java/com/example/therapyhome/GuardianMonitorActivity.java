@@ -68,7 +68,7 @@ public class GuardianMonitorActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.bt_read_msg: //문자모아보기
-                        Intent intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                         startActivity(intent);
                         finish();
                         break;

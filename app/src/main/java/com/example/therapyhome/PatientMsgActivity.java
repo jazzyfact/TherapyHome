@@ -153,8 +153,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                             spMsgSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                                    Toast.makeText(getApplicationContext(),spMsgPhoneSelectArray.get(position)+"가 선택되었습니다.",
-                                            Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(getApplicationContext(),spMsgPhoneSelectArray.get(position)+"가 선택되었습니다.",
+//                                            Toast.LENGTH_SHORT).show();
                                     PatientMainSpSelectNum = spMsgPhoneSelectArray.get(position);
                                     Log.i("스피너 셀렉", "onDataChange: " + spPhone);
                                     /**

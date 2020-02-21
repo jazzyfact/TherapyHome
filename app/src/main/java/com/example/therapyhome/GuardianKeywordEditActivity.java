@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.therapyhome.Adapter.GuardianEditKeyWordAdapter;
 import com.example.therapyhome.Adapter.GuardianPhoneEditAdapter;
@@ -32,7 +33,7 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
      * 문자의 텍스트를 편집하는 액티비티
      */
     Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
-
+    ImageView btGuardianEditKeyAdd;
     RecyclerView rvGuardianEditKey;
     RecyclerView.Adapter rvGuardianEditKeyAdapter;
     // 환자의 키워드를 가져올 어레이 리스트
@@ -50,6 +51,23 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
          * 환자의 문자를 수정하는로직
          * 1. 일단 리사이클러뷰
          */
+
+       // 키워드 데이터 추가하기 로직
+        btGuardianEditKeyAdd = (ImageView)findViewById(R.id.bt_guardian_editKey_add);
+        btGuardianEditKeyAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String intentCk = "데이터추가";
+                Intent patientEdit = new Intent(getApplicationContext(),CustomDialogMsgActivity.class);
+                patientEdit.putExtra("intentCk",intentCk);
+//                patientEdit.putExtra("name",intentCk);
+//                patientEdit.putExtra("num",pwdck.getName());
+//                patientEdit.putExtra("emergency",pwdck.getNum());
+                startActivity(patientEdit);
+
+            }
+        });
+
 
 
         // 파이어베이스 주소
@@ -102,7 +120,7 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.bt_read_msg: //문자모아보기
-                        Intent intent = new Intent(getApplicationContext(), GuardianMsgActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         break;
