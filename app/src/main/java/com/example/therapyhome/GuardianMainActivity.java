@@ -73,6 +73,8 @@ public class GuardianMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guardian_main);
 
+        Log.d("메인" ," 크리에이티드" );
+
         ivGuardianEditMy = findViewById(R.id.iv_guardian_editmy); //내정보
         ivGuardianEditFamily = findViewById(R.id.iv_guardian_editFamily);//등록된 환자
         ivGuardianEditDoctor = findViewById(R.id.bt_guardian_editdocter); //담당 의사선생님
@@ -268,12 +270,38 @@ public class GuardianMainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("메인" ," 온스타트" );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("메인" ," 스탑" );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("메인" ," 리줌" );
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("메인" ," 리스타트" );
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
-
+        Log.d("메인" ," 퍼스" );
         overridePendingTransition(0,0);//엑티비티 종료 시 애니메이션 없애기
     }
 
     }
+
+
 
 

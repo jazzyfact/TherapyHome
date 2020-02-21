@@ -21,7 +21,7 @@ public class GuardianMonitorActivity extends AppCompatActivity {
     /**
      * 가은이가 수정한 페이지(블루투스로 센서 데이터 받아오기)
      */
-    Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg;
+    Button btnEditKeyword, btnEditPhone, btnCheckHealth, btnReadMsg, btnHomeCam;
     private int bpm = 80;
     private int co2 = 95;
     private TextView tvBpmData, tvCo2mData, tvTempertureData, tvWaterData;
@@ -37,11 +37,24 @@ public class GuardianMonitorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_guardian_monitor);
+
+        Log.d("메인" ," 모니터 크리에이티드" );
         //환자데이터
         tvBpmData = findViewById(R.id.tv_bpmdata); //심박수
         tvCo2mData = findViewById(R.id.tv_co2mdata); //산소포화도
         tvTempertureData = findViewById(R.id.tv_temperturedata); //체온
         tvWaterData = findViewById(R.id.tv_waterdata); //습도
+        //홈캠
+        btnHomeCam = findViewById(R.id.bt_home_cam);
+        btnHomeCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), GuardianMonitorActivity.class);
+                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            }
+        });
+
         //블루투스 연결
         Log.d( TAG, "Initalizing Bluetooth adapter...");
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -70,22 +83,23 @@ public class GuardianMonitorActivity extends AppCompatActivity {
                     case R.id.bt_read_msg: //문자모아보기
                         Intent intent = new Intent(getApplicationContext(), GuardianMainActivity.class);
                         startActivity(intent);
-                        finish();
+                        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                         break;
                     case R.id.bt_edit_keyword: //키워드 편집
                         Intent editKeywordIntent = new Intent(getApplicationContext(), GuardianKeywordEditActivity.class);
                         startActivity(editKeywordIntent);
-                        finish();
+                        editKeywordIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         break;
                     case R.id.bt_edit_phone://연락처 편집
                         Intent editPhomeIntent = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
                         startActivity(editPhomeIntent);
-                        finish();
+                        editPhomeIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         break;
                     case R.id.bt_check_health://환자 건강 상태
                         Intent checkHealthIntent = new Intent(getApplicationContext(), GuardianMonitorActivity.class);
                         startActivity(checkHealthIntent);
-                        finish();
+                        checkHealthIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         break;
                 }
             }
@@ -335,4 +349,39 @@ public class GuardianMonitorActivity extends AppCompatActivity {
             }
         }
     } //end "onActivityResult()"
+
+
+    public GuardianMonitorActivity() {
+        super();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d("메인" ," 모니터 온스타트" );
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("메인" ," 모니터 온스탑" );
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("메인" ," 모니터 퍼스" );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d("메인" ," 모니터 리줌" );
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.d("메인" ," 모니터 리스타트" );
+    }
 }
