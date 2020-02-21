@@ -42,6 +42,8 @@ import com.example.therapyhome.Adapter.GuardianPhoneEditAdapter;
 import com.example.therapyhome.Adapter.PatientMsgAdapter;
 import com.example.therapyhome.item.PatientEditKeyWord;
 import com.example.therapyhome.item.PhoneContactEdit;
+import com.example.therapyhome.item.docterPatient;
+import com.example.therapyhome.item.patientGaurdian;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -89,6 +91,12 @@ public class PatientMsgActivity extends AppCompatActivity {
     // 리사이클러뷰 리퀘스트 코드
     int REQUEST_CODE = 0;
 
+    // 체크박스
+    PatientEditKeyWord text01;
+    PatientEditKeyWord text02;
+    PatientEditKeyWord text03;
+
+
 
     // 스피너
     Spinner spMsgSelect;
@@ -113,6 +121,8 @@ public class PatientMsgActivity extends AppCompatActivity {
     //파이어베이스 관련
     PatientEditKeyWord rvPatientClass;
     private DatabaseReference databaseReferenceMSG;
+    private DatabaseReference databaseReferenceMSG2;
+    private DatabaseReference databaseReferenceMSG3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,23 +203,105 @@ public class PatientMsgActivity extends AppCompatActivity {
         // 리사이클러뷰 시작 ---------------------------------------------------------------------------
         Log.i("환자 메세지 보내기 ", "onDataChange: " + "1");
         // 파이어베이스 시작
-        Log.i("환자 메세지 보내기 ", "onDataChange: " + "2");
-        databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("patientMsg");
-        // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
+//        Log.i("환자 메세지 보내기 ", "onDataChange: " + "2");
+//        databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("patientMsg");
+//        // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
 //        databaseReferenceMSG.addListenerForSingleValueEvent(new ValueEventListener() {
 //            @Override
 //            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.i("환자 메세지 보내기 ", "onDataChange: " + "3");
                 // 핑;압[ㅇ;ㅅ, 감섹힉;// PatientMainSpSelectMsg
+
+
+
+            databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+"33/"+"text1");
+        Log.i("환자 메세지 보내기 ", "onDataChange: " + databaseReferenceMSG.toString());
+            databaseReferenceMSG.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                text01 = dataSnapshot.getValue(PatientEditKeyWord.class);
+                mbMsg1.setText(text01.getText());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+            });
+
+        databaseReferenceMSG2 = FirebaseDatabase.getInstance().getReference("/patientMsg/"+"33/"+"text2");
+        databaseReferenceMSG2.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                text02 = dataSnapshot.getValue(PatientEditKeyWord.class);
+                mbMsg2.setText(text02.getText());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        databaseReferenceMSG3 = FirebaseDatabase.getInstance().getReference("/patientMsg/"+"33/"+"text3");
+        databaseReferenceMSG3.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                text03 = dataSnapshot.getValue(PatientEditKeyWord.class);
+                mbMsg3.setText(text03.getText());
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+//        databaseReferenceGuardian.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                // patientGuardian 에서 등록된 환자를 찾는다.
+//                // 해당하는 환자가 있으면 정보를 받아온다.
+//                patientGaurdianInfo = dataSnapshot.getValue(patientGaurdian.class);
+//                patientId = patientGaurdianInfo.getName();
+//                TvPatientName.setText(patientGaurdianInfo.getName());
+//                TvPatientNum.setText(patientGaurdianInfo.getNum());
+//                Log.i("환자 정보 찾기 ", "onDataChange: " + patientGaurdianInfo.getName());
+//                Log.i("환자 정보 찾기 ", "onDataChange: " + patientId);
+//                Log.i("의사 정보 찾기 ", "onDataChange: " + databaseReferenceGuardian.toString());
+//                databaseReferenceGuardianDocter = FirebaseDatabase.getInstance().getReference("/docterPatient/"+patientId);
+//                Log.i("의사 정보 찾기 ", "onDataChange: " + databaseReferenceGuardianDocter.toString());
+//                databaseReferenceGuardianDocter.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot2) {
+//                        // patientGuardian 에서 등록된 환자를 찾는다.
+//                        // 해당하는 환자가 있으면 정보를 받아온다.
+//                        docterGaurdianInfo = dataSnapshot2.getValue(docterPatient.class);
+//                        Log.i("의사 정보 찾기 ", "onDataChange: " + docterGaurdianInfo.getName());
+//                        TvDocterName.setText(String.valueOf(docterGaurdianInfo.getName()));
+//                        TvDocterNum.setText(docterGaurdianInfo.getNum());
+//                    }
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//
+//
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+
                 databaseReferenceMSG.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         //버튼으로 메세지 부르기
                         //첫번째 메세지 버튼
+
+
+
                         mbMsg1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
+                                databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
+
 
                             }
                         });

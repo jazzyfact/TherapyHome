@@ -107,73 +107,54 @@ public class CustomDialogMsgActivity extends Activity {
 
             /**
              * <키워드 편집하는 로직>
-             *
+             *  String intentCk = "데이터수정";
+             *                 Intent patientEdit = new Intent(v.getContext(), CustomDialogMsgActivity.class);
+             *                 patientEdit.putExtra("intentCk",intentCk);
+             *                 patientEdit.putExtra("name",patientEditKeyWordList.get(position).getText());
+             *                 ((Activity) v.getContext()).startActivity(patientEdit);
              */
 
             // 파이어 베이스 데이터 주소
             databaseReference = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
-
             // 연락처 편집하기  --------------------------------------------------
             // 리사이클러뷰에서 받아온 정보
-            editName =  intent.getExtras().getString("name");
-            editNum =  intent.getExtras().getString("num");
-            emergencyCk = intent.getExtras().getString("ckbox");
-
+            editNum =  intent.getExtras().getString("name");
             // 받아온 정보 에디트 텍스트에 저장시키기
-            TvSubtitleName.setText(editName);
-            TvSubtitleNum.setText(editNum);
-            // 긴급 연락처 체크되었는지 확인하기
-            if (emergencyCk.equals("Y")){
-                cbAgreeEmergecy.setChecked(true);
-            }else {
-                cbAgreeEmergecy.setChecked(false);
-            }
-            cbAgreeEmergecy.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    if(cbAgreeEmergecy.isChecked()){
-                        emergencyCk = "Y";
-                    }else {
-                        emergencyCk = "N";
-                    }
-                }
-            });
-
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // user 의 모든 자식들의 key 값과 value 값들을 iterator에 참조한다.
-                    Iterator<DataSnapshot> child = dataSnapshot.getChildren().iterator();
-                    // 중복 유무 확인
-                    while (child.hasNext()){
-                        if(child.next().getKey().equals(editName)) {
-                            // object -> Map
-                            PhoneContactEdit editPhone = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
-                            userValue = editPhone.toMap();
-                            databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
-                            return;
-                        }
-                    }
-
-                }
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            tvSubtitleMsg.setText(editNum);
+//            databaseReference.addValueEventListener(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    // user 의 모든 자식들의 key 값과 value 값들을 iterator에 참조한다.
+//                    Iterator<DataSnapshot> child = dataSnapshot.getChildren().iterator();
+//
+//                    // 중복 유무 확인
+//                    while (child.hasNext()){
+//                        if(child.next().getKey().equals(editNum)) {
+//                            // object -> Map
+//                            GuardianMsg editPhone = new GuardianMsg(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
+//                            userValue = editPhone.toMap();
+//                            databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
+//                            return;
+//                        }
+//                    }
+//                }
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
             // 수정하기 버튼 눌렀을때
             okButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Log.i("수정하기체크", "클릭함");
                     // object -> Map
-                    PhoneContactEdit editPhone = new PhoneContactEdit(TvSubtitleName.getText().toString(),TvSubtitleNum.getText().toString(),emergencyCk);
-                    userValue = editPhone.toMap();
+                    PatientEditKeyWord editPhone = new PatientEditKeyWord(tvSubtitleMsg.getText().toString());
                     Log.i("수정하기체크", "onDataChange: ");
-                    databaseReference.child(pwdck.getId()).child(editName).removeValue();
-                    databaseReference.child(pwdck.getId()).child(TvSubtitleName.getText().toString()).updateChildren(userValue);
+                    databaseReference.child(editNum).removeValue();
+                    databaseReference.child(editPhone.getText()).setValue(editPhone);
                     Log.i("수정하기체크", "onDataChange: ");
-                    Intent edit = new Intent(getApplicationContext(), GuardianPhoneActivity.class);
+                    Intent edit = new Intent(getApplicationContext(), GuardianKeywordEditActivity.class);
                     startActivity(edit);
                     finish();
                 }

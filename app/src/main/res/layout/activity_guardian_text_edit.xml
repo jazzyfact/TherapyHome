@@ -46,17 +46,25 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/bt_guardian_editKey_add"
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_gravity="center"
-        android:src="@drawable/plus240"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="20sp"/>
+        android:visibility="invisible">
 
+        <ImageView
+            android:id="@+id/bt_guardian_editKey_add"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20sp"
+            android:src="@drawable/plus240"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </FrameLayout>
     <!--하단 메뉴바-->
 
     <!--하단 메뉴바-->
