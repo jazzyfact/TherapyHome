@@ -79,7 +79,6 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
         holder.itemContactEditName.setText(guardianPhoneEditList.get(position).getName());
         Log.d("연락처 리사이클러뷰 ", "onBindViewHolder: "+guardianPhoneEditList.get(position).getName());
         holder.itemContactEditNum.setText(guardianPhoneEditList.get(position).getNum());
-        holder.itemContactEditEmergency.setVisibility(View.VISIBLE);
         holder.ivGuardianEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +88,7 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
                 patientEdit.putExtra("intentCk",intentCk);
                 patientEdit.putExtra("name",guardianPhoneEditList.get(position).getName());
                 patientEdit.putExtra("num",guardianPhoneEditList.get(position).getNum());
+                patientEdit.putExtra("ckbox",guardianPhoneEditList.get(position).getEmergency());
                 ((Activity) v.getContext()).startActivity(patientEdit);
 
             }
@@ -102,10 +102,18 @@ public class GuardianPhoneEditAdapter extends RecyclerView.Adapter<GuardianPhone
                 patientEdit.putExtra("intentCk",intentCk);
                 patientEdit.putExtra("name",guardianPhoneEditList.get(position).getName());
                 patientEdit.putExtra("num",guardianPhoneEditList.get(position).getNum());
+                patientEdit.putExtra("ckbox",guardianPhoneEditList.get(position).getEmergency());
                 ((Activity) v.getContext()).startActivity(patientEdit);
 
             }
         });
+
+        Log.d("긴급 연락처  ", "onBindViewHolder: "+guardianPhoneEditList.get(position).getEmergency());
+        if(guardianPhoneEditList.get(position).getEmergency().equals("Y")){
+            holder.itemContactEditEmergency.setVisibility(View.VISIBLE);
+        }else if(guardianPhoneEditList.get(position).getEmergency().equals("N")) {
+            holder.itemContactEditEmergency.setVisibility(View.INVISIBLE);
+        }
 
 
     }
