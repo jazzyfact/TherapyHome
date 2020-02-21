@@ -294,14 +294,33 @@ public class PatientMsgActivity extends AppCompatActivity {
 
                         //버튼으로 메세지 부르기
                         //첫번째 메세지 버튼
-
-
-
                         mbMsg1.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
+                                Log.i("환자메세지", "내용 : "+mbMsg1.getText().toString());
+                                PatientMainSpSelectMsg = mbMsg1.getText().toString();
+                            }
+                        });
 
+                        //두번째 메세지 버튼
+                        mbMsg2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
+                                Log.i("환자메세지", "내용 : "+mbMsg2.getText().toString());
+                                PatientMainSpSelectMsg = mbMsg2.getText().toString();
+
+                            }
+                        });
+
+                        //세번째 메세지 버튼
+                        mbMsg3.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
+                                Log.i("환자메세지", "내용 : "+mbMsg3.getText().toString());
+                                PatientMainSpSelectMsg = mbMsg3.getText().toString();
 
                             }
                         });
@@ -465,6 +484,9 @@ public class PatientMsgActivity extends AppCompatActivity {
         Log.i("sms 메세지보내기", "1"+PatientMainSpSelectNum);
         Log.i("문자보내기확인 번호", "2" + result);
 
+        Log.i("메세지 보낼 번호","번호 : "+PatientMainSpSelectNum);
+        Log.i("메세지 내용","내용 : "+PatientMainSpSelectMsg);
+
         PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 
@@ -474,6 +496,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                 switch (getResultCode()) {
                     case Activity
                             .RESULT_OK:
+                        Toast.makeText(getApplicationContext(),"메세지 전송이 완료되었습니다.",
+                                Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
