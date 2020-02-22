@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".PatientSmartHomeActivity"
     android:layout_margin="30dp"
-    android:background="#fff"
     >
 
     <Button
@@ -103,8 +102,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_edit_msg"
         android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="20sp"
+        android:layout_height="120dp"
         android:layout_weight="0.3"
         android:background="#00ff0000"
         android:backgroundTint="#fff"
@@ -119,7 +117,7 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_edit_iot"
         android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_weight="0.3"
         android:background="#00ff0000"
         android:backgroundTint="#fff"
@@ -130,8 +128,9 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/bt_edit_msg" />
-<!--    -->
+    <!--    -->
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
