@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
                             msg = getString(R.string.msg_subscribe_failed);
                         }
                         Log.d("fcm 테스트 ", msg);
-                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
                                             pwdck = dataSnapshot.getValue(SignUpclass.class);
                                             String pwdckeck = pwdck.getPwd();
                                             if(findpwd.equals(pwdckeck)){
-                                                Toast.makeText(getApplicationContext(),"로그인!",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getApplicationContext(),"로그인완료!",Toast.LENGTH_LONG).show();
                                                 Log.i("파이어베이스 데이터 흐름", "5");
                                                 // 로그인 완료
                                                 //3가지 기준으로 인텐트를 보내한다.

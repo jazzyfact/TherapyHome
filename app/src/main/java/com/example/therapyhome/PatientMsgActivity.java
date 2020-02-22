@@ -177,9 +177,9 @@ public class PatientMsgActivity extends AppCompatActivity {
         // 파이어 베이스 데이터 주소
         databaseReference = FirebaseDatabase.getInstance().getReference("contactNumber");
         // 파이어 베이스에서 데이터 저장된 데이터값 가져오기
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 파이어 베이스 검색하기
                 databaseReference.child("33").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -222,12 +222,12 @@ public class PatientMsgActivity extends AppCompatActivity {
                     }
                 });
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//        });
         // 스피너에 파이어베이스 구현 끝 ----------------------------------------------------------------
 
 
@@ -331,6 +331,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                                 databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
                                 Log.i("환자메세지", "내용 : "+mbMsg1.getText().toString());
                                 PatientMainSpSelectMsg = mbMsg1.getText().toString();
+                                Toast.makeText(getApplicationContext(),"보낼 내용 : "+PatientMainSpSelectMsg,
+                                        Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -341,7 +343,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                                 databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
                                 Log.i("환자메세지", "내용 : "+mbMsg2.getText().toString());
                                 PatientMainSpSelectMsg = mbMsg2.getText().toString();
-
+                                Toast.makeText(getApplicationContext(),"보낼 내용 : "+PatientMainSpSelectMsg,
+                                        Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -352,7 +355,8 @@ public class PatientMsgActivity extends AppCompatActivity {
                                 databaseReferenceMSG = FirebaseDatabase.getInstance().getReference("/patientMsg/"+pwdck.getId());
                                 Log.i("환자메세지", "내용 : "+mbMsg3.getText().toString());
                                 PatientMainSpSelectMsg = mbMsg3.getText().toString();
-
+                                Toast.makeText(getApplicationContext(),"보낼 내용 : "+PatientMainSpSelectMsg,
+                                        Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -526,7 +530,7 @@ public class PatientMsgActivity extends AppCompatActivity {
         // 카메라 권한 있으면, 카메라에서 리소스 받아오기
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
         }
         else {
             createCameraSource();
@@ -709,7 +713,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 BtEditIot.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
@@ -739,7 +743,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 btnPatientCall.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
@@ -769,7 +773,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 mbMsg1.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
@@ -799,7 +803,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 mbMsg2.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
@@ -829,7 +833,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 mbMsg3.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
@@ -859,7 +863,7 @@ public class PatientMsgActivity extends AppCompatActivity {
                             public void run() {
                                 cursor.setText("5");
                                 bt_sendtext.performClick();
-                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(getApplicationContext(), "touch", Toast.LENGTH_SHORT).show();
                                 cursor.setText("");
                             }
                         }, 1);
