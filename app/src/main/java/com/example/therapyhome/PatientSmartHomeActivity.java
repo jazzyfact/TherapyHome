@@ -160,7 +160,7 @@ public class PatientSmartHomeActivity extends AppCompatActivity {
         // 카메라 권한 있으면, 카메라에서 리소스 받아오기
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
-            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Grant Permission and restart app", Toast.LENGTH_SHORT).show();
         }
         else {
             createCameraSource();

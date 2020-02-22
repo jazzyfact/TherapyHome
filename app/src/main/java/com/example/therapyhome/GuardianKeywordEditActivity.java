@@ -74,9 +74,9 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
         dtabaseReference = FirebaseDatabase.getInstance().getReference("patientMsg");
         Log.i("환자키워드편집 리스트1", "onDataChange: " + "되고있나?");
         // 파이어베이스에서 리사이클러뷰에 출력할 데이터 불러오기
-        dtabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//        dtabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // 핑;압[ㅇ;ㅅ, 감섹힉;
                 dtabaseReference.child(pwdck.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -101,12 +101,12 @@ public class GuardianKeywordEditActivity extends AppCompatActivity {
 
                     }
                 });
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-
-        });
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//            }
+//
+//        });
 
 
 //        하단 네비게이션바
