@@ -28,7 +28,7 @@
 
 ### 사전모임
 
-[!사전모임](http://img.youtube.com/vi/5liqjGBhUDQ0.jpg)](https://youtu.be/5liqjGBhUDQ)
+![사전모임](http://img.youtube.com/vi/5liqjGBhUDQ0.jpg)](https://youtu.be/5liqjGBhUDQ)
 
 ![테라피홈](https://user-images.githubusercontent.com/51365114/144705142-807388be-94bd-4487-b998-1401bb415bc3.jpg)
 
