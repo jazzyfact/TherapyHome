@@ -5,9 +5,8 @@
 - 대전 코로나확산으로 인해 해커톤 이틀전 취소되었습니다.
 <br/><br/>
 
-## 📎링크
 
-- **시연영상**
+ ## 시연영상(클릭👆)
    
 [![Video Label](http://img.youtube.com/vi/84NPSooOylw/0.jpg)](https://www.youtube.com/84NPSooOylw)
     
