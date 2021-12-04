@@ -38,7 +38,7 @@
 
 - **ThreapyHome 영상**
     
-[![Video Label](http://img.youtube.com/vi/84NPSooOylw.jpg)](https://youtu.be/84NPSooOylw)
+[![영상](http://img.youtube.com/vi/84NPSooOylw.jpg)](https://youtu.be/84NPSooOylw)
     
 
 - **기획배경**
