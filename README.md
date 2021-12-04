@@ -22,7 +22,8 @@
     - 라즈베이파이로 홈 cctv 만들고 어플리케이션 연동
     - 조이스틱 마우스를 제작해 어플리케이션과 연동
     - LED 조명 끄고 키기
-
+    
+<br/><br/>
 ## 🎞️상세내용
 
 
@@ -38,7 +39,7 @@
 
 - **ThreapyHome 영상**
     
-[![영상](http://img.youtube.com/vi/84NPSooOylw.jpg)](https://youtu.be/84NPSooOylw)
+[![Video Label](http://img.youtube.com/vi/84NPSooOylw/0.jpg)](https://www.youtube.com/84NPSooOylw)
     
 
 - **기획배경**
