@@ -40,6 +40,11 @@
 
 ![테라피홈ppt](https://user-images.githubusercontent.com/51365114/144705502-44dbe29e-ca5f-4bdf-83dd-26f505aec3dd.png)
 
+- **스크린샷**
+![테라피앱1](https://user-images.githubusercontent.com/51365114/144706119-aafab516-d9ae-4048-adf6-d575ddfdb7d1.png)
+![테라피앱3](https://user-images.githubusercontent.com/51365114/144706120-10e37b9e-faf5-47e2-beb6-01ecfda7e872.png)
+![테라피앱2](https://user-images.githubusercontent.com/51365114/144706137-e5e002e3-469a-449f-ac95-91c6833fb107.png)
+
 
 
 
