@@ -8,6 +8,9 @@
 ## 📎링크
 
 - **시연영상**
+   
+[![Video Label](http://img.youtube.com/vi/84NPSooOylw/0.jpg)](https://www.youtube.com/84NPSooOylw)
+    
 
 <br/><br/>
 ## ⏲️개발기간
@@ -36,12 +39,10 @@
 
 - **최종작품**
 
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e9960c0-e2e8-44a9-9fb8-660d21747911/.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1e9960c0-e2e8-44a9-9fb8-660d21747911/.png)
+![테라피홈ppt](https://user-images.githubusercontent.com/51365114/144705502-44dbe29e-ca5f-4bdf-83dd-26f505aec3dd.png)
 
-- **ThreapyHome 영상**
-    
-[![Video Label](http://img.youtube.com/vi/84NPSooOylw/0.jpg)](https://www.youtube.com/84NPSooOylw)
-    
+
+
 
 - **기획배경**
     - 침상에 누워 생활 할 수 밖에 없는 몸이 불편한 루게릭 또는 중증 환자와 그 환자를 간병하는 가족의 기본적인 생활을 보장하기 위해서 서비스를 기획함.
